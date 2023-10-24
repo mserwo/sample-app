@@ -4,6 +4,7 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   height: fit-content;
   border-top: 1px solid colors.$neutrals6;
@@ -29,6 +30,15 @@
   padding-bottom: 1px;
 
   &_text {
+    @include typography.body1;
+  }
+}
+
+.bottomBar {
+  height: 85px;
+
+  &_leftText {
+    color: colors.$neutrals4;
     @include typography.body1;
   }
 }

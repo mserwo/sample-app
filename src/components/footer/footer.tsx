@@ -1,5 +1,6 @@
 import styles from "./footer.module.scss";
 import { Logo } from "../logo";
+import BottomBar from "./bottom-bar";
 
 export const Footer = () => {
   return (
@@ -13,6 +14,7 @@ export const Footer = () => {
           </p>
         </section>
       </div>
+      <BottomBar />
     </footer>
   );
 };
