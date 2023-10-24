@@ -8,7 +8,7 @@ const BottomBar = () => {
       </div>
       <div>
         <div>{"We use cookies for better service."}</div>
-        <div>{"Accept"}</div>
+        <div>{"Decline"}</div>
       </div>
     </div>
   );
