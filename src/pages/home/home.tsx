@@ -5,6 +5,7 @@ export const Home = () => {
   return (
     <Layout>
       <div>home</div>
+      <div>tu jest mój rodzic</div>
     </Layout>
   );
 };
