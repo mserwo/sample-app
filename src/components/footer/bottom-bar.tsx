@@ -1,6 +1,6 @@
-import styles from "./footer.module.scss";
+import styles from "./bottom-bar.module.scss";
 
-const BottomBar = () => {
+export const BottomBar = () => {
   return (
     <div className={styles.bottomBar}>
       <div className={styles.bottomBar_divider}></div>
@@ -18,5 +18,3 @@ const BottomBar = () => {
     </div>
   );
 };
-
-export default BottomBar;
