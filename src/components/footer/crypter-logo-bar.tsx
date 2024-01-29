@@ -1,3 +1,4 @@
+import { Logo } from "../logo";
 import styles from "./crypter-logo-bar.module.scss";
 
 export const CrypterLogoBar = () => {
