@@ -1,0 +1,20 @@
+@use "~/typography.scss";
+@use "~/colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &_title {
+    @include typography.body2--bold;
+  }
+
+  &_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @include typography.button2;
+    color: colors.$neutrals4;
+  }
+}
