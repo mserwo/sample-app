@@ -9,7 +9,7 @@ export const BottomBar = () => {
           {"Copyright © 2021 UI8 LLC. All rights reserved"}
         </div>
         <div className={styles.bottomBar_content_rightText}>
-          <div>{"We use cokkies for better service."}</div>
+          <div>{"We use cookies for better service."}</div>
           <div className={styles.bottomBar_content_rightText_accept}>
             {"Accept"}
           </div>

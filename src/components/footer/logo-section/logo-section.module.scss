@@ -1,0 +1,13 @@
+@use "~/typography.scss";
+
+.logoSection {
+  gap: 32px;
+  white-space: pre-line;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1px;
+
+  &_text {
+    @include typography.body1;
+  }
+}

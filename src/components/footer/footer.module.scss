@@ -7,6 +7,10 @@
   justify-content: center;
   border-top: 1px solid colors.$neutrals6;
   padding: 0 80px;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0 32px;
+  }
 }
 
 .container {
@@ -17,20 +21,9 @@
   max-width: 865px;
   padding-top: 80px;
 
+  @include breakpoints.min-width("tablet") {
+    max-width: 1120px;
+  }
+
   @include typography.h1;
-  @include breakpoints.max-width("mobileM") {
-    background-color: teal;
-  }
-}
-
-.logoSection {
-  gap: 32px;
-  white-space: pre-line;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1px;
-
-  &_text {
-    @include typography.body1;
-  }
 }
