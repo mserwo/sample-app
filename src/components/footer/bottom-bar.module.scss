@@ -1,0 +1,46 @@
+@use "~/breakpoints";
+@use "~/colors";
+@use "~/typography";
+
+.bottomBar {
+  display: flex;
+  padding-bottom: 32px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+
+  &_divider {
+    width: 100%;
+    height: 1px;
+    color: colors.$neutrals6;
+  }
+
+  &_content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    @include typography.caption2;
+
+    @include breakpoints.max-width("tablet") {
+      justify-content: center;
+    }
+
+    &_leftText {
+      color: colors.$neutrals4;
+    }
+
+    &_rightText {
+      @include breakpoints.max-width("tablet") {
+        display: none;
+      }
+
+      display: flex;
+      gap: 16px;
+      color: colors.$neutrals2;
+
+      &_accept {
+        color: colors.$primary1;
+      }
+    }
+  }
+}

@@ -1,13 +1,13 @@
-$breakpoint-medium: 1024px;
-$breakpoint-small: 375px;
+$mobileM: 375px;
+$tablet: 768px;
 
 @mixin max-width($breakpoint) {
-  @if ($breakpoint == small) {
-    @media (max-width: $breakpoint-small) {
+  @if ($breakpoint == "mobileM") {
+    @media (max-width: $mobileM) {
       @content;
     }
-  } @else if ($breakpoint == medium) {
-    @media (max-width: $breakpoint-medium) {
+  } @else if ($breakpoint == "tablet") {
+    @media (max-width: $tablet) {
       @content;
     }
   } @else {

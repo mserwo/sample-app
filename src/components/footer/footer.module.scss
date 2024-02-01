@@ -1,22 +1,24 @@
-@use "../../styles/colors";
-@use "../../styles/breakpoints";
-@use "../../styles/typography";
+@use "~/colors";
+@use "~/breakpoints";
+@use "~/typography";
 
 .wrapper {
   display: flex;
-  justify-content: space-around;
-  height: fit-content;
+  justify-content: center;
   border-top: 1px solid colors.$neutrals6;
+  padding: 0 80px;
 }
 
 .container {
   display: flex;
-  max-width: 1120;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 865px;
   padding-top: 80px;
-  padding-bottom: 48px;
 
   @include typography.h1;
-  @include breakpoints.max-width(small) {
+  @include breakpoints.max-width("mobileM") {
     background-color: teal;
   }
 }
