@@ -27,3 +27,8 @@
 
   @include typography.h1;
 }
+
+.content {
+  display: flex;
+  gap: 32px;
+}

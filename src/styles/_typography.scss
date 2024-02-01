@@ -41,7 +41,25 @@
   font-weight: 600;
 }
 
+@mixin body2 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+@mixin body2--bold {
+  @include body2();
+  font-weight: 600;
+}
+
 @mixin caption2 {
   font-size: 12px;
   line-height: 20px;
+}
+
+@mixin button2 {
+  font-family: "DM Sans";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
 }
