@@ -1,5 +1,5 @@
-import { ArrowDownSimple } from "../arrowDownSimple/arrow-down-simple";
-import { ArrowUpSimple } from "../arrowUpSimple/arrow-up-simple";
+import { ArrowDownSimpleComponent } from "../arrowDownSimple/arrow-down-simple";
+import { ArrowUpSimpleComponent } from "../arrowUpSimple/arrow-up-simple";
 import styles from "./navigation-menu.module.scss";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ export const NavigationMenu = ({
   title,
   menuElements,
 }: NavigationMenuProps) => {
-  const [arrow, setArrow] = useState<string>("down");
+  const [arrow, setArrow] = useState("down");
 
   const ArrowChange = (id) => {
     console.log(id);
@@ -25,8 +25,12 @@ export const NavigationMenu = ({
       <div className={styles.container_top}>
         <div className={styles.container_title}>{title}</div>
         <div className={styles.container_arrow}>
-          <ArrowDownSimple task={ArrowChange} id={menuElements} />
-          <ArrowUpSimple />
+          <div className={styles.img} onClick={() => ArrowChange()}>
+            <ArrowDownSimpleComponent task={ArrowChange} id={menuElements} />
+          </div>
+          <div className={styles.img} onClick={() => ArrowChange()}>
+            <ArrowUpSimpleComponent task={ArrowChange} id={menuElements} />
+          </div>
           {arrow}
         </div>
       </div>
