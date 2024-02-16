@@ -77,3 +77,10 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+
+@mixin button2 {
+  font-family: "DM Sans";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+}
