@@ -1,13 +1,39 @@
 @use "~/typography.scss";
 @use "~/colors.scss";
+@use "~/fonts.scss";
+@use "~/breakpoints";
 
 .container {
   display: flex;
   flex-direction: column;
   gap: 40px;
 
+  @include breakpoints.max-width("tablet") {
+    padding-top: 32px;
+    border-top: 1px solid colors.$neutrals3;
+  }
+
+  &_top {
+    display: flex;
+    height: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &_title {
     @include typography.body2--bold;
+    @include fonts.poppins;
+
+    @include breakpoints.max-width("tablet") {
+      @include typography.hairline2;
+    }
+  }
+
+  &_arrow {
+    display: flex;
+    @include breakpoints.min-width("tablet") {
+      display: none;
+    }
   }
 
   &_menu {
