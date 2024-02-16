@@ -1,7 +1,6 @@
 @use "~/breakpoints";
 @use "~/colors";
 @use "~/typography";
-@use "~/fonts";
 
 .bottomBar {
   display: flex;
@@ -9,14 +8,13 @@
   flex-direction: column;
   justify-content: center;
   gap: 32px;
-  border-top: 1px solid colors.$neutrals3;
+  border-top: 1px solid colors.$neutrals6;
 
   &_content {
     display: flex;
     width: 100%;
     justify-content: space-between;
     @include typography.caption2;
-    @include fonts.poppins;
 
     @include breakpoints.max-width("tablet") {
       justify-content: center;
@@ -33,7 +31,7 @@
 
       display: flex;
       gap: 16px;
-      color: colors.$neutrals6;
+      color: colors.$neutrals2;
 
       &_accept {
         color: colors.$primary1;

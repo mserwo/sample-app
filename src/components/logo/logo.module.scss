@@ -1,5 +1,4 @@
 @use "../../styles/typography";
-@use "../../styles/fonts";
 
 .container {
   display: flex;
@@ -13,5 +12,4 @@
 
 .text {
   @include typography.body1;
-  @include fonts.poppins;
 }

@@ -1,7 +1,4 @@
 @use "~/typography.scss";
-@use "~/fonts.scss";
-@use "~/colors";
-@use "~/breakpoints";
 
 .logoSection {
   gap: 32px;
@@ -12,13 +9,5 @@
 
   &_text {
     @include typography.body1;
-    @include fonts.poppins;
-    font-weight: 350;
-    color: colors.$neutrals6;
-
-    @include breakpoints.max-width("tablet") {
-      @include typography.body2;
-      width: 192px;
-    }
   }
 }
