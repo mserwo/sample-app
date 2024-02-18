@@ -1,3 +1,31 @@
 @use "~/typography.scss";
 @use "~/colors.scss";
 @use "~/fonts.scss";
+
+.container {
+  padding: 8px;
+  border: 2px solid colors.$neutrals3;
+  border-radius: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &_input {
+    color: colors.$neutrals4;
+    background-color: colors.$neutrals1;
+    border: none;
+    padding: 6px 18px 6px 8px;
+    width: 100%;
+    @include typography.caption;
+  }
+
+  &_arrow {
+    fill: colors.$neutrals8;
+    width: 14px;
+    height: 9px;
+    background-color: colors.$primary1;
+    padding: 11px 10px 12px 10px;
+    border-radius: 50%;
+  }
+}

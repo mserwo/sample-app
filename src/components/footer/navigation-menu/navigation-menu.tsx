@@ -1,7 +1,8 @@
-import { ArrowDownSimpleComponent } from "../arrowDownSimple/arrow-down-simple";
-import { ArrowUpSimpleComponent } from "../arrowUpSimple/arrow-up-simple";
 import styles from "./navigation-menu.module.scss";
 import { useState } from "react";
+import { ReactComponent as ArrowDownSimpleIcon } from "../../../assets/images/arrowDownSimple.svg";
+import { ReactComponent as ArrowUpSimpleIcon } from "../../../assets/images/arrowUpSimple.svg";
+import classNames from "classnames";
 
 interface NavigationMenuProps {
   title: string;
@@ -12,12 +13,16 @@ export const NavigationMenu = ({
   title,
   menuElements,
 }: NavigationMenuProps) => {
-  const [arrow, setArrow] = useState("down");
+  const [isArrowDownClick, setIsArrowDownClick] = useState(false);
+  const [isRollUp, setIsRollUp] = useState(false);
 
-  const ArrowChange = (id) => {
-    console.log(id);
-    setArrow("up");
-    console.log(arrow);
+  const ArrowChange = () => {
+    setIsArrowDownClick(!isArrowDownClick);
+    {
+      !isArrowDownClick
+        ? (console.log("zwijam menu"), setIsRollUp(true))
+        : (console.log("rozwijam menu"), setIsRollUp(false));
+    }
   };
 
   return (
@@ -25,17 +30,16 @@ export const NavigationMenu = ({
       <div className={styles.container_top}>
         <div className={styles.container_title}>{title}</div>
         <div className={styles.container_arrow}>
-          <div className={styles.img} onClick={() => ArrowChange()}>
-            <ArrowDownSimpleComponent task={ArrowChange} id={menuElements} />
+          <div className={styles.img} onClick={ArrowChange}>
+            {isArrowDownClick ? <ArrowUpSimpleIcon /> : <ArrowDownSimpleIcon />}
           </div>
-          <div className={styles.img} onClick={() => ArrowChange()}>
-            <ArrowUpSimpleComponent task={ArrowChange} id={menuElements} />
-          </div>
-          {arrow}
         </div>
       </div>
-
-      <ul className={styles.container_menu}>
+      <ul
+        className={classNames(styles.container_menu, {
+          [styles.container_menu_hide]: isRollUp,
+        })}
+      >
         {menuElements.map((item) => (
           <li>
             <a href={item.url}>{item.title}</a>

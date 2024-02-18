@@ -42,9 +42,15 @@
     gap: 24px;
     @include typography.button2;
     color: colors.$neutrals4;
+
+    &_hide {
+      display: none;
+    }
   }
 }
 
 .img {
   color: colors.$neutrals4;
+  // transform: rotate(${isOpen ? 180: 0}deg);
+  // transition: 2s;
 }

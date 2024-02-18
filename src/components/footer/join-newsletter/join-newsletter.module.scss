@@ -23,5 +23,6 @@
   &_text {
     @include typography.caption;
     color: colors.$neutrals8;
+    margin-bottom: 24px;
   }
 }
