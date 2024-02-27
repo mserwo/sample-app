@@ -21,11 +21,7 @@ export const NavigationMenu = ({
 
   const handleArrowChange = () => {
     setIsArrowDownClick(!isArrowDownClick);
-    {
-      !isArrowDownClick
-        ? (console.log("zwijam menu"), setIsRollUp(true))
-        : (console.log("rozwijam menu"), setIsRollUp(false));
-    }
+    setIsRollUp(!isRollUp);
   };
 
   return (
@@ -34,14 +30,14 @@ export const NavigationMenu = ({
         <div className={styles.container_title}>{title}</div>
         <div className={styles.container_arrow}>
           <div
-            className={styles.img}
+            className={styles.imgContainer}
             style={{
-              transform: `rotate(${isRollUp ? 180 : 0}deg`,
-              transition: "all 0.25s",
+              transform: `rotate(${isRollUp ? 180 : 0}deg)`,
+              transition: "transform 0.25s",
             }}
             onClick={handleArrowChange}
           >
-            <ArrowDownSimpleIcon />
+            <ArrowDownSimpleIcon className={styles.img} />
           </div>
         </div>
       </div>

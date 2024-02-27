@@ -1,6 +1,7 @@
 @use "~/typography.scss";
 @use "~/colors.scss";
 @use "~/fonts.scss";
+@use "~/breakpoints";
 
 .container {
   padding: 8px;
@@ -15,6 +16,7 @@
     color: colors.$neutrals4;
     background-color: colors.$neutrals1;
     border: none;
+    outline: none;
     padding: 6px 18px 6px 8px;
     width: 100%;
     @include typography.caption;
@@ -27,5 +29,22 @@
     background-color: colors.$primary1;
     padding: 11px 10px 12px 10px;
     border-radius: 50%;
+  }
+}
+
+.inputAnswer {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  margin-bottom: -30px;
+  @include typography.caption2;
+  text-align: center;
+
+  &_error {
+    color: colors.$primary3;
+  }
+
+  &_correct {
+    color: colors.$primary4;
   }
 }

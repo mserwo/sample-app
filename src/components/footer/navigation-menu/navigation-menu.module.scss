@@ -49,6 +49,11 @@
   }
 }
 
+.imgContainer {
+  display: inline-block;
+  transition: transform 0.25s;
+}
+
 .img {
   color: colors.$neutrals4;
 }
