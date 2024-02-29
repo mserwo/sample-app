@@ -29,13 +29,6 @@
     }
   }
 
-  &_arrow {
-    display: flex;
-    @include breakpoints.min-width("tablet") {
-      display: none;
-    }
-  }
-
   &_menu {
     display: flex;
     flex-direction: column;
@@ -49,9 +42,17 @@
   }
 }
 
-.imgContainer {
-  display: inline-block;
+.arrowContainer {
+  display: flex;
+  @include breakpoints.min-width("tablet") {
+    display: none;
+  }
   transition: transform 0.25s;
+  width: fit-content;
+
+  &_rotated {
+    transform: rotate(180deg);
+  }
 }
 
 .img {
