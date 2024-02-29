@@ -31,20 +31,3 @@
     border-radius: 50%;
   }
 }
-
-.inputAnswer {
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-  margin-bottom: -30px;
-  @include typography.caption2;
-  text-align: center;
-
-  &_error {
-    color: colors.$primary3;
-  }
-
-  &_correct {
-    color: colors.$primary4;
-  }
-}
