@@ -2,7 +2,7 @@ import styles from "./navigation-menu.module.scss";
 import { useState } from "react";
 import { ReactComponent as ArrowDownSimpleIcon } from "../../../assets/images/arrowDownSimple.svg";
 
-import classNames from "classnames";
+import cn from "classnames";
 import { useScreenWidth } from "../../../hooks";
 
 interface NavigationMenuProps {
@@ -26,23 +26,18 @@ export const NavigationMenu = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.container_top}>
+      <div className={styles.container_top} onClick={handleArrowChange}>
         <div className={styles.container_title}>{title}</div>
-        <div className={styles.container_arrow}>
-          <div
-            className={styles.imgContainer}
-            style={{
-              transform: `rotate(${isRollUp ? 180 : 0}deg)`,
-              transition: "transform 0.25s",
-            }}
-            onClick={handleArrowChange}
-          >
-            <ArrowDownSimpleIcon className={styles.img} />
-          </div>
+        <div
+          className={cn(styles.arrowContainer, {
+            [styles.arrowContainer_rotated]: isRollUp,
+          })}
+        >
+          <ArrowDownSimpleIcon className={styles.img} />
         </div>
       </div>
       <ul
-        className={classNames(styles.container_menu, {
+        className={cn(styles.container_menu, {
           [styles.container_menu_hide]: isRollUp && isMobile,
         })}
       >
