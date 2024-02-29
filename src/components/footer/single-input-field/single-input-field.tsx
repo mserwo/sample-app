@@ -32,8 +32,7 @@ export const SingleInputField = () => {
         {isArrowClick ? (
           error ? (
             <div className={styles.inputAnswer_error}>
-              {" "}
-              The field cannot be empty{" "}
+              The field cannot be empty
             </div>
           ) : (
             <div className={styles.inputAnswer_correct}>
