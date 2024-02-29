@@ -16,7 +16,12 @@ export const SingleInputField = () => {
 
   return (
     <div>
-      <div className={styles.container} onSubmit={() => {}}>
+      <div
+        className={styles.container}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <input
           className={styles.container_input}
           placeholder="Enter your email"
