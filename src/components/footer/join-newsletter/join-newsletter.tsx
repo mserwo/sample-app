@@ -1,6 +1,11 @@
 import { SingleInputField } from "../single-input-field/single-input-field";
 import styles from "./join-newsletter.module.scss";
 
+interface InputAnswerProps {
+  errorText: string;
+  correctText: string;
+}
+
 export const JoinNewsletter = () => {
   return (
     <div className={styles.container}>
@@ -9,7 +14,12 @@ export const JoinNewsletter = () => {
         <div className={styles.container_text}>
           Subscribe our newsletter to get more free design course and resource
         </div>
-        <SingleInputField />
+        <SingleInputField
+          errorText={"The field cannot be empty"}
+          correctText={
+            "Thank you! Your email address has been successfully saved"
+          }
+        />
       </div>
     </div>
   );

@@ -14,13 +14,11 @@ export const NavigationMenu = ({
   title,
   menuElements,
 }: NavigationMenuProps) => {
-  const [isArrowDownClick, setIsArrowDownClick] = useState(false);
   const [isRollUp, setIsRollUp] = useState(false);
 
   const isMobile = useScreenWidth() < 768;
 
   const handleArrowChange = () => {
-    setIsArrowDownClick(!isArrowDownClick);
     setIsRollUp(!isRollUp);
   };
 
