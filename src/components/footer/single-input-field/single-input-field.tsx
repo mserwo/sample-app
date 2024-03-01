@@ -22,14 +22,13 @@ export const SingleInputField = ({
     setIsArrowClick(true);
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+  };
+
   return (
-    <div>
-      <div
-        className={styles.container}
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+    <form onSubmit={handleSubmit}>
+      <div className={styles.container}>
         <input
           className={styles.container_input}
           placeholder="Enter your email"
@@ -50,6 +49,6 @@ export const SingleInputField = ({
           )
         ) : null}
       </div>
-    </div>
+    </form>
   );
 };
