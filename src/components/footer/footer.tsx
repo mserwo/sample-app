@@ -6,7 +6,9 @@ export const Footer = () => {
   return (
     <footer className={styles.wrapper}>
       <div className={styles.container}>
-        <LogoSection />
+        <div className={styles.content}>
+          <LogoSection />
+        </div>
         <BottomBar />
       </div>
     </footer>
