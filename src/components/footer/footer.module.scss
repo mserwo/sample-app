@@ -5,7 +5,7 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  border-top: 1px solid colors.$neutrals6;
+  border-top: 1px solid colors.$neutrals3;
   padding: 0 80px;
 
   @include breakpoints.max-width("mobileL") {
@@ -25,10 +25,21 @@
     max-width: 1120px;
   }
 
+  @include breakpoints.max-width("tablet") {
+    padding-top: 64px;
+  }
+
   @include typography.h1;
 }
 
 .content {
   display: flex;
+  justify-content: space-between;
   gap: 32px;
+  padding-bottom: 48px;
+
+  @include breakpoints.max-width("tablet") {
+    max-width: 1120px;
+    flex-direction: column;
+  }
 }
