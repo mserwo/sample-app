@@ -3,6 +3,29 @@ import { SingleInputField } from "../single-input-field/single-input-field";
 import styles from "./join-newsletter.module.scss";
 
 export const JoinNewsletter = () => {
+  const [emailSent, setEmailSent] = useState(false);
+
+  const onHandleSubmit = async (value: string) => {
+    try {
+      const response = await fetch("http://localhost:3000/marcin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: value }),
+      });
+
+      if (response.ok) {
+        setEmailSent(true);
+        console.log("Email sent successfully!");
+      } else {
+        console.error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.container_title}>Join Newsletter</div>
@@ -12,8 +35,11 @@ export const JoinNewsletter = () => {
         </div>
         <SingleInputField
           errorText={"The field cannot be empty"}
-          onHandleSubmit={(value: string) => {}}
+          onHandleSubmit={onHandleSubmit}
         />
+        {emailSent ? (
+          <div className={styles.correctAnswer}>Email has been send</div>
+        ) : null}
       </div>
     </div>
   );

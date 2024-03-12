@@ -26,3 +26,12 @@
     margin-bottom: 24px;
   }
 }
+
+.correctAnswer {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  @include typography.caption2;
+  text-align: center;
+  color: colors.$primary4;
+}
