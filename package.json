@@ -13,6 +13,7 @@
     "precommit": "npm run lint && npm run prettier"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "cors": "^2.8.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

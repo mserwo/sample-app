@@ -4,6 +4,7 @@ import styles from "./join-newsletter.module.scss";
 
 export const JoinNewsletter = () => {
   const [emailSent, setEmailSent] = useState(false);
+  const [serverError, setServerError] = useState(false);
 
   const onHandleSubmit = async (value: string) => {
     try {
@@ -17,9 +18,8 @@ export const JoinNewsletter = () => {
 
       if (response.ok) {
         setEmailSent(true);
-        console.log("Email sent successfully!");
       } else {
-        console.error("Failed to send email");
+        setServerError(true);
       }
     } catch (error) {
       console.error("Error sending email:", error);
@@ -39,6 +39,9 @@ export const JoinNewsletter = () => {
         />
         {emailSent ? (
           <div className={styles.correctAnswer}>Email has been send</div>
+        ) : null}
+        {serverError ? (
+          <div className={styles.correctAnswer}>Something went wrong</div>
         ) : null}
       </div>
     </div>

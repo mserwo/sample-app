@@ -8,8 +8,7 @@ app.use(express.json());
 
 app.post("/marcin", (request, response) => {
   const { email } = request.body;
-  console.log("Odebrałem email:", email);
-  response.send("Email został odebrany!");
+  response.status(200).send(email);
 });
 
 app.listen(port, () => {
