@@ -1,0 +1,41 @@
+@use "~/typography.scss";
+@use "~/fonts.scss";
+@use "~/colors";
+@use "~/breakpoints";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include fonts.poppins;
+
+  @include breakpoints.max-width("tablet") {
+    padding-top: 32px;
+    border-top: 1px solid colors.$neutrals3;
+  }
+
+  &_title {
+    @include typography.body2--bold;
+    color: colors.$neutrals8;
+  }
+
+  &_text {
+    @include typography.caption;
+    color: colors.$neutrals8;
+    margin-bottom: 24px;
+  }
+}
+
+.response {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  @include typography.caption2;
+  text-align: center;
+  color: colors.$primary4;
+}
+
+.error {
+  color: red;
+}

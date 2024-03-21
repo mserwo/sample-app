@@ -2,6 +2,7 @@ import styles from "./footer.module.scss";
 import { BottomBar } from "./bottom-bar/bottom-bar";
 import LogoSection from "./logo-section/logo-section";
 import { NavigationMenu } from "./navigation-menu/navigation-menu";
+import { JoinNewsletter } from "./join-newsletter/join-newsletter";
 
 const menu1items = [
   { title: "Discover", url: "/discover" },
@@ -23,6 +24,7 @@ export const Footer = () => {
           <LogoSection />
           <NavigationMenu title={"Stacks"} menuElements={menu1items} />
           <NavigationMenu title={"Info"} menuElements={menu2items} />
+          <JoinNewsletter />
         </div>
         <BottomBar />
       </div>
