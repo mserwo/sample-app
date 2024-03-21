@@ -2,28 +2,36 @@ import { useState } from "react";
 import { SingleInputField } from "../single-input-field/single-input-field";
 import styles from "./join-newsletter.module.scss";
 
+import * as NewsletterClient from "../../../api";
+import classNames from "classnames";
+// imported with namespace, easier to document what api is being used, its just sugar syntax, you could also use
+// import { postNewsletter } from "../../../api";
+// and use the function like this:
+// postNewsletter(value, onSuccess, onError)
+// it works the same.
+
+interface NewsletterResponse {
+  isError: boolean;
+  message: string;
+}
+
 export const JoinNewsletter = () => {
-  const [emailSent, setEmailSent] = useState(false);
-  const [serverError, setServerError] = useState(false);
+  const [newsletterResponse, setNewsletterResponse] =
+    useState<NewsletterResponse>({ isError: false, message: "" });
 
   const onHandleSubmit = async (value: string) => {
-    try {
-      const response = await fetch("http://localhost:3000/marcin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: value }),
-      });
+    // define what happens if request is successful
+    const onSuccess = () =>
+      setNewsletterResponse({ isError: false, message: "Email has been sent" });
 
-      if (response.ok) {
-        setEmailSent(true);
-      } else {
-        setServerError(true);
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
-    }
+    // define what happens on error
+    const onError = () =>
+      setNewsletterResponse({ isError: true, message: "Something went wrong" });
+
+    // NewsletterClient -> namespace
+    // postNewsletter -> function
+    // we pass value, onSuccess (callback function), onError (callback function)
+    NewsletterClient.postNewsletter(value, onSuccess, onError);
   };
 
   return (
@@ -37,12 +45,14 @@ export const JoinNewsletter = () => {
           errorText={"The field cannot be empty"}
           onHandleSubmit={onHandleSubmit}
         />
-        {emailSent ? (
-          <div className={styles.correctAnswer}>Email has been send</div>
-        ) : null}
-        {serverError ? (
-          <div className={styles.correctAnswer}>Something went wrong</div>
-        ) : null}
+
+        <div
+          className={classNames(styles.response, {
+            [styles.error]: newsletterResponse.isError,
+          })}
+        >
+          {newsletterResponse.message}
+        </div>
       </div>
     </div>
   );
