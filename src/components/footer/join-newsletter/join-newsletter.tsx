@@ -4,11 +4,6 @@ import styles from "./join-newsletter.module.scss";
 
 import * as NewsletterClient from "../../../api";
 import classNames from "classnames";
-// imported with namespace, easier to document what api is being used, its just sugar syntax, you could also use
-// import { postNewsletter } from "../../../api";
-// and use the function like this:
-// postNewsletter(value, onSuccess, onError)
-// it works the same.
 
 interface NewsletterResponse {
   isError: boolean;
@@ -20,17 +15,11 @@ export const JoinNewsletter = () => {
     useState<NewsletterResponse>({ isError: false, message: "" });
 
   const onHandleSubmit = async (value: string) => {
-    // define what happens if request is successful
     const onSuccess = () =>
       setNewsletterResponse({ isError: false, message: "Email has been sent" });
-
-    // define what happens on error
     const onError = () =>
       setNewsletterResponse({ isError: true, message: "Something went wrong" });
 
-    // NewsletterClient -> namespace
-    // postNewsletter -> function
-    // we pass value, onSuccess (callback function), onError (callback function)
     NewsletterClient.postNewsletter(value, onSuccess, onError);
   };
 
