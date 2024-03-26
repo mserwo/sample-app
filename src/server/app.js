@@ -6,7 +6,7 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.post("/marcin", (request, response) => {
+app.post("/newsletter", (request, response) => {
   const { email } = request.body;
   response.status(200).send(email);
 });
