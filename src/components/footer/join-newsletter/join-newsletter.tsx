@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { SingleInputField } from "../single-input-field/single-input-field";
 import styles from "./join-newsletter.module.scss";
-
-import * as NewsletterClient from "../../../api";
 import classNames from "classnames";
+import { postNewsletter } from "../../../api";
 
 interface NewsletterResponse {
   isError: boolean;
@@ -17,10 +16,10 @@ export const JoinNewsletter = () => {
   const onHandleSubmit = async (value: string) => {
     const onSuccess = () =>
       setNewsletterResponse({ isError: false, message: "Email has been sent" });
-    const onError = () =>
-      setNewsletterResponse({ isError: true, message: "Something went wrong" });
+    const onError = (errorMsg: string) =>
+      setNewsletterResponse({ isError: true, message: errorMsg });
 
-    NewsletterClient.postNewsletter(value, onSuccess, onError);
+    postNewsletter(value, onSuccess, onError);
   };
 
   return (
