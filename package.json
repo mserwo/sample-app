@@ -11,7 +11,7 @@
     "prettier": "npx prettier --write .",
     "prepare": "husky install",
     "test": "vitest",
-    "test:staged": "vitest --run",
+    "test:staged": "vitest related --run",
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
