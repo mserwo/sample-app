@@ -4,6 +4,9 @@ import styles from "./join-newsletter.module.scss";
 import classNames from "classnames";
 import { postNewsletter } from "../../../api";
 
+const isEmail = (email: string) =>
+  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+
 interface NewsletterResponse {
   isError: boolean;
   message: string;
@@ -16,8 +19,11 @@ export const JoinNewsletter = () => {
   const onHandleSubmit = async (value: string) => {
     const onSuccess = () =>
       setNewsletterResponse({ isError: false, message: "Email has been sent" });
+
     const onError = (errorMsg: string) =>
       setNewsletterResponse({ isError: true, message: errorMsg });
+
+    if (!isEmail(value)) return onError("Wrong email adress haha");
 
     postNewsletter(value, onSuccess, onError);
   };
