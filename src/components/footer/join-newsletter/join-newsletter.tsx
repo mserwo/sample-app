@@ -23,7 +23,7 @@ export const JoinNewsletter = () => {
     const onError = (errorMsg: string) =>
       setNewsletterResponse({ isError: true, message: errorMsg });
 
-    if (!isEmail(value)) return onError("Wrong email adress haha");
+    if (!isEmail(value)) return onError("Wrong email address");
 
     postNewsletter(value, onSuccess, onError);
   };
