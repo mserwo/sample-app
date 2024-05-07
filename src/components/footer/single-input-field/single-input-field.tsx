@@ -37,6 +37,7 @@ export const SingleInputField = ({
           onChange={(e) => setInputValue(e.target.value)}
         ></input>
         <ArrowRight2
+          data-testid={"newsletter-btn"}
           className={styles.container_arrow}
           onClick={handleSubmit}
         />
