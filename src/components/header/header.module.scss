@@ -1,22 +1,14 @@
-@use "~/colors";
 @use "~/breakpoints";
+@use "~/colors";
 @use "~/typography";
-
-// .wrapper {
-//     display: flex;
-//     justify-content: center;
-//     border-top: 1px solid colors.$neutrals3;
-//     padding: 0 80px;
-
-//     @include breakpoints.max-width("mobileL") {
-//       padding: 0 32px;
-//     }
-//   }
+@use "~/fonts";
 
 .wrapper {
   display: flex;
   border-bottom: 1px solid colors.$neutrals3;
   justify-content: center;
+  @include fonts.poppins;
+  @include typography.caption2;
 
   @include breakpoints.max-width("mobileL") {
     padding: 0 32px;
@@ -43,11 +35,11 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  @include typography.button2;
+  @include typography.caption2;
+  color: colors.$neutrals7;
 
   @include breakpoints.max-width("tablet") {
-    max-width: 1120px;
-    flex-direction: column;
+    display: none;
   }
 }
 
@@ -65,6 +57,10 @@
   background-color: colors.$neutrals4;
 }
 
+.loginButtonLink {
+  color: colors.$neutrals7;
+}
+
 .registerButton {
   cursor: pointer;
   color: colors.$neutrals7;
@@ -77,4 +73,18 @@
 
 .registerButton:hover {
   background-color: colors.$neutrals4;
+}
+
+.registerButtonLink {
+  color: colors.$neutrals7;
+}
+
+.menuMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include breakpoints.min-width("tablet") {
+    display: none;
+  }
 }

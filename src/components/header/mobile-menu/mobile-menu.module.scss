@@ -1,0 +1,38 @@
+@use "~/breakpoints";
+@use "~/colors";
+@use "~/typography";
+@use "~/fonts";
+
+.mobileMenu {
+  position: relative;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include typography.button2;
+}
+
+.menuItems {
+  position: absolute;
+  width: 70px;
+
+  background-color: rgba(colors.$neutrals3, 0.7);
+}
+
+.menuItems li {
+  width: 100%;
+  height: auto;
+}
+
+.menuItems li:hover {
+  background-color: colors.$neutrals2;
+}
+
+.menuItems a {
+  display: block;
+  color: colors.$neutrals7;
+  text-decoration: none;
+  padding: 10px;
+}
