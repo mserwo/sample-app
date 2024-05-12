@@ -22,6 +22,7 @@ export const Layout = ({ children }: LayoutProps) => {
           margin: "0px auto",
           // overflow: "hidden",
           maxWidth: 1120,
+          marginBottom: 100,
         }}
       >
         {children}
