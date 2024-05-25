@@ -11,6 +11,11 @@ app.post("/newsletter", (request, response) => {
   response.status(200).send(email);
 });
 
+app.post("/register", (request, response) => {
+  const { email, password, repeatPassword } = request.body;
+  response.status(200).send(email, password, repeatPassword);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "../../components/layout";
 import styles from "./register.module.scss";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { postRegister } from "../../api";
+import classNames from "classnames";
+
+interface RegisterResponse {
+  isError: boolean;
+  message: string;
+}
 
 interface Values {
   email: string;
@@ -14,11 +21,36 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().required("Required"),
   repeatPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
     .required("Required"),
 });
 
 export const Register = () => {
+  const [registerResponse, setRegisterResponse] = useState<RegisterResponse>({
+    isError: false,
+    message: "",
+  });
+
+  const onHandleSubmit = (values: Values) => {
+    const onSucces = () => {
+      setRegisterResponse({
+        isError: false,
+        message: "Thank you for your registration!",
+      });
+    };
+    const onError = (errorMessage: string) => {
+      setRegisterResponse({ isError: true, message: errorMessage });
+    };
+
+    postRegister(
+      values.email,
+      values.password,
+      values.repeatPassword,
+      onSucces,
+      onError
+    );
+  };
+
   return (
     <Layout>
       <div className={styles.container}>
@@ -34,20 +66,11 @@ export const Register = () => {
             validationSchema={validationSchema}
             onSubmit={(
               values: Values,
-              { setSubmitting, setErrors, resetForm }: FormikHelpers<Values>
+              { setSubmitting, resetForm }: FormikHelpers<Values>
             ) => {
-              setTimeout(() => {
-                if (values.email === "test@example.com") {
-                  setErrors({ email: "This email is already taken." });
-                  alert("This email is already taken.");
-                  resetForm();
-                } else {
-                  alert(JSON.stringify(values, null, 2));
-                  resetForm();
-                }
-
-                setSubmitting(false);
-              }, 500);
+              onHandleSubmit(values);
+              resetForm();
+              setSubmitting(false);
             }}
           >
             {({ errors, touched }) => (
@@ -103,6 +126,16 @@ export const Register = () => {
                 <button className={styles.submit} type="submit">
                   Submit
                 </button>
+
+                {registerResponse.message && (
+                  <div
+                    className={classNames(styles.responseOk, {
+                      [styles.responseError]: registerResponse.isError,
+                    })}
+                  >
+                    {registerResponse.message}
+                  </div>
+                )}
               </Form>
             )}
           </Formik>

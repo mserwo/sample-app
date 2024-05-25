@@ -61,3 +61,19 @@
   @include typography.caption2;
   color: colors.$neutrals6;
 }
+
+.responseOk {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  @include typography.caption2;
+  color: colors.$neutrals6;
+}
+
+.responseError {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  @include typography.caption2;
+  color: colors.$primary3;
+}
