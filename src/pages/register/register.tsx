@@ -42,13 +42,7 @@ export const Register = () => {
       setRegisterResponse({ isError: true, message: errorMessage });
     };
 
-    postRegister(
-      values.email,
-      values.password,
-      values.repeatPassword,
-      onSucces,
-      onError
-    );
+    postRegister(values.email, values.password, onSucces, onError);
   };
 
   return (

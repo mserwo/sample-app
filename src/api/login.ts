@@ -1,4 +1,4 @@
-export const postRegister = async (
+export const postLogin = async (
   email: string,
   password: string,
 
@@ -6,7 +6,7 @@ export const postRegister = async (
   onError: (errorMessage: string) => void
 ) => {
   try {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,6 +16,7 @@ export const postRegister = async (
 
     if (response.ok) return onSuccess();
 
+    console.error(`Login failed with status: ${response.status}`);
     onError("Unexpected error");
   } catch (error) {
     if (error instanceof Error) onError(error.message);

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "../../components/layout";
 import styles from "./login.module.scss";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { postLogin } from "../../api";
+import classNames from "classnames";
+
+interface LoginResponse {
+  isError: boolean;
+  message: string;
+}
 
 interface Values {
   email: string;
@@ -15,6 +22,25 @@ const validationSchema = Yup.object({
 });
 
 export const Login = () => {
+  const [loginResponse, setLoginResponse] = useState<LoginResponse>({
+    isError: false,
+    message: "",
+  });
+
+  const onHandleSubmit = (values: Values) => {
+    const onSucces = () => {
+      setLoginResponse({
+        isError: false,
+        message: "You are logged in!",
+      });
+    };
+    const onError = (errorMessage: string) => {
+      setLoginResponse({ isError: true, message: errorMessage });
+    };
+
+    postLogin(values.email, values.password, onSucces, onError);
+  };
+
   return (
     <Layout>
       <div className={styles.container}>
@@ -29,20 +55,11 @@ export const Login = () => {
             validationSchema={validationSchema}
             onSubmit={(
               values: Values,
-              { setSubmitting, setErrors, resetForm }: FormikHelpers<Values>
+              { setSubmitting, resetForm }: FormikHelpers<Values>
             ) => {
-              setTimeout(() => {
-                if (values.email === "test@example.com") {
-                  setErrors({ email: "This email is already taken." });
-                  alert("This email is already taken.");
-                  resetForm();
-                } else {
-                  alert(JSON.stringify(values, null, 2));
-                  resetForm();
-                }
-
-                setSubmitting(false);
-              }, 500);
+              onHandleSubmit(values);
+              resetForm();
+              setSubmitting(false);
             }}
           >
             {({ errors, touched }) => (
@@ -82,6 +99,16 @@ export const Login = () => {
                 <button className={styles.submit} type="submit">
                   Submit
                 </button>
+
+                {loginResponse.message && (
+                  <div
+                    className={classNames(styles.responseOk, {
+                      [styles.responseError]: loginResponse.isError,
+                    })}
+                  >
+                    {loginResponse.message}
+                  </div>
+                )}
               </Form>
             )}
           </Formik>
