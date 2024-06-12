@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 3000;
-const fs = require("fs");
+const fs = require("node:fs/promises");
 const path = require("path");
 
 app.use(cors());
@@ -27,9 +27,24 @@ app.post("/register", (request, response) => {
   });
 });
 
-app.post("/login", (request, response) => {
+app.post("/login", async (request, response) => {
   const { email, password } = request.body;
-  response.status(200).send("Login successful");
+  const userCredentials = `Email: ${email}, Password: ${password}`;
+
+  try {
+    const data = await fs.readFile("users.txt", { encoding: "utf8" });
+
+    if (data.includes(userCredentials)) {
+      response.status(200).send("Login successful");
+      console.log("znaleziono login");
+    } else {
+      response.status(401).send("Invalid credentials");
+      console.log("nie znaleziono loginu");
+    }
+  } catch (err) {
+    console.error(err);
+    response.status(500).send("Error reading data");
+  }
 });
 
 app.listen(port, () => {
