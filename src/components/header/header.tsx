@@ -2,6 +2,7 @@ import React from "react";
 import { Logo } from "../logo";
 import styles from "./header.module.scss";
 import { MenuMobile } from "./mobile-menu/mobile-menu";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -9,16 +10,12 @@ export const Header = () => {
       <div className={styles.container}>
         <Logo />
         <div className={styles.buttons}>
-          <button className={styles.loginButton}>
-            <a className={styles.loginButtonLink} href="/login">
-              Login
-            </a>
-          </button>
-          <button className={styles.registerButton}>
-            <a className={styles.registerButtonLink} href="/register">
-              Register
-            </a>
-          </button>
+          <Link to="/login" className={styles.loginButton}>
+            Login
+          </Link>
+          <Link to="/register" className={styles.registerButton}>
+            Register
+          </Link>
         </div>
         <div className={styles.menuMobile}>
           <MenuMobile />

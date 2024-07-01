@@ -100,7 +100,7 @@ export const Login = () => {
                   Submit
                 </button>
 
-                {loginResponse.message && (
+                {loginResponse.message ? (
                   <div
                     className={classNames(styles.responseOk, {
                       [styles.responseError]: loginResponse.isError,
@@ -108,7 +108,7 @@ export const Login = () => {
                   >
                     {loginResponse.message}
                   </div>
-                )}
+                ) : null}
               </Form>
             )}
           </Formik>

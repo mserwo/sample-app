@@ -1,3 +1,8 @@
-Email: marcin.serwotka@op.pl, Password: eloelo320
 Email: haber.bartosz@gmail.com, Password: habrex
 Email: kowalski@gmail.com, Password: kowalski123
+Email: marcin.serwotka@op.pl, Password: eloelo320
+Email: rysiek.spawacz@gmail.com, Password: spawarka
+razraz@op.pl,razraz
+$2b$10$ncuv2W1Ifl3GiB6gyx/X/uxs/9.oC6.ZpfKz.MknK0jv9ZN3TTd4W,$2b$10$abcllVbyBjT5PKIJBcnqq.SrWFaHUUbBm4xcYgV/83AqQJ/KwGWS.
+$2b$10$waqXKX8pcWRYOc09sF.DbunzzZCTUMoYeGzBq4zaMdbDW97gY89Ji,$2b$10$waqXKX8pcWRYOc09sF.DbujTDnXRlZYd4dfWrE536ry5se1s6neGa
+$2b$10$YD3DmieQmmf59xMhJJ1nOeJI3e7iyL1YoxJxbEu.JwNawnzzHrJKy,$2b$10$YD3DmieQmmf59xMhJJ1nOe.CWa1OEPZLJaZcRkWbjOClTESPldMPm

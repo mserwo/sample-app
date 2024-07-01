@@ -121,7 +121,7 @@ export const Register = () => {
                   Submit
                 </button>
 
-                {registerResponse.message && (
+                {registerResponse.message ? (
                   <div
                     className={classNames(styles.responseOk, {
                       [styles.responseError]: registerResponse.isError,
@@ -129,7 +129,7 @@ export const Register = () => {
                   >
                     {registerResponse.message}
                   </div>
-                )}
+                ) : null}
               </Form>
             )}
           </Formik>

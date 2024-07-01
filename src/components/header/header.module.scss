@@ -7,6 +7,7 @@
   display: flex;
   border-bottom: 1px solid colors.$neutrals3;
   justify-content: center;
+  padding: 0 80px;
   @include fonts.poppins;
   @include typography.caption2;
 
@@ -18,7 +19,7 @@
 .container {
   display: flex;
   justify-content: space-between;
-  padding: 20px 80px;
+  padding: 20px 0px;
   width: 100%;
   max-width: 865px;
 
@@ -47,7 +48,8 @@
   cursor: pointer;
   color: colors.$neutrals7;
   background-color: colors.$primary1;
-  padding: 8px 15px 8px 15px;
+
+  padding: 12px 20px;
   border-radius: 25px;
   border-style: none;
   transition: 0.3s;
@@ -65,7 +67,8 @@
   cursor: pointer;
   color: colors.$neutrals7;
   background-color: transparent;
-  padding: 8px 15px 8px 15px;
+
+  padding: 10px 20px;
   border-radius: 25px;
   border: 2px solid colors.$neutrals4;
   transition: 0.3s;

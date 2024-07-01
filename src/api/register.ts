@@ -1,3 +1,5 @@
+import { baseUrl } from "../../baseUrl/baseUrl";
+
 export const postRegister = async (
   email: string,
   password: string,
@@ -6,7 +8,7 @@ export const postRegister = async (
   onError: (errorMessage: string) => void
 ) => {
   try {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch(`${baseUrl}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
