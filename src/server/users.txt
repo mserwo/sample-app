@@ -1,8 +1,2 @@
-Email: haber.bartosz@gmail.com, Password: habrex
-Email: kowalski@gmail.com, Password: kowalski123
-Email: marcin.serwotka@op.pl, Password: eloelo320
-Email: rysiek.spawacz@gmail.com, Password: spawarka
-razraz@op.pl,razraz
-$2b$10$ncuv2W1Ifl3GiB6gyx/X/uxs/9.oC6.ZpfKz.MknK0jv9ZN3TTd4W,$2b$10$abcllVbyBjT5PKIJBcnqq.SrWFaHUUbBm4xcYgV/83AqQJ/KwGWS.
-$2b$10$waqXKX8pcWRYOc09sF.DbunzzZCTUMoYeGzBq4zaMdbDW97gY89Ji,$2b$10$waqXKX8pcWRYOc09sF.DbujTDnXRlZYd4dfWrE536ry5se1s6neGa
-$2b$10$YD3DmieQmmf59xMhJJ1nOeJI3e7iyL1YoxJxbEu.JwNawnzzHrJKy,$2b$10$YD3DmieQmmf59xMhJJ1nOe.CWa1OEPZLJaZcRkWbjOClTESPldMPm
+35e2660b-092d-48fd-ac13-df9a0c7a88f7,$2b$10$TIXX3nFKf.rBKqwb0LVl8O72fUvdVguXdJVdFHW.7gp9hmAGlOCXy,$2b$10$TIXX3nFKf.rBKqwb0LVl8OmrDoewIH2euAYtigbsLHzAy9ECrKuH2
+5e1fe590-2ae4-43cc-9040-83a836a44c35,$2b$10$UecErTZxf2m1HYkvC2uLPes1MDfVCoIDG/juD9VnQMQWuGqJDEk5C,$2b$10$UecErTZxf2m1HYkvC2uLPebkYSgEyPiamV.4nzSsNNSG1584lfrL6
