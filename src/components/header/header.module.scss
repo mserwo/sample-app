@@ -1,0 +1,93 @@
+@use "~/breakpoints";
+@use "~/colors";
+@use "~/typography";
+@use "~/fonts";
+
+.wrapper {
+  display: flex;
+  border-bottom: 1px solid colors.$neutrals3;
+  justify-content: center;
+  padding: 0 80px;
+  @include fonts.poppins;
+  @include typography.caption2;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0 32px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+  width: 100%;
+  max-width: 865px;
+
+  @include breakpoints.min-width("tablet") {
+    max-width: 1120px;
+  }
+
+  @include breakpoints.max-width("tablet") {
+    padding-top: 64px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  @include typography.caption2;
+  color: colors.$neutrals7;
+
+  @include breakpoints.max-width("tablet") {
+    display: none;
+  }
+}
+
+.loginButton {
+  cursor: pointer;
+  color: colors.$neutrals7;
+  background-color: colors.$primary1;
+
+  padding: 12px 20px;
+  border-radius: 25px;
+  border-style: none;
+  transition: 0.3s;
+}
+
+.loginButton:hover {
+  background-color: colors.$neutrals4;
+}
+
+.loginButtonLink {
+  color: colors.$neutrals7;
+}
+
+.registerButton {
+  cursor: pointer;
+  color: colors.$neutrals7;
+  background-color: transparent;
+
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid colors.$neutrals4;
+  transition: 0.3s;
+}
+
+.registerButton:hover {
+  background-color: colors.$neutrals4;
+}
+
+.registerButtonLink {
+  color: colors.$neutrals7;
+}
+
+.menuMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include breakpoints.min-width("tablet") {
+    display: none;
+  }
+}

@@ -1,0 +1,63 @@
+@use "~/typography.scss";
+@use "~/fonts.scss";
+@use "~/colors";
+@use "~/breakpoints";
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  height: 100%;
+  background-color: colors.$primary1;
+  border-radius: 40px;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  color: colors.$neutrals7;
+  @include typography.h3;
+}
+
+.form {
+  padding: 20px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+
+.items label {
+  @include typography.caption2;
+}
+
+.field {
+  padding: 10px;
+  border-radius: 8px;
+  border-style: none;
+}
+
+.submit {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border-style: none;
+  margin-top: 20px;
+  color: colors.$neutrals7;
+  background-color: colors.$primary4;
+  cursor: pointer;
+
+  @include typography.button2;
+}
+
+.error {
+  @include typography.caption2;
+  color: colors.$neutrals6;
+}
