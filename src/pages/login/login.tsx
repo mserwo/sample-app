@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Layout } from "../../components/layout";
 import styles from "./login.module.scss";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { postLogin } from "../../api";
 import classNames from "classnames";
+import { UserContext } from "../../App";
 
 interface LoginResponse {
   isError: boolean;
@@ -22,6 +23,10 @@ const validationSchema = Yup.object({
 });
 
 export const Login = () => {
+  const myContextData = useContext(UserContext);
+
+  console.log(myContextData);
+
   const [loginResponse, setLoginResponse] = useState<LoginResponse>({
     isError: false,
     message: "",
@@ -49,8 +54,8 @@ export const Login = () => {
 
           <Formik
             initialValues={{
-              email: "",
-              password: "",
+              email: "marcin@gmail.com",
+              password: "marcin",
             }}
             validationSchema={validationSchema}
             onSubmit={(
