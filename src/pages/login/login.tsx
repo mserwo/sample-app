@@ -5,7 +5,7 @@ import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { postLogin } from "../../api";
 import classNames from "classnames";
-import { UserContext } from "../../App";
+import { UserContext, UserDataType } from "../../App";
 
 interface LoginResponse {
   isError: boolean;
@@ -23,9 +23,9 @@ const validationSchema = Yup.object({
 });
 
 export const Login = () => {
-  const myContextData = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
-  console.log(myContextData);
+  console.log(userContext?.data, userContext?.changeUserData);
 
   const [loginResponse, setLoginResponse] = useState<LoginResponse>({
     isError: false,
@@ -33,17 +33,22 @@ export const Login = () => {
   });
 
   const onHandleSubmit = (values: Values) => {
-    const onSucces = () => {
+    const onSuccess = (token: string) => {
       setLoginResponse({
         isError: false,
         message: "You are logged in!",
       });
+
+      userContext.changeUserData({
+        username: "myUsername",
+        password: "myPassword",
+      } as UserDataType);
     };
     const onError = (errorMessage: string) => {
       setLoginResponse({ isError: true, message: errorMessage });
     };
 
-    postLogin(values.email, values.password, onSucces, onError);
+    postLogin(values.email, values.password, onSuccess, onError);
   };
 
   return (

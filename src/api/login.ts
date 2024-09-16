@@ -4,7 +4,7 @@ export const postLogin = async (
   email: string,
   password: string,
 
-  onSuccess: (response?: string) => void,
+  onSuccess: (token: string) => void,
   onError: (errorMessage: string) => void
 ) => {
   try {
@@ -18,10 +18,9 @@ export const postLogin = async (
 
     if (response.ok) {
       const json = await response.json();
+      const token = json.token;
 
-      // localStorage.setItem("token", json.token);
-
-      return onSuccess();
+      return onSuccess(token);
     }
 
     console.error(`Login failed with status: ${response.status}`);

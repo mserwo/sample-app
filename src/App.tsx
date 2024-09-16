@@ -10,21 +10,34 @@ const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
 ]);
 
-export const UserContext = createContext(null);
+export interface UserDataType {
+  username: string;
+  password: string;
+}
+
+interface UserContextType {
+  data: UserDataType;
+  changeUserData: (data: UserDataType) => void;
+}
+
+export const UserContext = createContext<UserContextType>({
+  data: { username: "username", password: "password" },
+  changeUserData: () => {},
+});
 
 function App() {
-  const [data, setData] = useState({
-    userName: "userName",
+  const [data, setData] = useState<UserDataType>({
+    username: "userName",
     password: "password",
   });
 
-  const onDataChange = (userName: string, password: string) => {
-    setData({ userName, password });
+  const changeUserData = ({ username, password }: UserDataType) => {
+    setData({ username, password });
   };
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ data, setData }}>
+      <UserContext.Provider value={{ data, changeUserData }}>
         <RouterProvider router={router} />
       </UserContext.Provider>
     </div>
