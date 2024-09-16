@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Layout } from "../../components/layout";
 import styles from "./login.module.scss";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { postLogin } from "../../api";
 import classNames from "classnames";
-import { UserContext, UserDataType } from "../../App";
+// import { UserContext, UserDataType } from "../../App";
 
 interface LoginResponse {
   isError: boolean;
@@ -23,9 +23,9 @@ const validationSchema = Yup.object({
 });
 
 export const Login = () => {
-  const userContext = useContext(UserContext);
+  // const userContext = useContext(UserContext);
 
-  console.log(userContext?.data, userContext?.changeUserData);
+  // console.log(userContext?.data, userContext?.changeUserData);
 
   const [loginResponse, setLoginResponse] = useState<LoginResponse>({
     isError: false,
@@ -39,10 +39,7 @@ export const Login = () => {
         message: "You are logged in!",
       });
 
-      userContext.changeUserData({
-        username: "myUsername",
-        password: "myPassword",
-      } as UserDataType);
+      console.log(token);
     };
     const onError = (errorMessage: string) => {
       setLoginResponse({ isError: true, message: errorMessage });
@@ -72,7 +69,7 @@ export const Login = () => {
               setSubmitting(false);
             }}
           >
-            {({ errors, touched }) => (
+            {() => (
               <Form className={styles.form}>
                 <div className={styles.items}>
                   <label htmlFor="email">Your Email</label>

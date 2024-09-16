@@ -1,4 +1,3 @@
-import { useState, createContext, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Discover, Error, Home, HowItWorks, Register, Login } from "./pages";
 
@@ -10,36 +9,12 @@ const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
 ]);
 
-export interface UserDataType {
-  username: string;
-  password: string;
-}
-
-interface UserContextType {
-  data: UserDataType;
-  changeUserData: (data: UserDataType) => void;
-}
-
-export const UserContext = createContext<UserContextType>({
-  data: { username: "username", password: "password" },
-  changeUserData: () => {},
-});
+//provider
 
 function App() {
-  const [data, setData] = useState<UserDataType>({
-    username: "userName",
-    password: "password",
-  });
-
-  const changeUserData = ({ username, password }: UserDataType) => {
-    setData({ username, password });
-  };
-
   return (
     <div className="App">
-      <UserContext.Provider value={{ data, changeUserData }}>
-        <RouterProvider router={router} />
-      </UserContext.Provider>
+      <RouterProvider router={router} />
     </div>
   );
 }
