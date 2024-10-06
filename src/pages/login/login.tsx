@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Layout } from "../../components/layout";
 import styles from "./login.module.scss";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { postLogin } from "../../api";
 import classNames from "classnames";
-// import { UserContext, UserDataType } from "../../App";
+import { UserContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 interface LoginResponse {
   isError: boolean;
@@ -17,15 +18,19 @@ interface Values {
   password: string;
 }
 
+interface IdType {
+  token: string | null;
+}
+
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().required("Required"),
 });
 
 export const Login = () => {
-  // const userContext = useContext(UserContext);
+  const { setToken } = useContext(UserContext);
 
-  // console.log(userContext?.data, userContext?.changeUserData);
+  const navigate = useNavigate();
 
   const [loginResponse, setLoginResponse] = useState<LoginResponse>({
     isError: false,
@@ -38,8 +43,8 @@ export const Login = () => {
         isError: false,
         message: "You are logged in!",
       });
-
-      console.log(token);
+      setToken(token);
+      navigate("/");
     };
     const onError = (errorMessage: string) => {
       setLoginResponse({ isError: true, message: errorMessage });
@@ -56,8 +61,8 @@ export const Login = () => {
 
           <Formik
             initialValues={{
-              email: "marcin@gmail.com",
-              password: "marcin",
+              email: "marcin1@op.pl",
+              password: "marcin1",
             }}
             validationSchema={validationSchema}
             onSubmit={(

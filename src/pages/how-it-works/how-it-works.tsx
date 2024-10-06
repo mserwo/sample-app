@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { UserContext } from "../../App";
 import MyComponent1 from "./myComponent1";
 
 // stworzenie interfejsu który opisuje nasz typ danych w kontekście
@@ -25,7 +26,7 @@ export const HowItWorks = () => {
     setToken(token);
   };
 
-  console.log(token);
+  // console.log(token);
 
   return (
     // zapinamy provider do wszystkich komponentów w ktorych chcemy uzywac danych przez niego wysylanych w polu "value"
