@@ -1,0 +1,71 @@
+@use "~/typography.scss";
+@use "~/fonts.scss";
+@use "~/colors";
+@use "~/breakpoints";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin: 0 80px;
+
+  @include fonts.poppins;
+
+  @include breakpoints.max-width("mobileL") {
+    margin: 0 32px;
+  }
+}
+
+.header {
+  color: colors.$primary4;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1120px;
+  padding-bottom: 20px;
+
+  @include typography.body1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+}
+
+.element {
+  @include typography.caption;
+  padding-bottom: 20px;
+}
+
+.field {
+  color: colors.$neutrals5;
+  @include typography.caption2;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  cursor: pointer;
+  color: colors.$neutrals7;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid colors.$neutrals4;
+  transition: 0.3s;
+
+  @include typography.caption;
+}
+
+.button:hover {
+  background-color: colors.$primary1;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}

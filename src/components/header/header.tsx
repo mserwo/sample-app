@@ -13,7 +13,7 @@ export const Header = () => {
           <Link to="/login" className={styles.loginButton}>
             Login
           </Link>
-          <Link to="/discover" className={styles.registerButton}>
+          <Link to="/register" className={styles.registerButton}>
             Register
           </Link>
         </div>

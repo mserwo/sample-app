@@ -18,10 +18,6 @@ interface Values {
   password: string;
 }
 
-interface IdType {
-  token: string | null;
-}
-
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().required("Required"),

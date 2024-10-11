@@ -3,9 +3,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Discover, Error, Home, HowItWorks, Register, Login } from "./pages";
 import { UserPage } from "./pages/user-page";
 
-// import { useContext } from "react";
-// import { IdContext } from "./how-it-works";
-
 const router = createBrowserRouter([
   { path: "/", element: <Home />, errorElement: <Error /> },
   { path: "/discover", element: <Discover /> },
@@ -14,8 +11,6 @@ const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
   { path: "/userpage/:userId", element: <UserPage /> },
 ]);
-
-//provider
 
 interface userDataType {
   token: string;

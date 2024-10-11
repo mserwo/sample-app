@@ -3,45 +3,69 @@
 @use "~/colors";
 @use "~/breakpoints";
 
-.container {
+.wrapper {
   display: flex;
   justify-content: center;
-  width: 300px;
-  height: 100%;
+  padding: 0 80px;
+  margin: 40px 0;
+
+  @include fonts.poppins;
+  @include typography.caption2;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0 32px;
+  }
+}
+
+.container {
   background-color: colors.$primary1;
-  border-radius: 40px;
-  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+
   margin: 0 auto;
+  border-radius: 40px;
+
+  @include breakpoints.max-width("tablet") {
+    padding: 20px;
+  }
 }
 
 .header {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding-bottom: 20px;
 
-  color: colors.$neutrals7;
-  @include typography.h3;
+  @include typography.body1;
 }
 
 .form {
-  padding: 20px;
+  @include typography.caption;
 }
 
 .items {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  margin-bottom: 20px;
-}
+  margin-bottom: 10px;
+  width: 100%;
 
-.items label {
   @include typography.caption2;
 }
 
 .field {
+  width: 100%;
   padding: 10px;
   border-radius: 8px;
   border-style: none;
+  box-sizing: border-box;
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .submit {
@@ -57,23 +81,14 @@
   @include typography.button2;
 }
 
-.error {
-  @include typography.caption2;
-  color: colors.$neutrals6;
-}
-
-.responseOk {
+.errorMessage {
   display: flex;
   justify-content: center;
-  padding: 20px;
-  @include typography.caption2;
-  color: colors.$neutrals6;
+  margin-top: 10px;
 }
 
-.responseError {
+.dataUpdate {
   display: flex;
   justify-content: center;
-  padding: 20px;
-  @include typography.caption2;
-  color: colors.$primary3;
+  margin-top: 10px;
 }

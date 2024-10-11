@@ -20,9 +20,11 @@ export const Layout = ({ children }: LayoutProps) => {
         style={{
           flex: 1,
           margin: "0px auto",
+          width: "100%",
           // overflow: "hidden",
           maxWidth: 1120,
           marginBottom: 100,
+          marginTop: 40,
         }}
       >
         {children}

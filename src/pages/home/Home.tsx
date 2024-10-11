@@ -3,7 +3,8 @@ import { Link, useNavigate, useRouteLoaderData } from "react-router-dom";
 import { getUserId } from "../../api/fetch-user-id";
 import { UserContext } from "../../App";
 import { Layout } from "../../components/layout";
-import { jwtDecode } from "jwt-decode";
+import classNames from "classnames";
+import styles from "./home.module.scss";
 
 interface UserData {
   id: string;
@@ -27,7 +28,7 @@ export const Home = () => {
           console.error("Error fetching user ID", error);
         }
       } else {
-        navigate("/login");
+        // navigate("/login");
       }
     };
 
@@ -36,20 +37,26 @@ export const Home = () => {
 
   return (
     <Layout>
-      <div>Jesteś zalogowany! Twój token to: {token}</div>
-      {userData ? (
-        <>
-          <div>Twoje ID to: {userData.id}</div>
-          <div>Twój email to: {userData.email}</div>
-          <div>
-            <Link to={`/userpage/${userData.id}`}>
-              Przejdź do ustawień konta
-            </Link>
+      <div className={styles.wrapper}>
+        <div className={styles.header}>You are logged in!</div>
+        {userData ? (
+          <div className={styles.container}>
+            <div className={styles.element}>
+              Token: <div className={styles.field}>{token}</div>
+            </div>
+            <div className={styles.element}>
+              Email: <div className={styles.field}> {userData.email}</div>
+            </div>
+            <div className={styles.buttonContainer}>
+              <Link className={styles.button} to={`/userpage/${userData.id}`}>
+                Go to user settings
+              </Link>
+            </div>
           </div>
-        </>
-      ) : (
-        <div>Ładowanie danych użytkownika...</div>
-      )}
+        ) : (
+          <div className={styles.loading}>Loading user data...</div>
+        )}
+      </div>
     </Layout>
   );
 };
