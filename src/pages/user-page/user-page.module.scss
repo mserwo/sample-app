@@ -92,3 +92,37 @@
   justify-content: center;
   margin-top: 10px;
 }
+
+.dataContainer {
+  @include typography.caption;
+}
+
+.dataItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+
+  @include typography.caption2;
+}
+
+.dataField {
+  width: 100%;
+  padding: 7px;
+  border: 1px, solid, colors.$neutrals6;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.editData {
+  width: 100%;
+  padding: 10px;
+  border: 1px, solid, colors.$neutrals6;
+  border-radius: 8px;
+  margin-top: 35px;
+  color: colors.$neutrals7;
+  background-color: colors.$neutrals4;
+  cursor: pointer;
+
+  @include typography.button2;
+}
