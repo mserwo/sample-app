@@ -38,7 +38,6 @@ export const Home = () => {
   return (
     <Layout>
       <div className={styles.wrapper}>
-        <div className={styles.header}>You are logged in!</div>
         {userData ? (
           <div className={styles.container}>
             <div className={styles.element}>
@@ -54,7 +53,21 @@ export const Home = () => {
             </div>
           </div>
         ) : (
-          <div className={styles.loading}>Loading user data...</div>
+          <div className={styles.containerWelcome}>
+            <div className={styles.register}>
+              register to join the community
+              <Link className={styles.registerButton} to={`/register`}>
+                Sign up
+              </Link>
+            </div>
+
+            <div className={styles.login}>
+              or log in if you have an account
+              <Link className={styles.loginButton} to={`/login`}>
+                Sign in
+              </Link>
+            </div>
+          </div>
         )}
       </div>
     </Layout>

@@ -8,7 +8,9 @@ export const Header = () => {
   return (
     <header className={styles.wrapper}>
       <div className={styles.container}>
-        <Logo />
+        <Link className={styles.logoLink} to={`/`}>
+          <Logo />
+        </Link>
         <div className={styles.buttons}>
           <Link to="/login" className={styles.loginButton}>
             Login

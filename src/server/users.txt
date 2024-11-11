@@ -1,2 +1,2 @@
 cf3dce7b-d03d-4a6f-94d3-a9725809442f,gabriel@gmail.com,$2b$10$/hHYUzOzXCwaNw.FDvbbIOQL3.eUa.q0IdyDvZGN6nHkB1xaFnlnW
-5db4668b-2efc-4371-a7ed-4bf790a0755c,marcin1@op.pl,$2b$10$v60Hy30sUO9/aZACPiFD6.CuW3/z1aV22HCeXbAOLGMRDbqIDZlCm,serwo,marcin,serwotka
+07fe98e6-fbef-4c39-954d-73fc56075518,marcin1@op.pl,$2b$10$qZs3IMDSPwNYRzg3r9P5qer0tuezXF7Y9z4h.URISZwcqcBSymI0G,serwo,Marcin,Serwotka
