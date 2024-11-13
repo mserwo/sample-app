@@ -28,7 +28,7 @@ export const Home = () => {
           console.error("Error fetching user ID", error);
         }
       } else {
-        // navigate("/login");
+        navigate("/login");
       }
     };
 

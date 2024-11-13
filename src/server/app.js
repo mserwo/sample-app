@@ -110,7 +110,7 @@ app.get("/getData", verifyUser, async (request, response) => {
       if (userId === id) {
         return response
           .status(200)
-          .json({ id, email, nick, firstName, lastName }); // Zwróć dodatkowe dane
+          .json({ id, email, nick, firstName, lastName });
       }
     }
 
@@ -146,13 +146,13 @@ app.put("/updateUser", verifyUser, async (request, response) => {
       });
       return response
         .status(200)
-        .json({ message: "User updated successfully" }); // Zwróć jako JSON
+        .json({ message: "User updated successfully" });
     } else {
-      return response.status(404).json({ error: "User not found" }); // Zwróć jako JSON
+      return response.status(404).json({ error: "User not found" });
     }
   } catch (error) {
     console.error("Error updating user:", error);
-    return response.status(500).json({ error: "Error updating user" }); // Zwróć jako JSON
+    return response.status(500).json({ error: "Error updating user" });
   }
 });
 

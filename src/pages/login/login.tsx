@@ -40,6 +40,7 @@ export const Login = () => {
         message: "You are logged in!",
       });
       setToken(token);
+
       navigate("/");
     };
     const onError = (errorMessage: string) => {
@@ -57,8 +58,8 @@ export const Login = () => {
 
           <Formik
             initialValues={{
-              email: "marcin1@op.pl",
-              password: "marcin1",
+              email: "marcin123@op.pl",
+              password: "marcin123",
             }}
             validationSchema={validationSchema}
             onSubmit={(

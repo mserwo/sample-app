@@ -15,19 +15,37 @@ const router = createBrowserRouter([
 interface userDataType {
   token: string;
   setToken: (token: string) => void;
+  email: string;
+  setEmail: (email: string) => void;
+  nick: string;
+  setNick: (nick: string) => void;
+  firstName: string;
+  setFirstName: (firstName: string) => void;
+  lastName: string;
+  setLastName: (lastName: string) => void;
 }
 
 const userData = {
   token: "",
-  setToken: () => {
-    return;
-  },
+  setToken: () => {},
+  email: "",
+  setEmail: () => {},
+  nick: "",
+  setNick: () => {},
+  firstName: "",
+  setFirstName: () => {},
+  lastName: "",
+  setLastName: () => {},
 };
 
 export const UserContext = createContext<userDataType>(userData);
 
 function App() {
   const [token, setToken] = useState("");
+  const [email, setEmail] = useState("");
+  const [nick, setNick] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   useEffect(() => {
     const sessionToken = sessionStorage.getItem("token");
@@ -42,7 +60,20 @@ function App() {
   };
 
   return (
-    <UserContext.Provider value={{ token: token, setToken: handleSetToken }}>
+    <UserContext.Provider
+      value={{
+        token: token,
+        setToken: handleSetToken,
+        email,
+        setEmail,
+        nick,
+        setNick,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+      }}
+    >
       <div className="App">
         <RouterProvider router={router} />
       </div>

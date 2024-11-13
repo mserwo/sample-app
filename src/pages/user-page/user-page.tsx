@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Layout } from "../../components/layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -16,7 +16,8 @@ interface UserFormValues {
 }
 
 export const UserPage = () => {
-  const { token } = useContext(UserContext);
+  const { token, setEmail, setNick, setFirstName, setLastName } =
+    useContext(UserContext);
   const { userId } = useParams<{ userId: string }>();
   const [userData, setUserData] = useState<UserFormValues>({
     email: "",
@@ -37,6 +38,10 @@ export const UserPage = () => {
           firstName: fetchedData.firstName || "",
           lastName: fetchedData.lastName || "",
         });
+        setEmail(fetchedData.email || "");
+        setNick(fetchedData.nick || "");
+        setFirstName(fetchedData.firstName || "");
+        setLastName(fetchedData.lastName || "");
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
