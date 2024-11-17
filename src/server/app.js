@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const { v4: uuidv4 } = require("uuid");
+const { Console } = require("node:console");
 
 app.use(cors());
 app.use(express.json());
@@ -154,6 +155,30 @@ app.put("/updateUser", verifyUser, async (request, response) => {
     console.error("Error updating user:", error);
     return response.status(500).json({ error: "Error updating user" });
   }
+});
+
+app.get("/readUserData", verifyUser, async (request, response) => {
+  const userId = request.userId;
+
+  const data = await fs.readFile("users.txt", { encoding: "utf8" });
+  const users = data.split("\n").filter((line) => line);
+
+  for (let user of users) {
+    const usersArray = user.split(",");
+    const deleteItem = usersArray.splice(2, 1);
+
+    const [id, email, nick, firstName, lastName] = usersArray;
+
+    if (request.userId === id)
+      return response.status(200).json({
+        id: id,
+        email: email,
+        nick: nick,
+        firstName: firstName,
+        lastName: lastName,
+      });
+  }
+  return response.status(500).send("No User found");
 });
 
 app.listen(port, () => {

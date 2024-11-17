@@ -7,7 +7,7 @@ import { UserContext } from "../../App";
 import { UserMenu } from "./user-menu/user-menu";
 
 export const Header = () => {
-  const { token, nick } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [userMenuOpen, setUserMenuOpen] = useState<boolean>(false);
 

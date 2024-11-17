@@ -15,6 +15,8 @@ const router = createBrowserRouter([
 interface userDataType {
   token: string;
   setToken: (token: string) => void;
+  id: string;
+  setId: (id: string) => void;
   email: string;
   setEmail: (email: string) => void;
   nick: string;
@@ -28,6 +30,8 @@ interface userDataType {
 const userData = {
   token: "",
   setToken: () => {},
+  id: "",
+  setId: () => {},
   email: "",
   setEmail: () => {},
   nick: "",
@@ -42,6 +46,7 @@ export const UserContext = createContext<userDataType>(userData);
 
 function App() {
   const [token, setToken] = useState("");
+  const [id, setId] = useState("");
   const [email, setEmail] = useState("");
   const [nick, setNick] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -64,6 +69,8 @@ function App() {
       value={{
         token: token,
         setToken: handleSetToken,
+        id,
+        setId,
         email,
         setEmail,
         nick,

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Layout } from "../../components/layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import { getUserData } from "../../api";
 import { updateUserData } from "../../api";
 import { UserContext } from "../../App";
 import styles from "./user-page.module.scss";
+import { readUserData } from "../../api/read-user-data";
 
 interface UserFormValues {
   email: string;
@@ -28,10 +29,12 @@ export const UserPage = () => {
   const [dataUpdate, setDataUpdate] = useState<boolean>(false);
   const [showEdit, setShowEdit] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+
   const fetchUserData = async () => {
     if (token) {
       try {
-        const fetchedData = await getUserData(token);
+        const fetchedData = await readUserData(token);
         setUserData({
           email: fetchedData.email || "",
           nick: fetchedData.nick || "",
@@ -83,6 +86,11 @@ export const UserPage = () => {
     }
   };
 
+  if (!token) {
+    navigate("/");
+    return null;
+  }
+
   return (
     <Layout>
       <div className={styles.wrapper}>
@@ -133,7 +141,7 @@ export const UserPage = () => {
                           className={styles.field}
                           type="text"
                           name="firstName"
-                          placeholder="name"
+                          placeholder="firstName"
                         />
                         <ErrorMessage
                           name="firstName"

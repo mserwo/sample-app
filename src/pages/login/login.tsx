@@ -7,6 +7,7 @@ import { postLogin } from "../../api";
 import classNames from "classnames";
 import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
+import { readUserData } from "../../api/read-user-data";
 
 interface LoginResponse {
   isError: boolean;
@@ -24,7 +25,8 @@ const validationSchema = Yup.object({
 });
 
 export const Login = () => {
-  const { setToken } = useContext(UserContext);
+  const { setToken, setId, setEmail, setNick, setFirstName, setLastName } =
+    useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -33,15 +35,26 @@ export const Login = () => {
     message: "",
   });
 
-  const onHandleSubmit = (values: Values) => {
-    const onSuccess = (token: string) => {
+  const onHandleSubmit = async (values: Values) => {
+    const onSuccess = async (token: string) => {
       setLoginResponse({
         isError: false,
         message: "You are logged in!",
       });
       setToken(token);
 
-      navigate("/");
+      try {
+        const allUserData = await readUserData(token);
+        setId(allUserData.id);
+        setEmail(allUserData.email);
+        setNick(allUserData.nick);
+        setFirstName(allUserData.name);
+        setLastName(allUserData.lastName);
+
+        navigate("/");
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
     };
     const onError = (errorMessage: string) => {
       setLoginResponse({ isError: true, message: errorMessage });

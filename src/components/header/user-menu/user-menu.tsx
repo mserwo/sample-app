@@ -6,13 +6,16 @@ import { UserContext } from "../../../App";
 import { getUserId } from "../../../api";
 
 export const UserMenu = () => {
-  const { token, nick } = useContext(UserContext);
+  const { nick, id, setToken } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => setIsOpen(!isOpen);
+  const [login, setLogin] = useState<boolean>(true);
 
   const logout = () => {
     sessionStorage.clear();
+    console.log("user logout");
+    setLogin(false);
+    setToken("");
   };
 
   return (
@@ -25,7 +28,7 @@ export const UserMenu = () => {
         <nav className={styles.navigationContainer}>
           <ul className={styles.buttons}>
             <li>
-              <Link className={styles.item} to={`/userpage/`}>
+              <Link className={styles.item} to={`/userpage/${id}`}>
                 Go to user settings
               </Link>
             </li>
