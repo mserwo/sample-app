@@ -66,6 +66,7 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  padding-bottom: 0px;
   @include typography.caption2;
   color: colors.$neutrals6;
 }
@@ -74,6 +75,7 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  padding-bottom: 0px;
   @include typography.caption2;
-  color: colors.$primary3;
+  color: colors.$neutrals6;
 }

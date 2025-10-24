@@ -55,7 +55,20 @@
   @include typography.button2;
 }
 
-.error {
+.responseOk {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 0px;
+  @include typography.caption2;
+  color: colors.$neutrals6;
+}
+
+.responseError {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 0px;
   @include typography.caption2;
   color: colors.$neutrals6;
 }
