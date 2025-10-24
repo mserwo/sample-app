@@ -23,6 +23,10 @@ export const postLogin = async (
       return onSuccess(token);
     }
 
+    if (response.status === 401) {
+      return onError("Invalid credentials");
+    }
+
     console.error(`Login failed with status: ${response.status}`);
     onError("Unexpected error");
   } catch (error) {

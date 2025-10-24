@@ -1,7 +1,7 @@
-@use "~/typography.scss";
-@use "~/fonts.scss";
-@use "~/colors";
 @use "~/breakpoints";
+@use "~/colors";
+@use "~/typography";
+@use "~/fonts";
 
 .container {
   display: flex;

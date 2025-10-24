@@ -53,9 +53,9 @@ export const Register = () => {
 
           <Formik
             initialValues={{
-              email: "",
-              password: "",
-              repeatPassword: "",
+              email: "marcin123@op.pl",
+              password: "marcin123",
+              repeatPassword: "marcin123",
             }}
             validationSchema={validationSchema}
             onSubmit={(

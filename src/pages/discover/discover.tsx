@@ -1,16 +1,21 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../App";
+import { Layout } from "../../components/layout";
 
 export const Discover = () => {
-  // const level = useContext(UserContext);
-  // const [myVariable, setMyVariable] = useState(2);
+  // const mojaFunkcja = (nazwisko: string) => {
+  //   console.log(nazwisko);
+  // };
+  // const glownaFunkcja = (imie: string, fn: (nazwisko: string) => void) => {
+  //   console.log(imie);
+  //   fn("serwotka");
+  // };
+  // const imie = "marcin";
+  // glownaFunkcja(imie, mojaFunkcja);
 
-  // setInterval(() => {
-  //   setMyVariable(myVariable + 1);
-  // }, 1000);
-
-  const myUserContext = useContext(UserContext);
-  console.log(myUserContext.token);
-
-  return <div></div>;
+  return (
+    <Layout>
+      <div></div>
+    </Layout>
+  );
 };
