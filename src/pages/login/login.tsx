@@ -35,6 +35,12 @@ export const Login = () => {
     message: "",
   });
 
+  const goToHome = () => {
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+  };
+
   const onHandleSubmit = async (values: Values) => {
     const onSuccess = async (token: string) => {
       setLoginResponse({
@@ -51,7 +57,7 @@ export const Login = () => {
         setFirstName(allUserData.name);
         setLastName(allUserData.lastName);
 
-        navigate("/");
+        goToHome();
       } catch (error) {
         console.error("Failed to fetch user data:", error);
       }

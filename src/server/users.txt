@@ -1,2 +1,0 @@
-c005fafa-d4c0-448b-97a4-2b0526a03177,marcin123@op.pl,$2b$10$BD3CCArwO0fCbjqZqAZNQerMcR.DUEOoNGw4YOmiRvHljQKn2yFeW,serwo,marcin,serwotka
-e8e8163a-a9a6-403e-b8cc-1f1d3cac2f61,gabriel@gmail.com,$2b$10$bueHTqojDNrNid0BSs4pQ.pzwfioM6fIkE30fYOYkPt9I1hyLUyvK

@@ -80,8 +80,8 @@ export const UserPage = () => {
     nick: Yup.string().required("Nick is required"),
     firstName: Yup.string().required("Name is required"),
     lastName: Yup.string().required("Last name is required"),
-    city: Yup.string().required("City is required"),
-    phone: Yup.string().required("Phone is required"),
+    city: Yup.string(),
+    phone: Yup.string(),
     description: Yup.string(),
   });
 

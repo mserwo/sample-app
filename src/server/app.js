@@ -8,10 +8,28 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const { v4: uuidv4 } = require("uuid");
-const { Console } = require("node:console");
 
 app.use(cors());
 app.use(express.json());
+
+const USERS_FILE = path.join(__dirname, "users.json");
+
+async function readUsers() {
+  try {
+    const data = await fs.readFile(USERS_FILE, { encoding: "utf8" });
+    if (!data.trim()) return [];
+    return JSON.parse(data);
+  } catch (err) {
+    if (err.code === "ENOENT") return [];
+    throw err;
+  }
+}
+
+async function writeUsers(users) {
+  await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), {
+    encoding: "utf8",
+  });
+}
 
 const verifyUser = (request, response, next) => {
   const authHeader = request.header("Authorization");
@@ -39,13 +57,32 @@ app.post("/newsletter", (request, response) => {
 app.post("/register", async (request, response) => {
   const { email, password } = request.body;
   try {
-    const saltRounds = 10;
-    const salt = await bcrypt.genSalt(saltRounds);
-    const passwordHash = await bcrypt.hash(password, salt);
-    const userID = uuidv4();
-    const content = `${userID},${email},${passwordHash}\n`;
+    const users = await readUsers();
 
-    await fs.appendFile("users.txt", content);
+    if (users.some((u) => u.email === email)) {
+      return response.status(400).json({ error: "Email already registered" });
+    }
+
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
+    const userID = uuidv4();
+
+    const newUser = {
+      id: userID,
+      email,
+      passwordHash,
+      nick: "",
+      firstName: "",
+      lastName: "",
+      avatarUrl: "https://picsum.photos/300",
+      city: "",
+      phone: "",
+      description: "",
+    };
+
+    users.push(newUser);
+    await writeUsers(users);
+
     response.status(200).send("Registration successful");
   } catch (err) {
     console.error(err);
@@ -57,26 +94,22 @@ app.post("/login", async (request, response) => {
   const { email, password } = request.body;
 
   try {
-    const data = await fs.readFile("users.txt", { encoding: "utf8" });
-    const users = data.split("\n").filter((line) => line);
+    const users = await readUsers();
+    const user = users.find((u) => u.email === email);
 
-    for (let user of users) {
-      const [userId, dbEmail, passwordHash] = user.split(",");
-
-      if (dbEmail === email) {
-        const passwordMatch = await bcrypt.compare(password, passwordHash);
-        if (passwordMatch) {
-          const token = jwt.sign({ userId }, process.env.SECRET_KEY, {
-            expiresIn: "1h",
-          });
-          response.status(200).json({ token });
-          return;
-        }
-      }
+    if (!user) {
+      return response.status(401).send("Invalid credentials");
     }
 
-    response.status(401).send("Invalid credentials");
-    console.log("Login not found");
+    const passwordMatch = await bcrypt.compare(password, user.passwordHash);
+    if (!passwordMatch) {
+      return response.status(401).send("Invalid credentials");
+    }
+
+    const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, {
+      expiresIn: "1h",
+    });
+    response.status(200).json({ token });
   } catch (err) {
     console.error(err);
     response.status(500).send("Error reading data");
@@ -84,73 +117,91 @@ app.post("/login", async (request, response) => {
 });
 
 app.get("/me", verifyUser, async (request, response) => {
-  const data = await fs.readFile("users.txt", { encoding: "utf8" });
-  const users = data.split("\n").filter((line) => line);
+  try {
+    const users = await readUsers();
+    const user = users.find((u) => u.id === request.userId);
 
-  for (let user of users) {
-    const [id, email] = user.split(",");
-    console.log(id, email);
+    if (!user) return response.status(404).send("No User found");
 
-    if (request.userId === id)
-      return response.status(200).json({ id: id, email: email });
+    return response.status(200).json({ id: user.id, email: user.email });
+  } catch (err) {
+    console.error(err);
+    return response.status(500).send("Error reading data");
   }
-  return response.status(500).send("No User found");
 });
 
 app.get("/getData", verifyUser, async (request, response) => {
-  const userId = request.userId;
-
   try {
-    const data = await fs.readFile("users.txt", { encoding: "utf8" });
-    const users = data.split("\n").filter((line) => line);
+    const users = await readUsers();
+    const user = users.find((u) => u.id === request.userId);
 
-    for (let user of users) {
-      const [id, email, passwordHash, nick, firstName, lastName] =
-        user.split(",");
+    if (!user) return response.status(404).send("User not found");
 
-      if (userId === id) {
-        return response
-          .status(200)
-          .json({ id, email, nick, firstName, lastName });
-      }
-    }
-
-    return response.status(404).send("User not found");
+    const {
+      id,
+      email,
+      nick,
+      firstName,
+      lastName,
+      avatarUrl,
+      city,
+      phone,
+      description,
+    } = user;
+    return response.status(200).json({
+      id,
+      email,
+      nick,
+      firstName,
+      lastName,
+      avatarUrl,
+      city,
+      phone,
+      description,
+    });
   } catch (err) {
     console.error(err);
-    response.status(500).send("Error reading data");
+    return response.status(500).send("Error reading data");
   }
 });
 
 app.put("/updateUser", verifyUser, async (request, response) => {
   const userId = request.userId;
-  const { email, nick, firstName, lastName } = request.body;
+  const {
+    email,
+    nick,
+    firstName,
+    lastName,
+    avatarUrl,
+    city,
+    phone,
+    description,
+  } = request.body;
 
   try {
-    const data = await fs.readFile("users.txt", { encoding: "utf8" });
-    const users = data.split("\n").filter((line) => line);
+    const users = await readUsers();
+    const idx = users.findIndex((u) => u.id === userId);
 
-    let userUpdated = false;
-    const updatedUsers = users.map((user) => {
-      const [id, dbEmail, passwordHash] = user.split(",");
-      if (id === userId) {
-        userUpdated = true;
-
-        return `${id},${email},${passwordHash},${nick},${firstName},${lastName}`;
-      }
-      return user;
-    });
-
-    if (userUpdated) {
-      await fs.writeFile("users.txt", updatedUsers.join("\n"), {
-        encoding: "utf8",
-      });
-      return response
-        .status(200)
-        .json({ message: "User updated successfully" });
-    } else {
+    if (idx === -1) {
       return response.status(404).json({ error: "User not found" });
     }
+
+    const existing = users[idx];
+
+    users[idx] = {
+      ...existing,
+      email: email ?? existing.email,
+      nick: nick ?? existing.nick,
+      firstName: firstName ?? existing.firstName,
+      lastName: lastName ?? existing.lastName,
+      avatarUrl: avatarUrl ?? existing.avatarUrl,
+      city: city ?? existing.city,
+      phone: phone ?? existing.phone,
+      description: description ?? existing.description,
+    };
+
+    await writeUsers(users);
+    return response.status(200).json({ message: "User updated successfully" });
   } catch (error) {
     console.error("Error updating user:", error);
     return response.status(500).json({ error: "Error updating user" });
@@ -158,27 +209,38 @@ app.put("/updateUser", verifyUser, async (request, response) => {
 });
 
 app.get("/readUserData", verifyUser, async (request, response) => {
-  const userId = request.userId;
+  try {
+    const users = await readUsers();
+    const user = users.find((u) => u.id === request.userId);
 
-  const data = await fs.readFile("users.txt", { encoding: "utf8" });
-  const users = data.split("\n").filter((line) => line);
+    if (!user) return response.status(404).send("No User found");
 
-  for (let user of users) {
-    const usersArray = user.split(",");
-    const deleteItem = usersArray.splice(2, 1);
-
-    const [id, email, nick, firstName, lastName] = usersArray;
-
-    if (request.userId === id)
-      return response.status(200).json({
-        id: id,
-        email: email,
-        nick: nick,
-        firstName: firstName,
-        lastName: lastName,
-      });
+    const {
+      id,
+      email,
+      nick,
+      firstName,
+      lastName,
+      avatarUrl,
+      city,
+      phone,
+      description,
+    } = user;
+    return response.status(200).json({
+      id,
+      email,
+      nick,
+      firstName,
+      lastName,
+      avatarUrl,
+      city,
+      phone,
+      description,
+    });
+  } catch (err) {
+    console.error(err);
+    return response.status(500).send("Error reading data");
   }
-  return response.status(500).send("No User found");
 });
 
 app.listen(port, () => {

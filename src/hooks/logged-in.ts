@@ -11,7 +11,7 @@ const useUserId = () => {
       try {
         const decodedToken = jwtDecode(token);
         console.log("odczytany token to:", decodedToken);
-        console.log(decodedToken.userId);
+        console.log(decodedToken.userID);
       } catch (error) {
         console.error("Niepoprawny token:", error);
       }
