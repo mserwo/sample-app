@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
+import * as jwtDecode from "jwt-decode";
 
 const useUserId = () => {
   const [userId, setUserId] = useState(null);
@@ -9,7 +9,7 @@ const useUserId = () => {
 
     if (token) {
       try {
-        const decodedToken = jwtDecode(token);
+        const decodedToken = (jwtDecode as any)(token);
         console.log("odczytany token to:", decodedToken);
         console.log(decodedToken.userID);
       } catch (error) {

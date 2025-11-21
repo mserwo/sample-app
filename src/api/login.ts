@@ -19,7 +19,6 @@ export const postLogin = async (
     if (response.ok) {
       const json = await response.json();
       const token = json.token;
-
       return onSuccess(token);
     }
 

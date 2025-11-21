@@ -81,7 +81,9 @@ export const UserPage = () => {
     firstName: Yup.string().required("Name is required"),
     lastName: Yup.string().required("Last name is required"),
     city: Yup.string(),
-    phone: Yup.string(),
+    phone: Yup.string()
+      .required("Phone number is required")
+      .matches(/^[0-9]{9}$/, "Phone number must have 9 numbers"),
     description: Yup.string(),
   });
 

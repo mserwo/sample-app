@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./user-menu.module.scss";
-import { ReactComponent as MenuLine } from "../../../assets/images/Line.svg";
+import MenuLine from "../../../assets/images/Line.svg?react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../App";
 import { getUserId } from "../../../api";

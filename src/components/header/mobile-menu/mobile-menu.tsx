@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./mobile-menu.module.scss";
-import { ReactComponent as MenuLine } from "../../../assets/images/Line.svg";
+import MenuLine from "../../../assets/images/Line.svg?react";
 
 export const MenuMobile = () => {
   const [isOpen, setIsOpen] = useState(false);
