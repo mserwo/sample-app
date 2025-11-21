@@ -1,8 +1,10 @@
+import { json } from "react-router-dom";
+
 export const postLogin = async (
   email: string,
   password: string,
 
-  onSuccess: (response?: string) => void,
+  onSuccess: (token: string) => void,
   onError: (errorMessage: string) => void
 ) => {
   try {
@@ -14,7 +16,15 @@ export const postLogin = async (
       body: JSON.stringify({ email, password }),
     });
 
-    if (response.ok) return onSuccess();
+    if (response.ok) {
+      const json = await response.json();
+      const token = json.token;
+      return onSuccess(token);
+    }
+
+    if (response.status === 401) {
+      return onError("Invalid credentials");
+    }
 
     console.error(`Login failed with status: ${response.status}`);
     onError("Unexpected error");

@@ -1,0 +1,213 @@
+@use "~/typography.scss";
+@use "~/fonts.scss";
+@use "~/colors";
+@use "~/breakpoints";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 80px;
+  margin: 40px 0;
+
+  @include fonts.poppins;
+  @include typography.caption2;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0 32px;
+  }
+}
+
+.container {
+  background-color: colors.$primary1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+
+  margin: 0 auto;
+  border-radius: 40px;
+
+  @include breakpoints.max-width("tablet") {
+    padding: 20px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+
+  @include typography.body1;
+}
+
+.mainSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  @include breakpoints.max-width("tablet") {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.rightSection {
+  flex: 2;
+  width: 100%;
+}
+
+.leftSection {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  @include breakpoints.max-width("tablet") {
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  background-color: colors.$neutrals6;
+  border-radius: 40px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  @include breakpoints.max-width("tablet") {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+}
+
+.itemsNick {
+  @include typography.body1;
+  margin-bottom: 10px;
+
+  @include breakpoints.max-width("tablet") {
+    text-align: center;
+  }
+}
+
+.userDescription {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-height: 50px;
+
+  @include breakpoints.max-width("tablet") {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}
+
+.userDescriptionEdit {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid colors.$neutrals6;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: colors.$neutrals3;
+  width: 100%;
+
+  @include breakpoints.max-width("tablet") {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.form {
+  @include typography.caption;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+
+  @include typography.caption2;
+}
+
+.field {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: colors.$neutrals3;
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.submit {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border-style: none;
+  margin-top: 20px;
+  color: colors.$neutrals7;
+  background-color: colors.$primary4;
+  cursor: pointer;
+
+  @include typography.button2;
+}
+
+.errorMessage {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dataUpdate {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dataContainer {
+  @include typography.caption;
+}
+
+.dataItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+
+  @include typography.caption2;
+}
+
+.dataField {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid colors.$neutrals6;
+  border-radius: 8px;
+  box-sizing: border-box;
+  min-height: 36px;
+}
+
+.editData {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid colors.$neutrals6;
+  border-radius: 8px;
+  margin-top: 35px;
+  color: colors.$neutrals7;
+  background-color: colors.$neutrals4;
+  cursor: pointer;
+
+  @include typography.button2;
+}

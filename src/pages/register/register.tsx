@@ -5,6 +5,7 @@ import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { postRegister } from "../../api";
 import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 
 interface RegisterResponse {
   isError: boolean;
@@ -31,12 +32,21 @@ export const Register = () => {
     message: "",
   });
 
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
+  };
+
   const onHandleSubmit = (values: Values) => {
     const onSucces = () => {
       setRegisterResponse({
         isError: false,
         message: "Thank you for your registration!",
       });
+      goToLogin();
     };
     const onError = (errorMessage: string) => {
       setRegisterResponse({ isError: true, message: errorMessage });
@@ -53,9 +63,9 @@ export const Register = () => {
 
           <Formik
             initialValues={{
-              email: "",
-              password: "",
-              repeatPassword: "",
+              email: "marcin123@op.pl",
+              password: "marcin123",
+              repeatPassword: "marcin123",
             }}
             validationSchema={validationSchema}
             onSubmit={(

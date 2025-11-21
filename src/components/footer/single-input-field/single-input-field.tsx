@@ -1,5 +1,6 @@
 import styles from "./single-input-field.module.scss";
-import { ReactComponent as ArrowRight2 } from "../../../assets/images/arrowRight2.svg";
+import ArrowRight2 from "../../../assets/images/arrowRight2.svg?react";
+
 import { useState } from "react";
 
 import cn from "classnames";

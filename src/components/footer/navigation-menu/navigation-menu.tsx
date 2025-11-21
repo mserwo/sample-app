@@ -1,6 +1,7 @@
 import styles from "./navigation-menu.module.scss";
 import { useState } from "react";
-import { ReactComponent as ArrowDownSimpleIcon } from "../../../assets/images/arrowDownSimple.svg";
+// import { ReactComponent as ArrowDownSimpleIcon } from "../../../assets/images/arrowDownSimple.svg";
+import ArrowDownSimpleIcon from "@/assets/images/arrowDownSimple.svg?react";
 
 import cn from "classnames";
 import { useScreenWidth } from "../../../hooks";

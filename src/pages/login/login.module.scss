@@ -1,17 +1,15 @@
-@use "~/typography.scss";
-@use "~/fonts.scss";
 @use "~/colors";
+@use "~/typography";
+@use "~/fonts";
 @use "~/breakpoints";
 
 .container {
-  display: flex;
-  justify-content: center;
   width: 300px;
   height: 100%;
   background-color: colors.$primary1;
   border-radius: 40px;
   padding-top: 20px;
-  margin-top: 20px;
+  margin: 0 auto;
 }
 
 .header {
@@ -57,7 +55,20 @@
   @include typography.button2;
 }
 
-.error {
+.responseOk {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 0px;
+  @include typography.caption2;
+  color: colors.$neutrals6;
+}
+
+.responseError {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 0px;
   @include typography.caption2;
   color: colors.$neutrals6;
 }

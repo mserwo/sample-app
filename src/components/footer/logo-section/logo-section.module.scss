@@ -1,6 +1,6 @@
 @use "~/typography.scss";
+@use "~/colors.scss";
 @use "~/fonts.scss";
-@use "~/colors";
 @use "~/breakpoints";
 
 .logoSection {
@@ -14,6 +14,7 @@
     @include typography.body1;
     @include fonts.poppins;
     font-weight: 350;
+    padding-left: 40px;
     color: colors.$neutrals6;
 
     @include breakpoints.max-width("tablet") {

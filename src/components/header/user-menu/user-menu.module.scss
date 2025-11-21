@@ -1,0 +1,61 @@
+@use "~/breakpoints";
+@use "~/colors";
+@use "~/typography";
+@use "~/fonts";
+
+.mobileContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: right;
+}
+
+.userMenu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include typography.button2;
+}
+
+.userMenu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  color: colors.$neutrals7;
+  @include typography.button2;
+}
+
+.navigationContainer {
+  position: absolute;
+  top: 30px;
+  width: 150px;
+
+  background-color: rgba(colors.$neutrals3, 0.7);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.buttons li {
+  width: 100%;
+  height: auto;
+
+  color: colors.$neutrals7;
+  text-decoration: none;
+}
+
+.buttons li:hover {
+  background-color: colors.$neutrals2;
+}
+
+.item {
+  display: block;
+  color: colors.$neutrals7;
+  text-decoration: none;
+  padding: 10px;
+}

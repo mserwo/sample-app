@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Layout } from "../../components/layout";
 import styles from "./login.module.scss";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { postLogin } from "../../api";
 import classNames from "classnames";
+import { UserContext } from "../../App";
+import { useNavigate } from "react-router-dom";
+import { readUserData } from "../../api/read-user-data";
 
 interface LoginResponse {
   isError: boolean;
@@ -22,23 +25,48 @@ const validationSchema = Yup.object({
 });
 
 export const Login = () => {
+  const { setToken, setId, setEmail, setNick, setFirstName, setLastName } =
+    useContext(UserContext);
+
+  const navigate = useNavigate();
+
   const [loginResponse, setLoginResponse] = useState<LoginResponse>({
     isError: false,
     message: "",
   });
 
-  const onHandleSubmit = (values: Values) => {
-    const onSucces = () => {
+  const goToHome = () => {
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+  };
+
+  const onHandleSubmit = async (values: Values) => {
+    const onSuccess = async (token: string) => {
       setLoginResponse({
         isError: false,
         message: "You are logged in!",
       });
+      setToken(token);
+
+      try {
+        const allUserData = await readUserData(token);
+        setId(allUserData.id);
+        setEmail(allUserData.email);
+        setNick(allUserData.nick);
+        setFirstName(allUserData.name);
+        setLastName(allUserData.lastName);
+
+        goToHome();
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
     };
     const onError = (errorMessage: string) => {
       setLoginResponse({ isError: true, message: errorMessage });
     };
 
-    postLogin(values.email, values.password, onSucces, onError);
+    postLogin(values.email, values.password, onSuccess, onError);
   };
 
   return (
@@ -49,8 +77,8 @@ export const Login = () => {
 
           <Formik
             initialValues={{
-              email: "",
-              password: "",
+              email: "marcin123@op.pl",
+              password: "marcin123",
             }}
             validationSchema={validationSchema}
             onSubmit={(
@@ -62,7 +90,7 @@ export const Login = () => {
               setSubmitting(false);
             }}
           >
-            {({ errors, touched }) => (
+            {() => (
               <Form className={styles.form}>
                 <div className={styles.items}>
                   <label htmlFor="email">Your Email</label>

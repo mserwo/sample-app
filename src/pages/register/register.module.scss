@@ -1,6 +1,6 @@
-@use "~/typography.scss";
-@use "~/fonts.scss";
 @use "~/colors";
+@use "~/typography";
+@use "~/fonts";
 @use "~/breakpoints";
 
 .container {
@@ -11,7 +11,7 @@
   background-color: colors.$primary1;
   border-radius: 40px;
   padding-top: 20px;
-  margin-top: 20px;
+  margin: 0 auto;
 }
 
 .header {
@@ -66,6 +66,7 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  padding-bottom: 0px;
   @include typography.caption2;
   color: colors.$neutrals6;
 }
@@ -74,6 +75,7 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  padding-bottom: 0px;
   @include typography.caption2;
-  color: colors.$primary3;
+  color: colors.$neutrals6;
 }
