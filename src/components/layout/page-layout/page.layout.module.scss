@@ -1,0 +1,27 @@
+@use "~/colors";
+@use "~/typography";
+@use "~/fonts";
+@use "~/breakpoints";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 80px;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0 32px;
+  }
+}
+
+.container {
+  justify-content: center;
+  width: 100%;
+  max-width: 865px;
+  padding-bottom: 30px;
+  background-color: colors.$primary1;
+  border-radius: 40px;
+
+  @include breakpoints.min-width("tablet") {
+    max-width: 1120px;
+  }
+}

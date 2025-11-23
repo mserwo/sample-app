@@ -1,0 +1,12 @@
+@use "~/colors";
+@use "~/typography";
+@use "~/fonts";
+@use "~/breakpoints";
+
+.wrapper {
+  flex: 1;
+  color: colors.$neutrals3;
+  @include typography.caption2;
+  text-align: justify;
+  // max-width: 100%;
+}

@@ -1,0 +1,18 @@
+@use "~/colors";
+@use "~/typography";
+@use "~/fonts";
+@use "~/breakpoints";
+
+.wrapper {
+  display: flex;
+
+  @include breakpoints.max-width(tablet) {
+    flex-direction: column;
+  }
+  gap: 40px;
+  padding: 20px;
+  margin: 20px;
+
+  background-color: colors.$neutrals6;
+  border-radius: 30px;
+}
