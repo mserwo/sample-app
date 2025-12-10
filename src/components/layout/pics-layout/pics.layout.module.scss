@@ -6,8 +6,9 @@
 .wrapper {
   flex: 1;
   display: flex;
-  justify-content: center;
   align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .wrapper img {

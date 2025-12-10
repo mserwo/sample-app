@@ -22,5 +22,17 @@
     "city": "",
     "phone": "",
     "description": ""
+  },
+  {
+    "id": "d28d7ef5-31c2-4769-b8c2-1adcaa56fccb",
+    "email": "marcin@op.pl",
+    "passwordHash": "$2b$10$fp1FivMOARspq7LFJ02yfOJGbWD2PXMdM9SG0PTn6LfUMGzQzV/ka",
+    "nick": "serwo",
+    "firstName": "marcin",
+    "lastName": "serwotka",
+    "avatarUrl": "https://picsum.photos/300",
+    "city": "warsaw",
+    "phone": "123456789",
+    "description": "reacy developer"
   }
 ]

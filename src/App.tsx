@@ -1,12 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Discover, Error, Home, HowItWorks, Register, Login } from "./pages";
+import { Error, Home, Register, Login, CaseRegister } from "./pages";
+import { CaseLogin } from "./pages/case-login";
+import { CaseUserPanel } from "./pages/case-user-panel";
 import { UserPage } from "./pages/user-page";
+import { readUserData } from "./api/read-user-data";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home />, errorElement: <Error /> },
-  { path: "/discover", element: <Discover /> },
-  { path: "/howitworks", element: <HowItWorks /> },
+  { path: "/case/register", element: <CaseRegister /> },
+  { path: "/case/login", element: <CaseLogin /> },
+  { path: "/case/user-panel", element: <CaseUserPanel /> },
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
   { path: "/userpage/:userId", element: <UserPage /> },
@@ -54,9 +58,25 @@ function App() {
 
   useEffect(() => {
     const sessionToken = sessionStorage.getItem("token");
-    if (sessionToken) {
-      setToken(sessionToken);
-    }
+    if (!sessionToken) return;
+
+    setToken(sessionToken);
+
+    const loadUser = async () => {
+      try {
+        const allUserData = await readUserData(sessionToken);
+
+        setId(allUserData.id);
+        setEmail(allUserData.email);
+        setNick(allUserData.nick);
+        setFirstName(allUserData.firstName);
+        setLastName(allUserData.lastName);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadUser();
   }, []);
 
   const handleSetToken = (token: string) => {

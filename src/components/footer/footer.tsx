@@ -5,9 +5,9 @@ import { NavigationMenu } from "./navigation-menu/navigation-menu";
 import { JoinNewsletter } from "./join-newsletter/join-newsletter";
 
 const menu1items = [
-  { title: "Discover", url: "/discover" },
-  { title: "Connect wallet", url: "/connect-wallet" },
-  { title: "Create item", url: "/create-item" },
+  { title: "Register", url: "/case/register" },
+  { title: "Login", url: "/case/login" },
+  { title: "User panel", url: "/case/user-panel" },
 ];
 
 const menu2items = [
@@ -22,8 +22,8 @@ export const Footer = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <LogoSection />
-          <NavigationMenu title={"Stacks"} menuElements={menu1items} />
-          <NavigationMenu title={"Info"} menuElements={menu2items} />
+          <NavigationMenu title={"Use Case"} menuElements={menu1items} />
+          <NavigationMenu title={"Tech Stack"} menuElements={menu2items} />
           <JoinNewsletter />
         </div>
         <BottomBar />

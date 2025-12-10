@@ -11,6 +11,8 @@
   @include breakpoints.max-width("mobileL") {
     padding: 0 32px;
   }
+
+  @include fonts.poppins;
 }
 
 .container {

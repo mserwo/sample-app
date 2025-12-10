@@ -1,0 +1,46 @@
+@use "~/typography.scss";
+@use "~/fonts.scss";
+@use "~/colors";
+@use "~/breakpoints";
+
+.caption {
+  @include typography.body4;
+  padding-bottom: 10px;
+  text-align: start;
+}
+
+.buttonSection {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  cursor: pointer;
+  color: colors.$neutrals6;
+  background-color: colors.$neutrals3;
+  padding: 15px 40px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: colors.$neutrals4;
+}
+
+.caption2 {
+  @include typography.body4;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.downContainer {
+  @include breakpoints.max-width(tablet) {
+    flex-direction: column;
+  }
+  gap: 40px;
+  padding: 20px;
+}
