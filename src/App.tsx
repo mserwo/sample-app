@@ -72,10 +72,6 @@ function App() {
   const [lang, setLang] = useState<"pl" | "en">("pl");
 
   useEffect(() => {
-    console.log(polish);
-  }, []);
-
-  useEffect(() => {
     const sessionToken = sessionStorage.getItem("token");
     if (!sessionToken) return;
 

@@ -93,6 +93,22 @@
       "text76": "Thanks to this, after successful registration, the user is redirected to the login page.",
       "alt7": "Success message + redirect",
       "text77": "Go to registration"
+    },
+    "login": {
+      "title": "User login - process description",
+      "caption1": "1. Login form (Frontend)",
+      "text1": "As with user registration, the login process begins on a page with a form that allows the user to enter their email address and password.",
+      "text2": "The entire form handling is powered by the",
+      "text3_bold": " Formik ",
+      "text4": "library, which facilitates the management of form field states, error handling, and the process of sending data to the backend.",
+      "text5": "Data validation takes place before the form is submitted thanks to the",
+      "text6_bold": " Yup",
+      "text7": " library, which checks whether the email is in the correct format and whether the password is not empty.",
+      "text8": "After clicking the Submit button, the form passes the data to the",
+      "text9_bold": " onHandleSubmit ",
+      "text10": "function, which starts the process of logging in and passing the data via the",
+      "text11_bold": " API ",
+      "text12": "to the backend."
     }
   }
 }

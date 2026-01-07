@@ -21,34 +21,37 @@ import case_login_8_2 from "../../assets/screens/case_login_8_2.png";
 import case_login_9 from "../../assets/screens/case_login_9.png";
 import { Link } from "react-router-dom";
 
+import { LanguageContext } from "../../App";
+import { useContext } from "react";
+
 export const CaseLogin = () => {
+  const {
+    useCase: { login },
+  } = useContext(LanguageContext);
+
   return (
     <Layout>
-      <TitleLayoutGreen>Logowanie użytkownika - opis procesu</TitleLayoutGreen>
+      <TitleLayoutGreen>{login.title}</TitleLayoutGreen>
       <SectionLayout>
         <TextLayout>
-          <div className={styles.caption}>1. Formularz lgowania (Frontend)</div>
+          <div className={styles.caption}>{login.caption1}</div>
+          <div style={{ marginBottom: "15px" }}>{login.text1}</div>
           <div style={{ marginBottom: "15px" }}>
-            Podobnie jak w przypadku rejestracji użytkowanika - proces logowania
-            zaczyna się na stronie z formularzem, który umożliwia użytkownikowi
-            podanie adresu e-mail oraz hasła.
+            {login.text2}
+            <b className={styles.bold}>{login.text3_bold}</b>
+            {login.text4}
           </div>
           <div style={{ marginBottom: "15px" }}>
-            Cała obsługa formularza działa dzięki bibliotece{" "}
-            <b className={styles.bold}>Formik</b>, która ułatwia zarządzanie
-            stanem pól formularza, obługą błędów i samym procesem wysyłania
-            danych do backendu.
+            {login.text5}
+            <b className={styles.bold}>{login.text6_bold}</b>
+            {login.text7}
           </div>
           <div style={{ marginBottom: "15px" }}>
-            Walidacja danych odbywa się jeszcze przed wysłaniem formularza
-            dzięki bibliotece <b className={styles.bold}>Yup</b>, która sprawdza
-            czy email ma prawidłowy format oraz czy hasło nie jest puste.
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            Po kliknięciu przycisku „Submit” formularz przekazuje dane do
-            funkcji <b className={styles.bold}>onHandleSubmit</b>, która
-            rozpoczyna proces logowania i przekazania danych przez{" "}
-            <b className={styles.bold}>API</b> do backendu.
+            {login.text8}
+            <b className={styles.bold}>{login.text9_bold}</b>
+            {login.text10}
+            <b className={styles.bold}>{login.text11_bold}</b>
+            {login.text12}
           </div>
         </TextLayout>
         <PicsLayout>
@@ -285,7 +288,7 @@ export const CaseLogin = () => {
         <PicsLayout>
           <img src={case_login_8} alt="useContext"></img>
           <img src={case_login_8_2} alt="useContext_2"></img>
-        </PicsLayout>{" "}
+        </PicsLayout>
         <TextLayout>
           <div className={styles.caption}>
             8. Zapis danych użytkownika w useContext

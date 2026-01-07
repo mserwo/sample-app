@@ -93,6 +93,22 @@
       "text76": "Dzięki temu po poprawnej rejestracji użytkownik zostaje przekierowany na stronę z logowaniem.",
       "alt7": "Komunikat o sukcesie + przekierowanie",
       "text77": "Przejdź do rejestracji"
+    },
+    "login": {
+      "title": "Logowanie użytkownika - opis procesu",
+      "caption1": "1. Formularz logowania (Frontend)",
+      "text1": "Podobnie jak w przypadku rejestracji użytkowanika - proces logowania zaczyna się na stronie z formularzem, który umożliwia użytkownikowi podanie adresu e-mail oraz hasła.",
+      "text2": "Cała obsługa formularza działa dzięki bibliotece",
+      "text3_bold": " Formik",
+      "text4": ", która ułatwia zarządzanie stanem pól formularza, obsługą błędów i samym procesem wysyłania danych do backendu.",
+      "text5": "Walidacja danych odbywa się jeszcze przed wysłaniem formularza dzięki bibliotece",
+      "text6_bold": " Yup",
+      "text7": ", która sprawdza czy email ma prawidłowy format oraz czy hasło nie jest puste.",
+      "text8": "Po kliknięciu przycisku „Submit” formularz przekazuje dane do funkcji",
+      "text9_bold": " onHandleSubmit",
+      "text10": ", która rozpoczyna proces logowania i przekazania danych przez",
+      "text11_bold": " API ",
+      "text12": "do backendu."
     }
   }
 }
