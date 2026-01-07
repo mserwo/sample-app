@@ -5,15 +5,25 @@ import { CaseLogin } from "./pages/case-login";
 import { CaseUserPanel } from "./pages/case-user-panel";
 import { UserPage } from "./pages/user-page";
 import { readUserData } from "./api/read-user-data";
+import { StackFrontend } from "./pages/stack-frontend";
+import { StackApi } from "./pages/stack-api";
+import { StackServer } from "./pages/stack-server";
+import polish from "./translations/polish.json";
+import english from "./translations/english.json";
+import FlagPl from "@/assets/images/flag_pl.svg?react";
+import FlagEngl from "@/assets/images/flag_engl.svg?react";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home />, errorElement: <Error /> },
-  { path: "/case/register", element: <CaseRegister /> },
-  { path: "/case/login", element: <CaseLogin /> },
-  { path: "/case/user-panel", element: <CaseUserPanel /> },
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
   { path: "/userpage/:userId", element: <UserPage /> },
+  { path: "/case/register", element: <CaseRegister /> },
+  { path: "/case/login", element: <CaseLogin /> },
+  { path: "/case/user-panel", element: <CaseUserPanel /> },
+  { path: "/stack/frontend", element: <StackFrontend /> },
+  { path: "/stack/api", element: <StackApi /> },
+  { path: "/stack/server", element: <StackServer /> },
 ]);
 
 interface userDataType {
@@ -46,7 +56,10 @@ const userData = {
   setLastName: () => {},
 };
 
+type LanguageType = typeof polish;
+
 export const UserContext = createContext<userDataType>(userData);
+export const LanguageContext = createContext<LanguageType>(polish);
 
 function App() {
   const [token, setToken] = useState("");
@@ -55,6 +68,12 @@ function App() {
   const [nick, setNick] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+
+  const [lang, setLang] = useState<"pl" | "en">("pl");
+
+  useEffect(() => {
+    console.log(polish);
+  }, []);
 
   useEffect(() => {
     const sessionToken = sessionStorage.getItem("token");
@@ -84,27 +103,58 @@ function App() {
     sessionStorage.setItem("token", token);
   };
 
+  const toggleLang = () => {
+    if (lang === "pl") setLang("en");
+    else setLang("pl");
+
+    console.log("zmiana języka");
+  };
+
+  const language = lang === "pl" ? polish : english;
+
   return (
-    <UserContext.Provider
-      value={{
-        token: token,
-        setToken: handleSetToken,
-        id,
-        setId,
-        email,
-        setEmail,
-        nick,
-        setNick,
-        firstName,
-        setFirstName,
-        lastName,
-        setLastName,
-      }}
-    >
-      <div className="App">
-        <RouterProvider router={router} />
+    <>
+      <div
+        onClick={toggleLang}
+        style={{
+          position: "fixed",
+          bottom: "10px",
+          right: "10px",
+          padding: "0px",
+          margin: "0px",
+          cursor: "pointer",
+        }}
+      >
+        {lang === "en" ? (
+          <FlagPl width="60px" height="auto" />
+        ) : (
+          <FlagEngl width="60px" height="auto" />
+        )}
       </div>
-    </UserContext.Provider>
+
+      <LanguageContext.Provider value={language}>
+        <UserContext.Provider
+          value={{
+            token: token,
+            setToken: handleSetToken,
+            id,
+            setId,
+            email,
+            setEmail,
+            nick,
+            setNick,
+            firstName,
+            setFirstName,
+            lastName,
+            setLastName,
+          }}
+        >
+          <div className="App">
+            <RouterProvider router={router} />
+          </div>
+        </UserContext.Provider>
+      </LanguageContext.Provider>
+    </>
   );
 }
 

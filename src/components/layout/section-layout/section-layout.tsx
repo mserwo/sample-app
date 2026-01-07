@@ -7,5 +7,9 @@ interface LayoutProps {
 }
 
 export const SectionLayout = ({ children }: LayoutProps) => {
-  return <div className={styles.wrapper}>{children}</div>;
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.container}>{children}</div>
+    </div>
+  );
 };

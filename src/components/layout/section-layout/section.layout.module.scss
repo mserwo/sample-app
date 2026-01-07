@@ -5,14 +5,36 @@
 
 .wrapper {
   display: flex;
+  justify-content: center;
+  padding: 30px 80px;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 30px 32px;
+  }
+  @include fonts.poppins;
+
+  // border-radius: 30px;
+
+  // @include breakpoints.min-width("tablet") {
+  //   max-width: 1120px;
+  // }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 865px;
+  gap: 50px;
+  //   padding-bottom: 30px;
+  // background-color: colors.$primary1;
+  // border-radius: 40px;
+
+  @include breakpoints.min-width("tablet") {
+    max-width: 1120px;
+  }
 
   @include breakpoints.max-width(tablet) {
     flex-direction: column;
   }
-  gap: 40px;
-  padding: 20px;
-  margin: 20px;
-
-  background-color: colors.$neutrals6;
-  border-radius: 30px;
 }

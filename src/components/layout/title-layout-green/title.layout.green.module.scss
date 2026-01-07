@@ -1,0 +1,32 @@
+@use "~/typography.scss";
+@use "~/fonts.scss";
+@use "~/colors";
+@use "~/breakpoints";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 80px;
+  margin-bottom: 20px;
+
+  @include fonts.poppins;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0 32px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0px;
+  width: 100%;
+  max-width: 865px;
+
+  border-radius: 30px;
+  border: 2px solid colors.$primary4;
+
+  @include breakpoints.min-width("tablet") {
+    max-width: 1120px;
+  }
+}

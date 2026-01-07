@@ -71,75 +71,77 @@ export const Login = () => {
 
   return (
     <Layout>
-      <div className={styles.container}>
-        <div>
-          <div className={styles.header}>Log in to your account</div>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <div>
+            <div className={styles.header}>Log in to your account</div>
 
-          <Formik
-            initialValues={{
-              email: "",
-              password: "",
-            }}
-            validationSchema={validationSchema}
-            onSubmit={(
-              values: Values,
-              { setSubmitting, resetForm }: FormikHelpers<Values>
-            ) => {
-              onHandleSubmit(values);
-              resetForm();
-              setSubmitting(false);
-            }}
-          >
-            {() => (
-              <Form className={styles.form}>
-                <div className={styles.items}>
-                  <label htmlFor="email">Your Email</label>
-                  <Field
-                    className={styles.field}
-                    id="email"
-                    name="email"
-                    placeholder="john@gmail.com"
-                    type="email"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className={styles.error}
-                  />
-                </div>
-
-                <div className={styles.items}>
-                  <label htmlFor="password">Password</label>
-                  <Field
-                    className={styles.field}
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    type="password"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className={styles.error}
-                  />
-                </div>
-
-                <button className={styles.submit} type="submit">
-                  Submit
-                </button>
-
-                {loginResponse.message ? (
-                  <div
-                    className={classNames(styles.responseOk, {
-                      [styles.responseError]: loginResponse.isError,
-                    })}
-                  >
-                    {loginResponse.message}
+            <Formik
+              initialValues={{
+                email: "",
+                password: "",
+              }}
+              validationSchema={validationSchema}
+              onSubmit={(
+                values: Values,
+                { setSubmitting, resetForm }: FormikHelpers<Values>
+              ) => {
+                onHandleSubmit(values);
+                resetForm();
+                setSubmitting(false);
+              }}
+            >
+              {() => (
+                <Form className={styles.form}>
+                  <div className={styles.items}>
+                    <label htmlFor="email">Your Email</label>
+                    <Field
+                      className={styles.field}
+                      id="email"
+                      name="email"
+                      placeholder="john@gmail.com"
+                      type="email"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className={styles.error}
+                    />
                   </div>
-                ) : null}
-              </Form>
-            )}
-          </Formik>
+
+                  <div className={styles.items}>
+                    <label htmlFor="password">Password</label>
+                    <Field
+                      className={styles.field}
+                      id="password"
+                      name="password"
+                      placeholder="Enter your password"
+                      type="password"
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className={styles.error}
+                    />
+                  </div>
+
+                  <button className={styles.submit} type="submit">
+                    Submit
+                  </button>
+
+                  {loginResponse.message ? (
+                    <div
+                      className={classNames(styles.responseOk, {
+                        [styles.responseError]: loginResponse.isError,
+                      })}
+                    >
+                      {loginResponse.message}
+                    </div>
+                  ) : null}
+                </Form>
+              )}
+            </Formik>
+          </div>
         </div>
       </div>
     </Layout>

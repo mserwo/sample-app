@@ -33,22 +33,48 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    @include typography.button2;
-    color: colors.$neutrals4;
+
+    li {
+      a {
+        @include typography.button2;
+        color: colors.$neutrals4;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+    }
 
     &_hide {
       display: none;
+    }
+  }
+
+  &--useCase {
+    .container_menu li a:hover {
+      color: colors.$primary4;
+    }
+  }
+
+  &--techStack {
+    .container_menu li a:hover {
+      color: colors.$primary1;
+    }
+  }
+
+  &--contact {
+    .container_menu li a:hover {
+      color: colors.$secondary2;
     }
   }
 }
 
 .arrowContainer {
   display: flex;
+  transition: transform 0.5s;
+  width: fit-content;
+
   @include breakpoints.min-width("tablet") {
     display: none;
   }
-  transition: transform 0.5s;
-  width: fit-content;
 
   &_rotated {
     transform: rotate(180deg);
@@ -57,4 +83,26 @@
 
 .img {
   color: colors.$neutrals4;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @include typography.button2;
+  color: colors.$neutrals4;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }

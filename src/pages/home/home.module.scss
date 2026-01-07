@@ -144,3 +144,57 @@
   display: flex;
   justify-content: center;
 }
+
+.flagContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  // background-color: rgb(73, 102, 105);
+}
+.flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 60px;
+    height: auto;
+  }
+}
+
+.descriptionContainer {
+  background-color: rgb(200, 200, 111);
+}
+
+.meText {
+  padding-left: 200px;
+  // background-color: rgb(132, 132, 20);
+}
+
+.mePic {
+  width: 450px;
+}
+
+.appContainer {
+  background-color: rgb(12, 210, 236);
+}
+
+.useCaseContainer {
+  background-color: rgb(155, 27, 167);
+}
+
+.useCaseElements {
+  background-color: rgb(163, 53, 25);
+}
+
+.techStackContainer {
+  background-color: rgb(192, 82, 117);
+}
+
+.techStackElements {
+  background-color: rgb(17, 180, 142);
+}
