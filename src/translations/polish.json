@@ -2,113 +2,249 @@
   "useCase": {
     "register": {
       "title": "Rejestracja użytkownika - opis procesu",
+
       "caption1": "1. Formularz rejestracji (Frontend)",
-      "text1": " Proces rejestracji zaczyna się na stronie z formularzem, który pozwala użytkownikowi podać adres e-mail oraz hasło.",
-      "text2": " Do obsługi formularza użyłem bibliotekę",
-      "text3_bold": " Formik",
-      "text4": ", która ułatwia zarządzanie stanem pól formularza, obsługą błędów i samym procesem wysyłania danych do backendu.",
-      "text5": " Walidacja danych odbywa się jeszcze przed wysłaniem formularza — biblioteka ",
-      "text6_bold": "Yup ",
-      "text7": "sprawdza poprawność adresu e-mail oraz to, czy pola nie są puste.",
-      "text8": "Po zatwierdzeniu formularza dane logowania są przekazywane do backendu, gdzie następuje ich weryfikacja z danymi zapisanymi w pliku users.json.",
-      "alt1": "formularz rejestracji",
-      "alt2": "Walidacja danych (Yup)",
+      "caption1_text": [
+        "Proces rejestracji zaczyna się na stronie z formularzem, który pozwala użytkownikowi podać adres e-mail oraz hasło.",
+        "Do obsługi formularza użyłem bibliotekę &Formik&, która ułatwia zarządzanie stanem pól formularza, obsługą błędów i samym procesem wysyłania danych do backendu.",
+        "Walidacja danych odbywa się jeszcze przed wysłaniem formularza — biblioteka &Yup& sprawdza poprawność adresu e-mail oraz to, czy pola nie są puste.",
+        "Po zatwierdzeniu formularza dane logowania są przekazywane do backendu, gdzie następuje ich weryfikacja z danymi zapisanymi w pliku &users.json&."
+      ],
+      "caption1_alt": "formularz rejestracji",
+
       "caption2": "2. Walidacja danych (Yup)",
-      "text9": "Zanim formularz wyśle dane, ",
-      "text10_bold": "Yup",
-      "text11": " sprawdza ich poprawność — np. format adresu e-mail oraz to, czy hasła są takie same, co pozwala walidować dane przed wysyłką do backendu.",
+      "caption2_text": "Zanim formularz wyśle dane, &Yup& sprawdza ich poprawność — np. format adresu e-mail oraz to, czy hasła są takie same, co pozwala walidować dane przed wysyłką do backendu.",
+      "caption2_alt": "Walidacja danych (Yup)",
+
       "caption3": "3. onHandleSubmit — wysłanie danych",
-      "text12": "Po pozytywnej walidacji wywołuję funkcję onHandleSubmit. W tej funkcji przygotowuję callbacki odpowiedzialne za reakcję frontendu na sukces lub błąd oraz przekazuję dane do ",
-      "text13_bold": "API",
-      "text14_li": "tworzę funkcję onSuccess → wyświetla komunikat i przekierowuje do logowania",
-      "text15_li": "tworzę funkcję onError → wyświetla komunikat błędu",
-      "text16_li": "wykonuję żądanie przez postRegister",
-      "alt3": "onHandleSubmit — wysłanie danych",
-      "alt4": "Wysyłanie danych do API (Fetch + JSON)",
+      "caption3_text1": "Po pozytywnej walidacji wywołuję funkcję onHandleSubmit. W tej funkcji przygotowuję callbacki odpowiedzialne za reakcję frontendu na sukces lub błąd oraz przekazuję dane do &API&.",
+      "caption3_text2": [
+        "tworzę funkcję &onSuccess& → wyświetla komunikat i przekierowuje do logowania",
+        "tworzę funkcję &onError& → wyświetla komunikat błędu",
+        "wykonuję żądanie przez postRegister"
+      ],
+      "caption3_alt": "onHandleSubmit — wysłanie danych",
+
       "caption4": "4. Wysyłanie danych do API (Fetch + JSON)",
-      "text17": "Po zatwierdzeniu formularza dane użytkownika są wysyłane do backendu przy użyciu ",
-      "text18_bold": "Fetch API",
-      "text19": ". Dane są przekazywane w formacie ",
-      "text20_bold": "JSON",
-      "text21": ", dlatego przed wysłaniem są konwertowane za pomocą ",
-      "text22_bold": "JSON.stringify",
-      "text23": ", a nagłówek Content-Type: application/json informuje backend ",
-      "text24_bold": "(Express)",
-      "text25": ", jak powinien je odczytać",
-      "text26": " Żądanie ma strukturę",
-      "text27_bold": " HTTP POST ",
-      "text28": ", a body zawiera dane przesyłane do rejestracji. Po otrzymaniu odpowiedzi serwera frontend wykonuje przygotowane callbacki:",
-      "text29": "w przypadku sukcesu → ",
-      "text30_bold": " onSuccess(), ",
-      "text31": " komunikat + przekierowanie",
-      "text32": " w przypadku błędu →",
-      "text33_bold": " onError(), ",
-      "text34": " wyświetlenie błędu użytkownikowi",
+      "caption4_text1": [
+        "Po zatwierdzeniu formularza dane użytkownika są wysyłane do backendu przy użyciu &Fetch API&. Dane są przekazywane w formacie &JSON&, dlatego przed wysłaniem są konwertowane za pomocą &JSON.stringify&, a nagłówek Content-Type: application/json informuje backend &(Express)&, jak powinien je odczytać.",
+        "Żądanie ma strukturę &HTTP POST& , a body zawiera dane przesyłane do rejestracji. Po otrzymaniu odpowiedzi serwera frontend wykonuje przygotowane callbacki:"
+      ],
+      "caption4_text2": [
+        "w przypadku sukcesu → &onSuccess()&, komunikat + przekierowanie",
+        "w przypadku błędu → &onError()&, wyświetlenie błędu użytkownikowi"
+      ],
+      "caption4_alt": "Wysyłanie danych do API (Fetch + JSON)",
+
       "caption5": "5. Backend — Express, endpoint /register",
-      "text35": "Po stronie serwera za obsługę rejestracji odpowiada",
-      "text36_bold": " Express. ",
-      "text37": "Dane w formacie",
-      "text38_bold": " JSON ",
-      "text39": "trafiają do endpointu /register.",
-      "text40": " Następnie dane są porównywane z istniejącą bazą danych. Funkcja",
-      "text41_bold": " readUsers() ",
-      "text42": "odczytuje dane użytkowników z bazy i przypiusje do zmiennej. Jeśli użytkownik jeszcze nie znajduje się w bazie, przechodzimy do szyfrowania hasła za pomocą",
-      "text43_bold": " bcypt.hash, ",
-      "text44": " dzięki czemu hasła nie są zapisywane w postaci jawnej.",
-      "text45": "W następnym kroku dla każdego użytkownika tworzę ID poprzez",
-      "text46_bold": " uuidv4()",
-      "text47": ". Ten unikalny identyfikator ",
-      "text48_bold": " ID ",
-      "text49": ", wraz z zahashowanym hasłem, oraz odebranym na początku adresem email, są zapisywane w nowym obiekcie newUser.",
-      "text50": "Sam obiekt newUser z danymi użytkownika zawiera również puste pola takie jak ",
-      "text51_i": "nick, firstName, lastname, city, phone oraz description",
-      "text52": ", które użytkownik będzie mógł uzupełnić jak i edytować wszytkie wartości w swoim panelu użytkownika.",
-      "text53": "Obiekt zawiera również",
-      "text54_i": " avatar ",
-      "text55": " do którego przypisana jest losowa grafika wygenerowana przez piscum. Docelowo w wersji produkcyjnej w tym miejscu będzie istniała możliwość wgrania własnej grafiki przez np. ",
-      "text56_bold": " S3 BUCKET ",
-      "text57": " Tak przygotowany obiekt z danymi użytkownika jest dopisywany do tablicy użytkowników ",
-      "text58_bold": "users.push()",
-      "text59": " i zapisywany w users.json ",
-      "text60_bold": "writeUsers()",
-      "alt5": "Backend — Express, endpoint /register",
-      "alt6": "Odczyt i zapis użytkowników",
+      "caption5_text": [
+        "Po stronie serwera za obsługę rejestracji odpowiada &Express&. Dane w formacie &JSON& trafiają do endpointu /register.",
+        "Następnie dane są porównywane z istniejącą bazą danych. Funkcja &readUsers()& odczytuje dane użytkowników z bazy i przypiusje do zmiennej. Jeśli użytkownik jeszcze nie znajduje się w bazie, przechodzimy do szyfrowania hasła za pomocą &bcypt.hash&, dzięki czemu hasła nie są zapisywane w postaci jawnej.",
+        "W następnym kroku dla każdego użytkownika tworzę ID poprzez &uuidv4()&. Ten unikalny identyfikator ( &ID& ), wraz z zahashowanym hasłem, oraz odebranym na początku adresem email, są zapisywane w nowym obiekcie newUser.",
+        "Sam obiekt newUser z danymi użytkownika zawiera również puste pola takie jak nick, firstName, lastname, city, phone oraz description, które użytkownik będzie mógł uzupełnić jak i edytować wszytkie wartości w swoim panelu użytkownika.",
+        "Obiekt zawiera również avatar do którego przypisana jest losowa grafika wygenerowana przez piscum. Docelowo w wersji produkcyjnej w tym miejscu będzie istniała możliwość wgrania własnej grafiki przez np. &S3 BUCKET&.",
+        "Tak przygotowany obiekt z danymi użytkownika jest dopisywany do tablicy użytkowników (&users.push()&) i zapisywany w users.json (&writeUsers()&)."
+      ],
+      "caption5_alt": "Backend — Express, endpoint /register",
+
       "caption6": "6. Odczyt i zapis użytkowników (file-based storage)",
-      "text61": "Użytkownicy są przechowywani w pliku",
-      "text62_bold": " users.json",
-      "text63": ". W projekcie wykorzystuję prostą bazę danych opartą na pliku users.json, w której przechowywane są dane użytkowników. Ze względu na charakter projektu, nie było potrzeby stawiania profesjonalnej bazy danych (DB).",
-      "text64": "Funkcja ",
-      "text65_bold": "readUsers() ",
-      "text66": "pozwala na odczyt danych użytkowników a następnie:",
-      "text67_li": "zwrócenie pustej tablicy w przypadku pustej bazy (brak użytkowników),",
-      "text68_li": " lub zwrócenie istniejących danych użytkowników",
-      "text69": "Funkcja ",
-      "text70_bold": "writeUsers() ",
-      "text71": "nadpisuje istniejący plik tablicą z nowymi danymi.",
-      "text72": "Do funkcji readUsers() jak i writeUsers() odwołuję się w kilku endpointach.",
+      "caption6_text1": [
+        "Użytkownicy są przechowywani w pliku users.json. W projekcie wykorzystuję prostą bazę danych opartą na pliku &users.json&, w której przechowywane są dane użytkowników. Ze względu na charakter projektu, nie było potrzeby stawiania profesjonalnej bazy danych (DB).",
+        "Funkcja &readUsers()& pozwala na odczyt danych użytkowników a następnie:"
+      ],
+      "caption6_text2": [
+        "zwrócenie pustej tablicy w przypadku pustej bazy (brak użytkowników),",
+        "lub zwrócenie istniejących danych użytkowników"
+      ],
+      "caption6_text3": [
+        "Funkcja &writeUsers()& nadpisuje istniejący plik tablicą z nowymi danymi.",
+        "Do funkcji readUsers() jak i writeUsers() odwołuję się w kilku endpointach."
+      ],
+      "caption6_alt": "Odczyt i zapis użytkowników",
+
       "caption7": "7. Komunikat o sukcesie + przekierowanie",
-      "text73": "  Po otrzymaniu pozytywnej odpowiedzi frontend:",
-      "text74_li": "wyświetla komunikat o sukcesie i uruchamia goToLogin()",
-      "text75_li": "po 2 sekundach przekierowuje na stronę /login.",
-      "text76": "Dzięki temu po poprawnej rejestracji użytkownik zostaje przekierowany na stronę z logowaniem.",
-      "alt7": "Komunikat o sukcesie + przekierowanie",
-      "text77": "Przejdź do rejestracji"
+      "caption7_text1": "Po otrzymaniu pozytywnej odpowiedzi frontend:",
+      "caption7_text2": [
+        "wyświetla komunikat o sukcesie i uruchamia goToLogin()",
+        "po 2 sekundach przekierowuje na stronę /login."
+      ],
+      "caption7_text3": "Dzięki temu po poprawnej rejestracji użytkownik zostaje przekierowany na stronę z logowaniem.",
+      "caption7_alt": "Komunikat o sukcesie + przekierowanie",
+
+      "button_goToRegister": "Przejdź do rejestracji"
     },
     "login": {
-      "title": "Logowanie użytkownika - opis procesu",
+      "title": "Logowanie użytkownika – opis procesu",
+
       "caption1": "1. Formularz logowania (Frontend)",
-      "text1": "Podobnie jak w przypadku rejestracji użytkowanika - proces logowania zaczyna się na stronie z formularzem, który umożliwia użytkownikowi podanie adresu e-mail oraz hasła.",
-      "text2": "Cała obsługa formularza działa dzięki bibliotece",
-      "text3_bold": " Formik",
-      "text4": ", która ułatwia zarządzanie stanem pól formularza, obsługą błędów i samym procesem wysyłania danych do backendu.",
-      "text5": "Walidacja danych odbywa się jeszcze przed wysłaniem formularza dzięki bibliotece",
-      "text6_bold": " Yup",
-      "text7": ", która sprawdza czy email ma prawidłowy format oraz czy hasło nie jest puste.",
-      "text8": "Po kliknięciu przycisku „Submit” formularz przekazuje dane do funkcji",
-      "text9_bold": " onHandleSubmit",
-      "text10": ", która rozpoczyna proces logowania i przekazania danych przez",
-      "text11_bold": " API ",
-      "text12": "do backendu."
+      "caption1_text": [
+        "Podobnie jak w przypadku rejestracji użytkowanika - proces logowania zaczyna się na stronie z formularzem, który umożliwia użytkownikowi podanie adresu e-mail oraz hasła.",
+        "Cała obsługa formularza działa dzięki bibliotece &Formik&, która ułatwia zarządzanie stanem pól formularza, obsługą błędów i samym procesem wysyłania danych do backendu.",
+        "Walidacja danych odbywa się jeszcze przed wysłaniem formularza dzięki bibliotece &Yup&, która sprawdza czy email ma prawidłowy format oraz czy hasło nie jest puste.",
+        "Po kliknięciu przycisku „Submit” formularz przekazuje dane do funkcji &onHandleSubmit&, która rozpoczyna proces logowania i przekazania danych przez &API& do backendu."
+      ],
+      "caption1_alt": "formularz logowania",
+
+      "caption2": "2. Walidacja danych (Yup)",
+      "caption2_text": [
+        "Zanim formularz wyśle dane do API, Yup sprawdza ich poprawność - w tym wypadku sprawdzany jest prawidłowy format wpisanego adresu email oraz czy pole z hasłem nie jest puste.",
+        "Dzięki temu użytkownik szybciej otrzymuje informację o błędzie, bez konieczności wysyłania formularza na backend."
+      ],
+      "caption2_alt": "Walidacja danych",
+
+      "caption3": "3. onHandleSubmit — rozpoczęcie procesu logowania",
+      "caption3_text1": [
+        "Po pozytywnej walidacji uruchamiana jest funkcja &onHandleSubmit& zawierająca dalsze instrukcje przepływu danych i odpowiedniej rakcji frontendu.",
+        "W tej funkcji:"
+      ],
+      "caption3_text2": [
+        "tworzę funkcję onSuccess — uruchamiana gdy backend zwróci poprawny token,",
+        "tworzę funckję onError — wyświetla komunikat o błędnych danych,",
+        "wywołuję funkcję postLogin, która wysyła dane logowania do backendu."
+      ],
+      "caption3_text3": "To miejsce, w którym zaczyna się komunikacja z &API&.",
+      "caption3_alt": "funkcja onHandleSubmit",
+
+      "caption4": "4. Wysyłanie danych do API (Fetch + JSON)",
+      "caption4_text1": [
+        "Podobnie jak w przypadku procesu rejestracji - po zatwierdzeniu formularza logowania, dane użytkownika wysyłane są do backendu przy użyciu &Fetch API&. Dane przekazywane są w formacie JSON, dlatego przed wysłaniem są konwertowane za pomocą &JSON.stringify&. Występuje również nagłówek Content-Type:application/json, który informuje backend (&Express&), jak powienien je odczytać. Żądanie ma strukturę &HTTP POST&, a w body przekazywane są dane logowania.",
+        "o otrzymaniu odpowiedzi serwera frontend wykonuje przygotowane callbacki:"
+      ],
+      "caption4_text2": [
+        "jeśli backend zwróci status 200, uruchamiany jest callback &onSuccess()&",
+        "jeśli dane są nieprawidłowe (status 401), wyświetlany jest komunikat o błędnym logowaniu - callback &onError()&"
+      ],
+      "caption4_text3": "&W tym miejscu kończą się podobieństwa procesu rejestracji oraz logowania. Wprowadzanie danych do formularza, walidacja oraz przekazanie do API wygląda podobnie w obydwu przypadkach. W dalszym kroku dane trafiają na serwer gdzie ścieżka wygląda już troche inaczej.&",
+      "caption4_alt": "Wysyłanie danych do API",
+
+      "caption5": "5. Backend — Express, endpoint /login",
+      "caption5_text": [
+        "Dane trafiają do endpointu &POST /login&. Podobnie jak przy rejestracji - uruchamiana jest funkcja &readUsers()&, która odczytuje zawartość pliku &users.json&.",
+        "W dalszym kroku adres email podany przy logowaniu (który trafił do endpointu) porównywany jest z zawartością dotychczasowej bazy danych. Jeśli adres zostanie odszukany w bazie, następuje sprwdzenie prawidłowości hasła.",
+        "Zaszyfrowane hasło przypisane w bazie danych do wyfiltrowanego wcześniej adresu email - porównywane jest z hasłem które trafiło do endpointu z formularza logowania (&bcrypt.comapre&).",
+        "Jeśli hasła są zgodne, generowany jest &JWT token& (JSON WEB TOKEN), który zawiera identyfikator użytkownika i ważność tokenu (1h). Token jest następnie odsyłany do frontendu, gdzie zapisywany jest w local state (&useContext&) oraz w &sessionStorage&."
+      ],
+      "caption5_alt": "endpoint login",
+
+      "caption6": "6. Backend — endpoint /readUserData",
+      "caption6_text": [
+        "Po zalogowaniu i odebraniu tokenu frontend wykonuje kolejną instruckję zawartą w &onHandleSubmit& - zapytanie do endpointu &/readUserData&. Ten endpoint jest odpowiedzialny za pobranie pełnych danych użytkownika z bazy, aby frontend mógł zapisać je w kontekście aplikacji (&useContext&).",
+        "Tym razem zapytanie jest wysyłane metodą &GET& (&fetch API&). Poza dotychczas stosowanym nagłówkiem: &Content-Type: application/json&, do backendu jest też przekazywany nagłówek z autoryzacją: &Authorization: Bearer token&.",
+        "Gdy dane dotrą do endpontu &/readUserData&, w pierwszej kolejności uruchumiany jest &middleware verifyUser&, który ma na celu weryfikację tokenu użytkownika, a którego szczegółowe działanie opisane jest w kolejnym punkcie.",
+        "Jeśli użytkownik został poprawnie uwierzytelniony, backend za pomocą funkcji &readUsers()& odczytuje plik JSON z danymi użytkownika.",
+        "W następnym kroku porównywane jest &ID& użytkownika z otrzymanego &tokenu&, z ID użytkownikow zapisanych w bazie danych. Jeśli ID są zgodne, odczytane zostają pozostałe informacje przypisane do użytkownika. Następnie zwracane są wszystkie dane użytkownika: email, nick, imię, nazwisko, avatar, miasto, telefon, opis itd.",
+        "Jeśli użytkownik nie istnieje lub token jest nieprawidłowy, backend zwraca odpowiedni komunikat błędu.",
+        "W dalszym kroku po otrzymaniu danych z serwera, frontend zapisuje je w kontekście (&useContext()&)",
+        "&Dzięki temu frontend natychmiast po zalogowaniu wyświetla dane użytkownika bez czekania na dodatkowe przeładowanie strony (np. nick w nagłówku strony, jeśli został uzupełniony przez użytkownika)&"
+      ],
+      "caption6_alt1": "endpoint readUserData",
+      "caption6_alt2": "API readUserData",
+
+      "caption7": "7. Middleware — verifyUser",
+      "caption7_text": [
+        "&VeryfyUser&, czyli &middleware& który jest uruchamiany przed wykonaniem właściwego kodu w ednpoincie, sprawdza czy zapytanie wysłane na serwer zawiera nagłówek z tokenem (&Bearer Token&).",
+        "Jeśli token jest obecny, &jwt.verify& dekoduje go używając zmiennej środowiskowej &.env& wraz z sekretnym kluczem, a następnie uzyskane w ten sposób &ID& użytkownika zawarte wcześniej w tokenie przekazuje jako zmienną do endpointu &/readUserData&."
+      ],
+      "caption7_alt": "Middleware — verifyUser",
+
+      "caption8": "8. Zapis danych użytkownika w useContext",
+      "caption8_text1": [
+        "Frontend zapisuje wybrane dane w kontekście globalnym UserContext (&useContext()&), korzystając z przekazanych setterów (&useState()&)",
+        "Do globalnego kontekstu trafiają"
+      ],
+      "caption8_text2": ["id", "email", "nick", "firstName", "lastName"],
+      "caption8_text3": [
+        "Context zdefiniowany jest w głównym pliku aplikacji (&App.tsx&) w którym znajduje się &router& z pathami do poszczególnych stron aplikacji. &Provider& który udostępnia dane z kontekstu, przekazuje je wszystkim ścieżkom w projekcie, dzięki czemu wszystkie strony aplikacji mają dostęp do poszczególnych danych oraz do możliwości ich edycji.",
+        "Istotna w tym miejscu jest funkcja &handleSetToken()&, która po otrzymaniu &tokenu&, zapisuje go w pamięci przeglądarki, dzięki temu token zapisany w &sessionStorage& (a nie tylko w kontekście), nie jest resetowany przy ponowym renderowaniu komponentów.",
+        "W kolejnym kroku przechodzimy do &useEffect()& który przy ponownym renderowaniu komponentów pobiera aktualny &token& z &sessionStorage& przeglądarki, po czym odtwarza poszczególne stany danych (uzupełnia kontekst). W tym celu ponownie wykonywany jest fetch do endpointu &/readUserData.&",
+        "&Dzięki temu po odświeżeniu strony czy też przejściu na inną stronę aplikacji, użytkownik pozostaje zalogowany a kontekst z danymi użytkownika (np. nick w nagłówku strony) pozostaje zawsze aktualny.&"
+      ],
+      "caption8_alt1": "useContext",
+      "caption8_alt2": "useContext_2",
+
+      "caption9": "9. Komunikat + przekierowanie po logowaniu",
+      "caption9_text": "Po poprawnym zalogowaniu i wyświetleniu komunikatu You are logged in! przechodzimy do ostatniej instruckji zawartej w &onHandleSubmit&: &goToHome()&. po 2 sekundach użytkownik jest automatycznie przekierowany do strony głównej.",
+      "caption9_alt": "przekierowanie po zalogowaniu",
+
+      "button_goToLogin": "Przejdź do logowania"
+    },
+    "userPanel": {
+      "title": "Panel użytkownika - opis procesu",
+
+      "caption1": "1. Przekierowanie po zalogowaniu + pobranie danych użytkownika",
+      "caption1_text": [
+        "Po zalogowaniu użytkownika zostajemy przekierowani na stronę główną aplikacji. W pierwszej kolejności wykonują się instruckje zawarte w &useEffect()&, mające na celu pobranie aktualnych danych użytkownika z backendu. Sam proces łączenia się z serwerem i pobierania danych opisany jest w kolejnym punkcie.",
+        "Jeśli użytkownik został zalogowany, a jego dane poprawnie pobrane, wyświetlana jest sekcja z danymi użytkownika takimi jak &ID& oraz adres &email&. Na końcu sekcji wyświetla się przycisk z przekierowaniem do panelu użytkonika gdzie znjajdują się wszystkie dane oraz możliwość ich edycji.",
+        "URL panelu użytkownika wykorzystuje ID pobrane wcześniej w fetchu."
+      ],
+      "caption1_alt1": "pobranie danych uzytkownika",
+      "caption1_alt2": "wyświetlenie danych uzytkownika",
+
+      "caption2": "2. Pobranie danych przez API",
+      "caption2_text": [
+        "Używając &tokenu&, który pobieramy z globalnego kontekstu (&usecontext()&), wykonujemy &fetcha& łącząc się z endpointem &/me&. W tym celu wysyłamy zapytanie &metodą GET&, używającąc nagłówków z m.in. autoryzacją '&Bearer token&'.",
+        "Otrzymane dane w postai obiektu Response odczytujemy w formacie &JSON& zwracając &ID& oraz &email&."
+      ],
+      "caption2_alt": "pobranie danych przez API",
+
+      "caption3": "3. Endpoint /me + middleware verifyUser",
+      "caption3_text": [
+        "Endpoint &/me& działa podobnie jak &/getData& opisany w procesie logowania. W pierwszej kolejności uruchamiany jest &middleware veryfiUser& (opisany również w pkt. 7 procesu logowania), który na podstawie otrzymanego &tokenu&, dekoduje go i zwraca odszyfrowane &ID& użytkownika zawarte wcześniej w tokenie.",
+        "Po prawidłowym uwierzytelnieniu wracamy do endpointu &/me&, który uruchamia funkcję &readUsers()&, ta z kolei odczytuje plik z danymi użytkowników. ID otrzymane po odszyfrowaniu tokenu porównywane jest z ID użytkowników z bazy danych. Po odnalezieniu takiego samego ID, zczytywane są pozostałe dane tego użytkownika i wysyłane wraz ze statusem 200 na frontend."
+      ],
+      "caption3_alt": "endpoint /me",
+
+      "caption4": "4. Przejście do panelu użytkownika: pobieranie pełnych danych",
+      "caption4_text1": [
+        "Po kliknięciu przycisku Go to user settings użytkownik zostaje przekierowany na stronę: &userpage:userId&.",
+        "W panelu użytkownika wykonywany jest kolejny &useEffect& który:"
+      ],
+      "caption4_text2": [
+        "ponownie wysyła token do backendu (endpoint &/readUserData&),",
+        "backend zwraca pełne dane zapisane w bazie: email, nick, imię, nazwisko, avatar, city, phone, description itd.",
+        "dane są ustawiane w stanie komponentu (userData) oraz jednocześnie w globalnym kontekście (&UserContext&)."
+      ],
+      "caption4_text3": [
+        "Dzięki temu formularz wyświetla zawsze aktualne dane zalogowanego użytkownika. &Szczegółowy opis endpointu /readUserData znjaudje się w pkt. 6 opisu procesu logowania&.",
+        "Panel użytkownika działa w dwóch trybach:",
+        "&Tryb podglądu&"
+      ],
+      "caption4_text4": [
+        "wyświetlane są dane pobrane z backendu,",
+        "dane są przedstawione w estetycznej karcie użytkownika,",
+        "widoczny jest przycisk Edit Data."
+      ],
+      "caption4_text5": [
+        "&Tryb edycji&",
+        "Po kliknięciu Edit Data włączany jest tryb formularza:"
+      ],
+      "caption4_text6": [
+        "formularz Formika wypełniony aktualnymi danymi (initialValues= userData),",
+        "walidacja pól za pomocą Yup (email, nick, imię, nazwisko, telefon itd.), użytkownik może edytować dowolne swoje dane."
+      ],
+      "caption4_alt": "endpoint /readUserData",
+
+      "caption5": "5. Zapis danych – wysyłanie zmian do backendu.",
+      "caption5_text": [
+        "Po zakończeniu edycji danych użytkownik zatwierdza formularz (walidacja poobnie jak w formularzu rejestracji i logowania odbywa się przy użyciu biblioteki &Yup&), co uruchamia funkcję &handleSubmit()&. Jej zadaniem jest zebranie wszystkich aktualnie wypełnionych pól oraz wywołanie funkcji &updateUserData()&, odpowiedzialnej za wysłanie zmian do backendu.",
+        "Proces aktualizacji przebiega wieloetapowo. Najpierw aplikacja sprawdza, czy w globalnym kontekście nadal znajduje się aktualny token użytkownika. Jeżeli tak, dane wpisane w formularzu są zapisywane w formcie JSON (&API&) i przesyłane na endpoint &/updateUser metodą PUT&. W nagłówkach wykorzystywany jest token użytkownika, przekazywany jako &Authorization: Bearer Token&, co pozwala backendowi jednoznacznie potwierdzić, który użytkownik wysłał żądanie.",
+        "Jeżeli backend poprawnie zapisze dane, komponent aktualizuje lokalny stan (&setDataUpdate(true)&) oraz wyłącza tryb edycji, co powoduje powrót do widoku podglądu. W przypadku błędów wyświetlany jest odpowiedni komunikat, a sam backend zwraca status błędu widoczny w konsoli."
+      ],
+      "caption5_alt1": "handleSubmit",
+      "caption5_alt2": "Api UpdateUser",
+
+      "caption6": "6. Obsługa endpointu aktualizacji po stronie backendu",
+      "caption6_text": [
+        "Endpoint odpowiedzialny za aktualizację danych użytkownika działa w oparciu o &metodę PUT& oraz wcześniej stworzone &middleware verifyUser& (opisany szczegółowo w pkt. 7 procesu logowania). To właśnie middleware przejmuje token wysłany w nagłówku i odszyfrowuje z niego identyfikator użytkownika, który ma zostać zaktualizowany.",
+        "Po poprawnej autoryzacji endpoint pobiera z request body wszystkie pola, które mogą zostać zmienione, takie jak: adres e-mail, nick, imię, nazwisko, numer telefonu, avatar czy opis użytkownika. Następnie backend odnajduje w bazie danych (w tym przypadku w pliku &JSON& z danymi użytkownikow) użytkownika o przekazanym &ID&.",
+        "Jeśli użytkownik istnieje, backend dokonuje aktualizacji. Kluczową cechą jest tutaj mechanizm częściowego nadpisywania danych — do każdego pola przypisywana jest albo nowa wartość przesłana przez frontend, albo stara wartość, jeśli użytkownik nie wprowadził zmian.",
+        "Po zakończeniu procesu backend zapisuje zaktualizowaną listę użytkowników (&writeUsers()&) i zwraca odpowiedź z komunikatem potwierdzającym pomyślną aktualizację. Jeśli nie uda się odnaleźć użytkownika lub wystąpi błąd zapisu, endpoint zwraca odpowiednio status 404 lub 500, wraz z opisem błędu."
+      ],
+      "caption6_alt": "endpoint /updateUser",
+
+      "text_bottom": " Zarejestruj się lub zaloguj i przetestuj jak działa panel użytkownika",
+      "button_goToRegistration": "Przejdź do rejestracji",
+      "button_goToLogin": "Przejdź do logowania"
     }
   }
 }

@@ -2,113 +2,249 @@
   "useCase": {
     "register": {
       "title": "User registration - process description",
-      "caption1": "1. Registration form (Frontend)",
-      "text1": "The registration process begins on a page with a form that allows the user to provide an email address and password.",
-      "text2": "To handle the form, I used the",
-      "text3_bold": " Formik ",
-      "text4": "library, which makes it easier to manage the state of form fields, error handling, and the process of sending data to the backend.",
-      "text5": "Data validation occurs before the form is submitted—the ",
-      "text6_bold": "Yup ",
-      "text7": "library checks the email address for validity and checks for empty fields.",
-      "text8": "Once the form is submitted, the login credentials are passed to the backend, where they are verified against the data stored in the users.json file.",
-      "alt1": "registration form",
-      "alt2": "Data Validation (Yup)",
+
+      "caption1": "1. Registration Form (Frontend)",
+      "caption1_text": [
+        "The registration process begins on a page with a form that allows the user to enter their email address and password.",
+        "I used the &Formik& library to manage the form, which simplifies managing the state of form fields, error handling, and the process of sending data to the backend.",
+        "Data validation occurs before the form is submitted—the &Yup& library checks the email address for validity and checks whether the fields are empty.",
+        "After the form is submitted, the login details are passed to the backend, where they are verified against the data stored in the &users.json& file."
+      ],
+      "caption1_alt": "registration form",
+
       "caption2": "2. Data Validation (Yup)",
-      "text9": "Before the form submits data, ",
-      "text10_bold": "Yup",
-      "text11": " checks its validity—for example, the email address format and whether passwords are the same—allowing it to validate data before sending it to the backend.",
-      "caption3": "3. onHandleSubmit - sending data",
-      "text12": "After successful validation, I call the onHandleSubmit function. In this function, I prepare callbacks responsible for the frontend's response to success or error and pass data to the ",
-      "text13_bold": "API",
-      "text14_li": "I create an onSuccess function → it displays a message and redirects to the login",
-      "text15_li": "I create the onError function → it displays an error message",
-      "text16_li": "I am executing the request via postRegister",
-      "alt3": "onHandleSubmit — sending data",
-      "alt4": "Sending data to API (Fetch + JSON)",
-      "caption4": "4. Sending data to API (Fetch + JSON)",
-      "text17": "After submitting the form, the user's data is sent to the backend using the ",
-      "text18_bold": "Fetch API. ",
-      "text19": "The data is transmitted in ",
-      "text20_bold": "JSON",
-      "text21": " format, so before sending it, it is converted using",
-      "text22_bold": " JSON.stringify ",
-      "text23": "and the Content-Type: application/json header tells the backend",
-      "text24_bold": " (Express) ",
-      "text25": "how it should read it",
-      "text26": "The request has an",
-      "text27_bold": " HTTP POST ",
-      "text28": "structure, and the body contains the data sent for registration. After receiving the server's response, the frontend executes the prepared callbacks:",
-      "text29": "on success →",
-      "text30_bold": " onSuccess(), ",
-      "text31": " message + redirect",
-      "text32": "in case of an error →",
-      "text33_bold": " onError(), ",
-      "text34": " displaying the error to the user",
-      "caption5": "5. Backend - Express, endpoint /register",
-      "text35": "On the server side,",
-      "text36_bold": " Express ",
-      "text37": "is responsible for handling registration. Data in",
-      "text38_bold": " JSON ",
-      "text39": "format is sent to the /register endpoint.",
-      "text40": "The data is then compared with the existing database. The",
-      "text41_bold": " readUsers() ",
-      "text42": "function reads the user data from the database and assigns it to a variable. If the user is not yet in the database, we proceed to encrypt the password using",
-      "text43_bold": " bcypt.hash ",
-      "text44": ", so that the passwords are not stored in plain text.",
-      "text45": "In the next step, I create an ID for each user using",
-      "text46_bold": " uuidv4() ",
-      "text47": "This unique identifier ",
-      "text48_bold": " ID ",
-      "text49": " along with the hashed password and the email address initially received, are stored in a new newUser object.",
-      "text50": "The newUser object itself, containing user data, also contains empty fields such as ",
-      "text51_i": "nickname, firstname, lastname, city, phone, and description, ",
-      "text52": "which the user will be able to complete and edit all values in their user panel.",
-      "text53": "The object also contains an",
-      "text54_i": " avatar, ",
-      "text55": "assigned a random graphic generated by Piscum. Ultimately, in the production version, it will be possible to upload your own graphic here using, for example,",
-      "text56_bold": " S3 BUCKET ",
-      "text57": "The user data object prepared in this way is added to the users table ",
-      "text58_bold": "users.push()",
-      "text59": " and saved in users.json ",
-      "text60_bold": "writeUsers()",
-      "alt5": "Backend — Express, endpoint /register",
-      "alt6": "Read and write users",
-      "caption6": "6. Reading and writing users (file-based storage)",
-      "text61": "Users are stored in the",
-      "text62_bold": " users.json ",
-      "text63": "file. The project utilizes a simple database based on the users.json file to store user data. Due to the nature of the project, there was no need to set up a professional database (DB).",
-      "text64": "The ",
-      "text65_bold": " readUsers() ",
-      "text66": "function allows you to read user data and then:",
-      "text67_li": "return an empty array if the database is empty (no users),",
-      "text68_li": "or return existing user data",
-      "text69": "The ",
-      "text70_bold": "writeUsers() ",
-      "text71": "function overwrites the existing file with an array of new data.",
-      "text72": "I refer to both the readUsers() and writeUsers() functions at several endpoints.",
-      "caption7": "7. Success message + redirect",
-      "text73": "After receiving a positive response, frontend:",
-      "text74_li": "displays a success message and runs goToLogin()",
-      "text75_li": "after 2 seconds it redirects to the /login page.",
-      "text76": "Thanks to this, after successful registration, the user is redirected to the login page.",
-      "alt7": "Success message + redirect",
-      "text77": "Go to registration"
+      "caption2_text": "Before the form submits data, &Yup& checks its validity—for example, the email address format and password matching—allowing for data validation before sending to the backend.",
+      "caption2_alt": "Data validation (Yup)",
+
+      "caption3": "3. onHandleSubmit — Sending Data",
+      "caption3_text1": "After successful validation, I call the onHandleSubmit function. In this function, I prepare callbacks responsible for the frontend's response to success or error and pass the data to the &API&.",
+      "caption3_text2": [
+        "I create the &onSuccess& function → it displays a message and redirects to the login.",
+        "I create the &onError& function → it displays an error message.",
+        "I execute the request via postRegister."
+      ],
+      "caption3_alt": "onHandleSubmit — sending data",
+
+      "caption4": "4. Sending Data to the API (Fetch + JSON)",
+      "caption4_text1": [
+        "After submitting the form, the user's data is sent to the backend using the &Fetch API&. The data is transmitted in &JSON& format, so it's converted using &JSON.stringify& before sending. The Content-Type: application/json header tells the backend &(Express)& how to read it.",
+        "The request is structured as an &HTTP POST&, and the body contains the data sent for registration. After receiving the server's response, the frontend executes the prepared callbacks:"
+      ],
+      "caption4_text2": [
+        "in case of success → &onSuccess()&, message + redirect",
+        "in case of error → &onError()&, error displayed to the user"
+      ],
+      "caption4_alt": "Sending data to API (Fetch + JSON)",
+
+      "caption5": "5. Backend — Express, endpoint /register",
+      "caption5_text": [
+        "On the server side, &Express& handles registration. Data in &JSON& format is sent to the /register endpoint.",
+        "The data is then compared against the existing database. The &readUsers()& function reads the user data from the database and assigns it to a variable. If the user isn't already in the database, we proceed to encrypt the password using &bcypt.hash&, so that passwords aren't stored in plain text.",
+        "In the next step, I create an ID for each user using &uuidv4()&. This unique identifier (&ID&), along with the hashed password and the initially received email address, are saved in the new newUser object.",
+        "The newUser object itself, containing the user data, also contains empty fields such as nickname, firstname, lastname, city, phone number, and description, which the user can complete and edit in their user panel.",
+        "The object also contains an avatar, assigned a random graphic generated by piscum. Ultimately, in the production version, it will be possible to upload your own graphic here using, for example, &S3 BUCKET&.",
+        "This object, containing user data, is added to the users array (&users.push()&) and saved in users.json (&writeUsers()&)."
+      ],
+      "caption5_alt": "Backend — Express, endpoint /register",
+
+      "caption6": "6. Reading and Writing Users (File-Based Storage)",
+      "caption6_text1": [
+        "Users are stored in the users.json file. In this project, I'm using a simple database based on the &users.json& file to store user data. Due to the nature of the project, there was no need to set up a professional database (DB).",
+        "The &readUsers()& function allows you to read user data and then:"
+      ],
+      "caption6_text2": [
+        "return an empty array if the database is empty (no users),",
+        "or return existing user data."
+      ],
+      "caption6_text3": [
+        "The &writeUsers()& function overwrites the existing file with an array of new data.",
+        "I refer to both the readUsers() and writeUsers() functions in several endpoints."
+      ],
+      "caption6_alt": "Reading and writing users",
+
+      "caption7": "7. Success Message + Redirect",
+      "caption7_text1": "After receiving a positive response, the frontend:",
+      "caption7_text2": [
+        "displays a success message and runs goToLogin()",
+        "after 2 seconds, redirects to the /login page."
+      ],
+      "caption7_text3": "This ensures that after successful registration, the user is redirected to the login page.",
+      "caption7_alt": "Success message + redirect",
+
+      "button1": "Go to registration"
     },
     "login": {
-      "title": "User login - process description",
-      "caption1": "1. Login form (Frontend)",
-      "text1": "As with user registration, the login process begins on a page with a form that allows the user to enter their email address and password.",
-      "text2": "The entire form handling is powered by the",
-      "text3_bold": " Formik ",
-      "text4": "library, which facilitates the management of form field states, error handling, and the process of sending data to the backend.",
-      "text5": "Data validation takes place before the form is submitted thanks to the",
-      "text6_bold": " Yup",
-      "text7": " library, which checks whether the email is in the correct format and whether the password is not empty.",
-      "text8": "After clicking the Submit button, the form passes the data to the",
-      "text9_bold": " onHandleSubmit ",
-      "text10": "function, which starts the process of logging in and passing the data via the",
-      "text11_bold": " API ",
-      "text12": "to the backend."
+      "title": "User Login – Process Description",
+
+      "caption1": "1. Login Form (Frontend)",
+      "caption1_text": [
+        "Similar to user registration, the login process begins on a page with a form that allows the user to enter their email address and password.",
+        "The entire form process is powered by the &Formik& library, which simplifies managing form field states, error handling, and the process of sending data to the backend.",
+        "Data validation is performed before the form is submitted using the &Yup& library, which checks for correct email formatting and password validity.",
+        "After clicking the Submit button, the form passes the data to the &onHandleSubmit& function, which initiates the login process and transfers the data via the &API& to the backend."
+      ],
+      "caption1_alt": "login form",
+
+      "caption2": "2. Data Validation (Yup)",
+      "caption2_text": [
+        "Before the form submits data to the API, Yup validates it. In this case, it checks the correct format of the entered email address and whether the password field is empty.",
+        "This allows the user to receive error notifications more quickly, without having to submit the form to the backend."
+      ],
+      "caption2_alt": "Data validation",
+
+      "caption3": "3. onHandleSubmit – Starting the login process",
+      "caption3_text1": [
+        "After successful validation, the &onHandleSubmit& function is executed, containing further data flow instructions and the appropriate frontend action.",
+        "In this function:"
+      ],
+      "caption3_text2": [
+        "I create an onSuccess function – triggered when the backend returns a valid token,",
+        "I create an onError function – displaying a message about incorrect data,",
+        "I call the postLogin function, which sends the login data to the backend."
+      ],
+      "caption3_text3": "This is where communication with the &API& begins.",
+      "caption3_alt": "onHandleSubmit function",
+
+      "caption4": "4. Sending Data to the API (Fetch + JSON)",
+      "caption4_text1": [
+        "Similar to the registration process, after submitting the login form, user data is sent to the backend using the &Fetch API&. The data is transmitted in JSON format, so it is converted using &JSON.stringify& before sending. There is also a Content-Type:application/json header that tells the backend (&Express&) how it should be read. The request is structured as an &HTTP POST&, with the login data passed in the body.",
+        "After receiving the server's response, the frontend executes the prepared callbacks:"
+      ],
+      "caption4_text2": [
+        "If the backend returns a 200 status, the &onSuccess()& callback is triggered.",
+        "If the data is invalid (401 status), an &onError()& callback is displayed."
+      ],
+      "caption4_text3": "&This is where the similarities between the registration and login processes end. Entering data into the form, validating it, and sending it to the API are similar in both cases. The data is then sent to the server, where the path is slightly different.&",
+      "caption4_alt": "Sending data to API",
+
+      "caption5": "5. Backend — Express, endpoint /login",
+      "caption5_text": [
+        "Data is sent to the endpoint via &POST /login&. Similar to registration, the &readUsers()& function is executed, which reads the contents of the &users.json& file.",
+        "Next, the email address provided during login (which was sent to the endpoint) is compared with the contents of the existing database. If the address is found in the database, the password is checked for validity.",
+        "The encrypted password assigned to the previously filtered email address in the database is compared with the password sent to the endpoint from the login form (&bcrypt.comapre&).",
+        "If the passwords match, a &JWT token& (JSON WEB TOKEN) is generated, containing the user ID and the token's validity (1h). The token is then sent back to the frontend, where it is stored in the local state (&useContext&) and in &sessionStorage&."
+      ],
+      "caption5_alt": "endpoint login",
+
+      "caption6": "6. Backend — endpoint /readUserData",
+      "caption6_text": [
+        "After logging in and receiving the token, the frontend executes the next instruction contained in &onHandleSubmit& – a query to the &/readUserData& endpoint. This endpoint is responsible for retrieving the user's full data from the database so that the frontend can save it in the application context (&useContext&).",
+        "This time, the query is sent using the &GET& method (&fetch API&). In addition to the previously used header: &Content-Type: application/json&, an authorization header: &Authorization: Bearer token& is also passed to the backend.",
+        "When the data reaches the &/readUserData& endpoint, the &verifyUser middleware& is first launched to verify the user's token. The detailed operation of this middleware is described in the next section.",
+        "If the user has been successfully authenticated, the backend reads the JSON file with the user data using the &readUsers()& function.",
+        "In the next step, the user &ID& from the received &token& is compared with the user IDs stored in the database. If the IDs match, the remaining information assigned to the user is retrieved. All user data is then returned: email, nickname, first name, last name, avatar, city, phone number, description, etc.",
+        "If the user doesn't exist or the token is invalid, the backend returns an appropriate error message.",
+        "After receiving the data from the server, the frontend stores it in the context (&useContext()&).",
+        "&This allows the frontend to immediately display user data after login without waiting for an additional page reload (e.g., a nickname in the page header if the user entered it).&"
+      ],
+      "caption6_alt1": "endpoint readUserData",
+      "caption6_alt2": "API readUserData",
+
+      "caption7": "7. Middleware — verifyUser",
+      "caption7_text": [
+        "&VeryfyUser&, a &middleware& that runs before executing the actual code in the endpoint, checks whether the request sent to the server contains a header with a token (&Bearer Token&).",
+        "If the token is present, &jwt.verify& decodes it using the &.env& environment variable along with the secret key. Then, the resulting user &ID&, previously contained in the token, is passed as a variable to the &/readUserData& endpoint."
+      ],
+      "caption7_alt": "Middleware — verifyUser",
+
+      "caption8": "8. Saving User Data in the useContext",
+      "caption8_text1": [
+        "The frontend saves selected data in the global UserContext (&useContext()&), using the passed setters (&useState()&).",
+        "The global context receives:"
+      ],
+      "caption8_text2": ["id", "email", "nick", "firstName", "lastName"],
+      "caption8_text3": [
+        "The context is defined in the main application file (&App.tsx&), which contains a &router& with paths to individual application pages. The &provider& that provides data from the context forwards it to all paths in the project, allowing all application pages to access and edit the data.",
+        "The &handleSetToken()& function is crucial here. After receiving the &token&, it saves it in the browser's memory. This prevents the token stored in &sessionStorage& (and not just in the context) from being reset when components are re-rendered.",
+        "The next step is &useEffect()&, which retrieves the current &token& from the browser's &sessionStorage& upon re-rendering the components, then recreates the individual data states (completes the context). To do this, a fetch to the &/readUserData& endpoint is performed again.",
+        "&This ensures that after refreshing the page or navigating to another page of the application, the user remains logged in, and the context containing user data (e.g., the nickname in the page header) remains up-to-date.&"
+      ],
+      "caption8_alt1": "useContext",
+      "caption8_alt2": "useContext_2",
+
+      "caption9": "9. Message + redirection after login",
+      "caption9_text": "After successfully logging in and displaying the message You are logged in!, we proceed to the last statement in &onHandleSubmit: goToHome()&. After 2 seconds, the user is automatically redirected to the home page.",
+      "caption9_alt": "redirect after login",
+
+      "button_goToLogin": "Go to login"
+    },
+    "userPanel": {
+      "title": "User Panel - Process Description",
+
+      "caption1": "1. Redirection after logging in + fetching user data",
+      "caption1_text": [
+        "After logging in, the user is redirected to the application's main page. First, the instructions in &useEffect()& are executed to retrieve the current user data from the backend. The process of connecting to the server and fetching data is described in the next section.",
+        "If the user has been logged in and their data has been successfully retrieved, a section with user data such as their &ID& and &email& address is displayed. At the end of the section, a button redirecting to the user panel displays, where all data can be accessed and edited.",
+        "The user panel URL uses the ID previously retrieved in fetch."
+      ],
+      "caption1_alt1": "fetching user data",
+      "caption1_alt2": "displaying user data",
+
+      "caption2": "2. Fetching data via API",
+      "caption2_text": [
+        "Using the &token& we retrieve from the global context (&usecontext()&), we perform a &fetch& by connecting to the &/me& endpoint. To do this, we send a request using the &GET method&, using headers including the '&Bearer token&' authorization.",
+        "We read the received data in the form of a Response object in &JSON& format, returning the &ID& and &email&."
+      ],
+      "caption2_alt": "retrieving data via API",
+
+      "caption3": "3. Endpoint /me + middleware verifyUser",
+      "caption3_text": [
+        "Endpoint &/me& works similarly to &/getData& described in the login process. First, the &veryfiUser middleware& (also described in point 7 of the login process) is launched, which, based on the received &token&, decodes it and returns the decrypted user &ID& previously contained in the token.",
+        "After successful authentication, we return to endpoint &/me&, which runs the &readUsers()& function, which in turn reads the user data file. The ID obtained after decrypting the token is compared with the user IDs from the database. Once a matching ID is found, the remaining data for that user is retrieved and sent to the frontend with a status of 200."
+      ],
+      "caption3_alt": "endpoint /me",
+
+      "caption4": "4. Going to the user panel: downloading full data",
+      "caption4_text1": [
+        "After clicking the Go to user settings button, the user is redirected to the page: &userpage:userId&.",
+        "Another &useEffect& is executed in the user panel, which:"
+      ],
+      "caption4_text2": [
+        "sends the token to the backend again (endpoint &/readUserData&),",
+        "the backend returns the full data stored in the database: email, nickname, first name, last name, avatar, city, phone number, description, etc.",
+        "the data is set in the component state (userData) and simultaneously in the global context (&UserContext&)."
+      ],
+      "caption4_text3": [
+        "This ensures that the form always displays the current data of the logged-in user. &A detailed description of the /readUserData endpoint can be found in point 6 of the login process description.&",
+        "The user panel operates in two modes:",
+        "&Preview Mode&"
+      ],
+      "caption4_text4": [
+        "data retrieved from the backend is displayed,",
+        "data is presented in an aesthetically pleasing user card,",
+        "the Edit Data button is visible."
+      ],
+      "caption4_text5": [
+        "&Edit Mode&",
+        "Clicking Edit Data activates form mode:"
+      ],
+      "caption4_text6": [
+        "Formika form filled with current data (initialValues=userData),",
+        "field validation using Yup (email, nickname, first name, last name, phone number, etc.); the user can edit any of their data."
+      ],
+      "caption4_alt": "endpoint /readUserData",
+
+      "caption5": "5. Saving data – sending changes to the backend.",
+      "caption5_text": [
+        "After editing the data, the user submits the form (validation, similar to the registration and login forms, is performed using the &Yup& library), which triggers the &handleSubmit()& function. Its task is to collect all currently filled-out fields and call the &updateUserData()& function, which is responsible for sending the changes to the backend.",
+        "The update process is multi-stage. First, the application checks whether a valid user token is still present in the global context. If so, the data entered in the form is saved in JSON format (&API&) and sent to endpoint &/updateUser& using the &PUT method&. The user token, passed as &Authorization: Bearer Token&, is used in the headers, allowing the backend to clearly confirm which user sent the request.",
+        "If the backend saves the data correctly, the component updates the local state (&setDataUpdate(true)&) and disables edit mode, returning to the preview view. In case of errors, an appropriate message is displayed, and the backend itself returns the error status visible in the console."
+      ],
+      "caption5_alt1": "handleSubmit",
+      "caption5_alt2": "Api UpdateUser",
+
+      "caption6": "6. Handling the update endpoint on the backend side",
+      "caption6_text": [
+        "The endpoint responsible for updating user data is based on the &PUT method& and the previously created &verifyUser middleware& (described in detail in point 7 of the login process). This middleware receives the token sent in the header and decrypts the user ID to be updated from it.",
+        "After successful authorization, the endpoint retrieves all fields from the request body that can be changed, such as: email address, nickname, first name, last name, phone number, avatar, and user description. The backend then finds the user with the provided &ID& in the database (in this case, in the &JSON& file with user data).",
+        "If the user exists, the backend performs the update. The key feature here is the mechanism of partial data overwriting — each field is assigned either The new value sent by the frontend, or the old value if the user hasn't made any changes.",
+        "After the process is complete, the backend saves the updated user list (&writeUsers()&) and returns a response with a message confirming the successful update. If the user cannot be found or an error occurs, the endpoint returns a 404 or 500 status, along with a description of the error."
+      ],
+      "caption6_alt": "endpoint /updateUser",
+
+      "text_bottom": "Register or log in and test how the user panel works",
+      "button_goToRegistration": "Go to registration",
+      "button_goToLogin": "Go to login"
     }
   }
 }

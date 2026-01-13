@@ -23,195 +23,156 @@ export const CaseRegister = () => {
     useCase: { register },
   } = useContext(LanguageContext);
 
+  const withColour = (text: string, colour: string) => {
+    const textArr = text.match(/&.*?&|[^&]+/g);
+
+    if (!textArr) return text;
+
+    return textArr.map((text, idx) => {
+      let resultText = text;
+      const toBeColoured = text.at(0) === "&";
+
+      if (toBeColoured) {
+        resultText = text.slice(1, -1);
+      }
+
+      return (
+        <span
+          key={idx}
+          style={{
+            color: toBeColoured ? colour : "#b1b5c3",
+            fontWeight: toBeColoured ? "700" : "400",
+          }}
+        >
+          {toBeColoured ? resultText : text}
+        </span>
+      );
+    });
+  };
+
+  const green = "#45b26b";
+
   return (
     <Layout>
       <TitleLayoutGreen>{register.title}</TitleLayoutGreen>
       <SectionLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption1}</div>
-          <div style={{ marginBottom: "15px" }}>{register.text1}</div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text2}
-            <b className={styles.bold}>{register.text3_bold}</b>
-            {register.text4}
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text5}{" "}
-            <b className={styles.bold}>{register.text6_bold}</b>
-            {register.text7}
-          </div>
-          <div style={{ marginBottom: "15px" }}>{register.text8}</div>
+          {register.caption1_text.map((text) => (
+            <div style={{ marginBottom: "15px" }}>
+              {withColour(text, green)}
+            </div>
+          ))}
         </TextLayout>
         <PicsLayout>
-          <img src={case_register_1} alt={register.alt1}></img>
+          <img src={case_register_1} alt={register.caption1_alt}></img>
         </PicsLayout>
       </SectionLayout>
       <SectionColorLayout>
         <PicsLayout>
-          <img src={case_register_2} alt={register.alt2}></img>
+          <img src={case_register_2} alt={register.caption2_alt}></img>
         </PicsLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption2}</div>
-          <div>
-            {register.text9}
-            <b className={styles.bold}>{register.text10_bold}</b>
-            {register.text11}
-          </div>
+          {withColour(register.caption2_text, green)}
         </TextLayout>
       </SectionColorLayout>
       <SectionLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption3}</div>
           <div style={{ marginBottom: "15px" }}>
-            {register.text12}
-            <b className={styles.bold}>{register.text13_bold}</b>.
+            {withColour(register.caption3_text1, green)}
           </div>
           <ul>
-            <li style={{ listStyle: "inside" }}>{register.text14_li}</li>
-            <li style={{ listStyle: "inside" }}>{register.text15_li}</li>
-            <li style={{ listStyle: "inside" }}>{register.text16_li}</li>
+            {register.caption3_text2.map((text) => (
+              <li style={{ listStyle: "inside" }}>
+                {withColour(text, "#45b26b")}
+              </li>
+            ))}
           </ul>
         </TextLayout>
         <PicsLayout>
-          <img
-            src={case_register_3}
-            alt="onHandleSubmit — wysłanie danych"
-          ></img>
+          <img src={case_register_3} alt={register.caption3_alt}></img>
         </PicsLayout>
       </SectionLayout>
       <SectionColorLayout>
         <PicsLayout>
-          <img
-            src={case_register_4}
-            alt="Wysyłanie danych do API (Fetch + JSON)"
-          ></img>
+          <img src={case_register_4} alt={register.caption4_alt}></img>
         </PicsLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption4}</div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text17}
-            <b className={styles.bold}>{register.text18_bold}</b>
-            {register.text19}
-            <b className={styles.bold}>{register.text20_bold}</b>
-            {register.text21}
-            <b className={styles.bold}>{register.text22_bold}</b>
-            {register.text23}
-            <b className={styles.bold}>{register.text24_bold}</b>
-            {register.text25}.
-          </div>
-          <div>
-            {register.text26}
-            <b className={styles.bold}>{register.text27_bold}</b>
-            {register.text28}
-            <ul style={{ marginTop: "10px" }}>
-              <li style={{ listStyle: "inside" }}>
-                {register.text29}
-                <b className={styles.bold}>{register.text30_bold}</b>
-                {register.text31}
-              </li>
-              <li style={{ listStyle: "inside" }}>
-                {register.text32}
-                <b className={styles.bold}>{register.text33_bold}</b>
-                {register.text34}
-              </li>
-            </ul>
-          </div>
+          {register.caption4_text1.map((text) => (
+            <div style={{ marginBottom: "15px" }}>
+              {withColour(text, green)}
+            </div>
+          ))}
+
+          <ul>
+            {register.caption4_text2.map((text) => (
+              <li style={{ listStyle: "inside" }}>{withColour(text, green)}</li>
+            ))}
+          </ul>
         </TextLayout>
       </SectionColorLayout>
       <SectionLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption5}</div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text35}
-            <b className={styles.bold}>{register.text36_bold}</b>
-            {register.text37}
-            <b className={styles.bold}>{register.text38_bold}</b>
-            {register.text39}
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text40}
-            <b className={styles.bold}>{register.text41_bold}</b>
-            {register.text42}
-            <b className={styles.bold}>{register.text43_bold}</b>
-            {register.text44}
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text45}
-            <b className={styles.bold}>{register.text46_bold}</b>
-            {register.text47}(
-            <b className={styles.bold}>{register.text48_bold}</b>)
-            {register.text49}
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text50}
-            <i>{register.text51_i}</i>
-            {register.text52}
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text53}
-            <i>{register.text54_i}</i>
-            {register.text55}
-            <b className={styles.bold}>{register.text56_bold}</b>.
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text57}(
-            <b className={styles.bold}>{register.text58_bold}</b>)
-            {register.text59}(
-            <b className={styles.bold}>{register.text60_bold}</b>
-            ).
-          </div>
+          {register.caption5_text.map((text) => (
+            <div style={{ marginBottom: "15px" }}>
+              {withColour(text, green)}
+            </div>
+          ))}
         </TextLayout>
         <PicsLayout>
-          <img src={case_register_5} alt={register.alt5}></img>
+          <img src={case_register_5} alt={register.caption5_alt}></img>
         </PicsLayout>
       </SectionLayout>
       <SectionColorLayout>
         <PicsLayout>
-          <img src={case_register_6} alt={register.alt6}></img>
+          <img src={case_register_6} alt={register.caption6_alt}></img>
         </PicsLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption6}</div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text61}
-            <b className={styles.bold}>{register.text62_bold}</b>
-            {register.text63}
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text64}
-            <b className={styles.bold}>{register.text65_bold}</b>
-            {register.text66}
-            <ul style={{ marginTop: "10px" }}>
-              <li style={{ listStyle: "inside" }}>{register.text67_li}</li>
-              <li style={{ listStyle: "inside" }}>{register.text68_li}</li>
-            </ul>
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            {register.text69}
-            <b className={styles.bold}>{register.text70_bold}</b>
-            {register.text71}
-          </div>
-          <div style={{ marginBottom: "15px" }}>{register.text72}</div>
+
+          {register.caption6_text1.map((text) => (
+            <div style={{ marginBottom: "15px" }}>
+              {withColour(text, green)}
+            </div>
+          ))}
+          <ul style={{ marginBottom: "15px" }}>
+            {register.caption6_text2.map((text) => (
+              <div>
+                <li style={{ listStyle: "inside" }}>
+                  {withColour(text, green)}
+                </li>
+              </div>
+            ))}
+          </ul>
+          {register.caption6_text3.map((text) => (
+            <div style={{ marginBottom: "15px" }}>
+              {withColour(text, green)}
+            </div>
+          ))}
         </TextLayout>
       </SectionColorLayout>
       <SectionLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption7}</div>
-          <div>
-            {register.text73}
-            <ul style={{ marginTop: "10px", marginBottom: "15px" }}>
-              <li style={{ listStyle: "inside" }}>{register.text74_li}</li>
-              <li style={{ listStyle: "inside" }}>{register.text75_li}</li>
-            </ul>
-            {register.text76}
-          </div>
+          <div style={{ marginBottom: "15px" }}>{register.caption7_text1}</div>
+          <ul style={{ marginBottom: "15px" }}>
+            {register.caption7_text2.map((text) => (
+              <li style={{ listStyle: "inside" }}>{text}</li>
+            ))}
+          </ul>
+          <div style={{ marginBottom: "15px" }}>{register.caption7_text3}</div>
         </TextLayout>
         <PicsLayout>
-          <img src={case_register_7} alt={register.alt7}></img>
+          <img src={case_register_7} alt={register.caption7_alt}></img>
         </PicsLayout>
       </SectionLayout>
       <div className={styles.buttonSection}>
         <Link to="/register" className={styles.button}>
-          {register.text77}
+          {register.button_goToRegister}
         </Link>
       </div>
     </Layout>
