@@ -1,86 +1,14 @@
 [
   {
-    "id": "a0d137b7-beef-4840-9cc1-792251636a5b",
-    "email": "jankowalski@gmail.com",
-    "passwordHash": "$2b$10$5OTKkY5GJ44qr1eBCtjw/OAbiSmgFnRydeoH3yJY/X4BCQ5.ueD3K",
-    "nick": "Jan",
-    "firstName": "Jan",
-    "lastName": "Kowalski",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "Warszawa",
-    "phone": "123456789",
-    "description": "Some description..."
-  },
-  {
-    "id": "17e48723-45fc-40fd-9bb5-6ecbfe267b24",
-    "email": "maraaaaaacin123@op.pl",
-    "passwordHash": "$2b$10$S.3xFsDvTr4Jnru2du8hVO3/xSr.z9zWBIJdKWi9YFNuYVLSo4lJ6",
-    "nick": "",
-    "firstName": "",
-    "lastName": "",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "",
-    "phone": "",
-    "description": ""
-  },
-  {
-    "id": "d28d7ef5-31c2-4769-b8c2-1adcaa56fccb",
-    "email": "marcin@op.pl",
-    "passwordHash": "$2b$10$fp1FivMOARspq7LFJ02yfOJGbWD2PXMdM9SG0PTn6LfUMGzQzV/ka",
-    "nick": "serwo",
-    "firstName": "marcin",
-    "lastName": "serwotka",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "warsaw",
-    "phone": "123456789",
-    "description": "reacy developer"
-  },
-  {
-    "id": "98385558-4cad-4445-8b54-a92993dcfc7a",
-    "email": "sylwia@op.pl",
-    "passwordHash": "$2b$10$L1E9jc8kAw2ZBRj/bznyD.tS2WlbYacHEXc4oGfGT0HEp3ybu8ZlW",
-    "nick": "Sylwunia",
-    "firstName": "Sylwia",
-    "lastName": "Łoś",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "SJZ",
-    "phone": "123456789",
-    "description": "Jestem sylwia"
-  },
-  {
-    "id": "edf82b0f-0a45-464b-a674-0ec65d4beadf",
-    "email": "stasiek1@onet.pl",
-    "passwordHash": "$2b$10$y6tfBK0rCmPl5GrXkIqZ7OPfMjbF.QE1zU1QrLoQZklDTy8GrE9j6",
-    "nick": "stasiek",
-    "firstName": "Stanisław",
+    "id": "38ad8913-002f-4229-8add-16a751b37031",
+    "email": "marcin.serwotka@op.pl",
+    "passwordHash": "$2b$10$Dw2DwuFr15zxQ49QuU2IIecckbUwiP7KVi5mz9UZIrAgd1GnDoW5S",
+    "nick": "Serwo",
+    "firstName": "Marcin",
     "lastName": "Serwotka",
     "avatarUrl": "https://picsum.photos/300",
-    "city": "Jastrzębie-Zdrój",
-    "phone": "123456789",
-    "description": "jakiś tam opis"
-  },
-  {
-    "id": "24c96c75-dfc8-4a1f-a67f-e8810b467338",
-    "email": "hax@gmail.com",
-    "passwordHash": "$2b$10$.n33f39qVt2oJoatPWPnAuwkPk7W3GGXSXHjXEsdGP9BkrH1mQx4a",
-    "nick": "waax",
-    "firstName": "wda",
-    "lastName": "123",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "wad",
-    "phone": "123456789",
-    "description": "something about myself"
-  },
-  {
-    "id": "97958d07-17e7-4b61-958a-4a7eb3ade811",
-    "email": "nikola@gmail.com",
-    "passwordHash": "$2b$10$rUzcslPsKkmup6q1bK.WIOOxmgZlb0fmDIKCx55jYlyX1s16vWmlO",
-    "nick": "Nikola",
-    "firstName": "Niszo",
-    "lastName": "ndak",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "Katowice",
-    "phone": "123569594",
-    "description": "DBDIA"
+    "city": "Warszawa",
+    "phone": "111111111",
+    "description": "React Developer"
   }
 ]

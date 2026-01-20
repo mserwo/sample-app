@@ -8,6 +8,10 @@
   padding-bottom: 10px;
   text-align: start;
   color: colors.$secondary1;
+
+  &_margin {
+    margin-bottom: 15px;
+  }
 }
 
 .bold {
@@ -32,10 +36,21 @@
   background-color: colors.$neutrals4;
 }
 
+.footer {
+  display: flex;
+  gap: 20px;
+  margin: 0px, 80px;
+  // max-width: 100%;
+}
+
 .footerPic1 {
-  height: 400px;
+  // flex: 1;
+  // height: 300px;
+  // height: auto;
 }
 
 .footerPic2 {
-  height: 300px;
+  // flex: 5;
+  // height: 300px;
+  // height: auto;
 }

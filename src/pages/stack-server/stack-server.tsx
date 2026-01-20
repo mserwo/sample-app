@@ -15,104 +15,106 @@ import stack_server_1 from "../../assets/screens/stack_server_1.png";
 import stack_server_2 from "../../assets/screens/stack_server_2.png";
 import stack_server_3 from "../../assets/screens/stack_server_3.png";
 import stack_server_4 from "../../assets/screens/stack_server_4.png";
+import { useContext } from "react";
+import { LanguageContext } from "../../App";
 
 export const StackServer = () => {
+  const {
+    techStack: { server },
+  } = useContext(LanguageContext);
+
+  const withColour = (text: string, colour: string) => {
+    const textArr = text.match(/&.*?&|[^&]+/g);
+
+    if (!textArr) return text;
+
+    return textArr.map((text, idx) => {
+      let resultText = text;
+      const toBeColoured = text.at(0) === "&";
+
+      if (toBeColoured) {
+        resultText = text.slice(1, -1);
+      }
+
+      return (
+        <span
+          key={idx}
+          style={{
+            color: toBeColoured ? colour : "#b1b5c3",
+            fontWeight: toBeColoured ? "700" : "400",
+          }}
+        >
+          {toBeColoured ? resultText : text}
+        </span>
+      );
+    });
+  };
+
+  const colour = "#4bc9f0";
+
   return (
     <Layout>
-      <TitleLayoutBlue>Serwer - opis technologii</TitleLayoutBlue>
+      <TitleLayoutBlue>{server.title}</TitleLayoutBlue>
       <SectionLayout>
         <TextLayout>
-          <div className={styles.caption}>1. Rola serwera w projekcie</div>
-          <div style={{ marginBottom: "15px" }}>
-            Serwer pełni rolę dostawcy <b className={styles.bold}>API</b> i
-            odpowiada za autoryzację, oraz operacje na danych użytkowników. Nie
-            renderuje on widoków ani nie zarządza warstwą UI — całość interfejsu
-            realizowana jest po stronie Reacta.
+          <div className={styles.caption}>{server.caption1}</div>
+
+          <div className={styles.caption_margin}>
+            {withColour(server.caption1_text, colour)}
           </div>
-          <div className={styles.caption}>2. Node.js i Express</div>
-          <div style={{ marginBottom: "15px" }}>
-            Backend został zbudowany w oparciu o środowisko <b>Node.js</b> oraz
-            framework <b className={styles.bold}>Express</b>. Express odpowiada
-            za obsługę
-            <b className={styles.bold}> routingu</b>,{" "}
-            <b className={styles.bold}>middleware</b> oraz strukturę{" "}
-            <b className={styles.bold}>endpointów REST API</b>.
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            W projekcie zastosowano middleware{" "}
-            <b className={styles.bold}>CORS</b>, które umożliwia bezpieczną
-            komunikację pomiędzy frontendem a backendem działającymi na{" "}
-            <b className={styles.bold}>różnych adresach </b>. Dzięki temu
-            aplikacja kliencka może wykonywać zapytania do API bez problemów
-            związanych z polityką bezpieczeństwa przeglądarki.
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <b className={styles.bold}>
-              Szczegółowe działanie middleware verifyUser zostało opisane w
-              sekcji Use Case w pkt 7. procesu logowania.
-            </b>
-          </div>
+          <div className={styles.caption}>{server.caption2}</div>
+
+          {server.caption2_text.map((text) => (
+            <div className={styles.caption_margin}>
+              {withColour(text, colour)}
+            </div>
+          ))}
+
           <div className={styles.containerLink}>
             <ArrowRight2 className={styles.arrow} />
             <Link to="/case/login" className={styles.link}>
-              Przejdź do opisu procesu logowania
+              {server.caption_2_button}
             </Link>
           </div>
         </TextLayout>
         <PicsLayout>
-          <img src={stack_server_1} alt=""></img>
+          <img src={stack_server_1} alt={server.caption1_alt}></img>
         </PicsLayout>
       </SectionLayout>
       <SectionColorLayout>
         <PicsLayout>
-          <img src={stack_server_2} alt=""></img>
-          <img src={stack_server_3} alt=""></img>
+          <img src={stack_server_2} alt={server.caption3_alt1}></img>
+          <img src={stack_server_3} alt={server.caption3_alt2}></img>
         </PicsLayout>
         <TextLayout>
-          <div className={styles.caption}>3. Autoryzacja i bezpieczeństwo</div>
-          <div style={{ marginBottom: "15px" }}>
-            Proces uwierzytelniania oparty jest na{" "}
-            <b className={styles.bold}>JWT</b>. Hasła użytkowników są szyfrowane
-            przy użyciu <b className={styles.bold}>biblioteki bcrypt</b>, co
-            zabezpiecza dane przed zapisaniem w postaci jawnej.
-          </div>
-          <div>
-            <b className={styles.bold}>Middleware</b> odpowiedzialne za
-            weryfikację tokenu chroni endpointy wymagające autoryzacji i
-            zapewnia, że tylko zalogowany użytkownik ma dostęp do swoich danych.
-          </div>
+          <div className={styles.caption}>{server.caption3}</div>
+
+          {server.caption3_text.map((text) => (
+            <div className={styles.caption_margin}>
+              {withColour(text, colour)}
+            </div>
+          ))}
         </TextLayout>
       </SectionColorLayout>
       <SectionLayout>
         <TextLayout>
-          <div className={styles.caption}>4. Przechowywanie danych</div>
-          <div style={{ marginBottom: "15px" }}>
-            Dane użytkowników przechowywane są w pliku{" "}
-            <b className={styles.bold}>JSON</b>, który pełni rolę uproszczonej
-            bazy danych. Takie rozwiązanie zostało zastosowane świadomie, aby
-            skupić się na architekturze aplikacji i przepływie danych, a nie na
-            konfiguracji zewnętrznej bazy.
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            Mechanizmy odczytu i zapisu danych zostały wydzielone do osobnych
-            funkcji, co ułatwia ewentualną migrację do pełnoprawnej bazy danych
-            w przyszłości.
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <b className={styles.bold}>
-              Odczyt i zapis danych użytkowników został szczegółowo opisany w
-              pkt. 6 procesu rejestracji.
-            </b>
-          </div>
+          <div className={styles.caption}>{server.caption4}</div>
+
+          {server.caption4_text.map((text) => (
+            <div className={styles.caption_margin}>
+              {withColour(text, colour)}
+            </div>
+          ))}
+
           <div className={styles.containerLink}>
             <ArrowRight2 className={styles.arrow} />
             <Link to="/case/register" className={styles.link}>
-              Przejdź do opisu procesu rejestracji
+              {server.caption_4_button}
             </Link>
           </div>
         </TextLayout>
         <PicsLayout>
-          <img src={stack_server_4} alt=""></img>
+          <img src={stack_server_4} alt={server.caption4_alt}></img>
         </PicsLayout>
       </SectionLayout>
     </Layout>

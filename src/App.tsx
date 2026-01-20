@@ -100,13 +100,19 @@ function App() {
   };
 
   const toggleLang = () => {
-    if (lang === "pl") setLang("en");
-    else setLang("pl");
+    if (lang === "pl") setLang("en"), sessionStorage.setItem("lang", "en");
+    else return setLang("pl"), sessionStorage.setItem("lang", "pl");
 
     console.log("zmiana języka");
   };
 
   const language = lang === "pl" ? polish : english;
+
+  useEffect(() => {
+    const currentLang = sessionStorage.getItem("lang") as "pl" | "en";
+    if (!currentLang) setLang("pl");
+    else return setLang(currentLang);
+  }, []);
 
   return (
     <>

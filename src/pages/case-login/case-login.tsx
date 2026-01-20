@@ -66,7 +66,7 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption1}</div>
 
           {login.caption1_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -83,7 +83,7 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption2}</div>
 
           {login.caption2_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -94,12 +94,12 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption3}</div>
 
           {login.caption3_text1.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
-          <ul style={{ marginBottom: "15px" }}>
+          <ul className={styles.caption_margin}>
             {login.caption3_text2.map((text) => (
               <div>
                 <li style={{ listStyle: "inside" }}>
@@ -109,7 +109,7 @@ export const CaseLogin = () => {
             ))}
           </ul>
 
-          <div style={{ marginBottom: "15px" }}>
+          <div className={styles.caption_margin}>
             {withColour(login.caption3_text3, colour)}
           </div>
         </TextLayout>
@@ -125,12 +125,12 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption4}</div>
 
           {login.caption4_text1.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
-          <ul style={{ marginBottom: "15px" }}>
+          <ul className={styles.caption_margin}>
             {login.caption4_text2.map((text) => (
               <div>
                 <li style={{ listStyle: "inside" }}>
@@ -140,7 +140,7 @@ export const CaseLogin = () => {
             ))}
           </ul>
 
-          <div style={{ marginBottom: "15px" }}>
+          <div className={styles.caption_margin}>
             {withColour(login.caption4_text3, colour)}
           </div>
         </TextLayout>
@@ -150,7 +150,7 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption5}</div>
 
           {login.caption5_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -168,7 +168,7 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption6}</div>
 
           {login.caption6_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -179,7 +179,7 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption7}</div>
 
           {login.caption7_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -197,12 +197,12 @@ export const CaseLogin = () => {
           <div className={styles.caption}>{login.caption8}</div>
 
           {login.caption8_text1.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
-          <ul style={{ marginBottom: "15px" }}>
+          <ul className={styles.caption_margin}>
             {login.caption8_text2.map((text) => (
               <div>
                 <li style={{ listStyle: "inside" }}>
@@ -213,7 +213,7 @@ export const CaseLogin = () => {
           </ul>
 
           {login.caption8_text3.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -223,7 +223,7 @@ export const CaseLogin = () => {
         <TextLayout>
           <div className={styles.caption}>{login.caption9}</div>
 
-          <div style={{ marginBottom: "15px" }}>
+          <div className={styles.caption_margin}>
             {withColour(login.caption9_text, colour)}
           </div>
         </TextLayout>

@@ -19,13 +19,15 @@ export const Header = () => {
     setUserMenuOpen(!userMenuOpen);
   };
 
+  const mockUser = JSON.parse(sessionStorage.getItem("mockUser") || "{}");
+
   return (
     <header className={styles.wrapper}>
       <div className={styles.container}>
         <Link className={styles.logoLink} to={`/`}>
           <Logo />
         </Link>
-        {!token ? (
+        {!(token || mockUser.mockToken) ? (
           <>
             <div className={styles.buttons}>
               <Link to="/login" className={styles.loginButton}>

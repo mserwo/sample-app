@@ -6,6 +6,7 @@ import { NavigationMenu } from "./navigation-menu/navigation-menu";
 import MailIcon from "@/assets/images/mail.svg?react";
 import GithubIcon from "@/assets/images/github.svg?react";
 import LinkedinIcon from "@/assets/images/linkedin.svg?react";
+import { Link } from "react-router-dom";
 
 const menu1items = [
   { title: "Register", url: "/case/register" },
@@ -40,7 +41,13 @@ export const Footer = () => {
     <footer className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <LogoSection />
+          <Link
+            className={styles.logoLink}
+            to={`/`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <LogoSection />
+          </Link>
           <div className={styles.navigation}>
             <NavigationMenu
               title="Use Case"

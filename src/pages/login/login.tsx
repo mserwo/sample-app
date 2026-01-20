@@ -66,7 +66,20 @@ export const Login = () => {
       setLoginResponse({ isError: true, message: errorMessage });
     };
 
-    postLogin(values.email, values.password, onSuccess, onError);
+    if (window.location.origin !== "http://localhost:5173") {
+      sessionStorage.setItem(
+        "mockUser",
+        JSON.stringify({ mockEmail: values.email, mockToken: "example token" }),
+      );
+      setLoginResponse({
+        isError: false,
+        message: "You are logged in!",
+      });
+      console.log("mock login");
+      goToHome();
+    } else {
+      postLogin(values.email, values.password, onSuccess, onError);
+    }
   };
 
   return (
@@ -84,7 +97,7 @@ export const Login = () => {
               validationSchema={validationSchema}
               onSubmit={(
                 values: Values,
-                { setSubmitting, resetForm }: FormikHelpers<Values>
+                { setSubmitting, resetForm }: FormikHelpers<Values>,
               ) => {
                 onHandleSubmit(values);
                 resetForm();

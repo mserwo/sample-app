@@ -3,7 +3,7 @@
 @use "~/colors";
 @use "~/breakpoints";
 
-.wrapper {
+.userBar {
   display: flex;
   justify-content: center;
   overflow-wrap: break-word;
@@ -15,186 +15,336 @@
   @include breakpoints.max-width("mobileL") {
     margin: 0 32px;
   }
-}
 
-.containerWelcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1120px;
-  padding-bottom: 20px;
-  text-align: center;
+  &_container {
+    width: 100%;
+    max-width: 1120px;
+    border-bottom: 1px solid colors.$neutrals3;
+    margin-bottom: 30px;
 
-  @include typography.body1;
-}
+    &_element {
+      @include typography.caption;
+      padding-bottom: 20px;
 
-.register {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: colors.$neutrals6;
-  width: 100%;
-  max-width: 1120px;
-  padding-bottom: 20px;
-  margin: auto;
-  margin-bottom: 30px;
-  text-align: center;
-  @include typography.body1;
-}
+      &_field {
+        color: colors.$neutrals5;
+        @include typography.caption2;
+      }
+    }
+    &_Field {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
 
-.registerButton {
-  cursor: pointer;
-  color: colors.$neutrals7;
-  background-color: transparent;
-  width: 150px;
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: 2px solid colors.$neutrals4;
-  transition: 0.3s;
-  margin-top: 20px;
-  @include typography.caption2;
-}
+      &_button {
+        cursor: pointer;
+        color: colors.$neutrals7;
+        background-color: transparent;
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 2px solid colors.$neutrals4;
+        transition: 0.3s;
 
-.registerButton:hover {
-  background-color: colors.$neutrals4;
-}
+        @include typography.caption;
+      }
 
-.registerButtonLink {
-  color: colors.$neutrals7;
-}
-
-.login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: colors.$primary1;
-  width: 100%;
-  max-width: 1120px;
-  padding-bottom: 20px;
-  margin: auto;
-  text-align: center;
-  @include typography.body2;
-}
-
-.loginButton {
-  cursor: pointer;
-  color: colors.$neutrals7;
-  background-color: colors.$primary1;
-  width: 150px;
-  padding: 12px 20px;
-  border-radius: 25px;
-  border-style: none;
-  transition: 0.3s;
-  margin-top: 20px;
-  @include typography.caption2;
-}
-
-.loginButton:hover {
-  background-color: colors.$neutrals4;
-}
-
-.loginButtonLink {
-  color: colors.$neutrals7;
-}
-
-.container {
-  width: 100%;
-  max-width: 1120px;
-  border-bottom: 1px solid colors.$neutrals3;
-  margin-bottom: 30px;
-}
-
-.element {
-  @include typography.caption;
-  padding-bottom: 20px;
-}
-
-.field {
-  color: colors.$neutrals5;
-  @include typography.caption2;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.button {
-  cursor: pointer;
-  color: colors.$neutrals7;
-  background-color: transparent;
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: 2px solid colors.$neutrals4;
-  transition: 0.3s;
-
-  @include typography.caption;
-}
-
-.button:hover {
-  background-color: colors.$primary1;
-}
-
-.loading {
-  display: flex;
-  justify-content: center;
-}
-
-.flagContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  // background-color: rgb(73, 102, 105);
-}
-.flag {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 60px;
-    height: auto;
+      &_button:hover {
+        background-color: colors.$primary1;
+      }
+    }
   }
 }
 
-.descriptionContainer {
-  background-color: rgb(200, 200, 111);
+/*------------------------------------------------*/
+
+.hero {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+
+  @include breakpoints.max-width("desktop") {
+    flex-direction: column;
+  }
+
+  &_description {
+    display: flex;
+    flex: 1;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include typography.caption;
+
+    @include breakpoints.max-width("desktop") {
+      flex: none;
+    }
+
+    &_mainCaption {
+      color: colors.$neutrals6;
+      background-color: rgba(colors.$primary1, 0.8);
+      padding: 25px;
+      border-radius: 30px;
+      text-align: justify;
+    }
+
+    &_caption {
+      color: colors.$neutrals6;
+      border-radius: 30px;
+      text-align: justify;
+
+      &_list {
+        margin-top: 10px;
+        margin-bottom: 20px;
+
+        &_text {
+          list-style: inside;
+        }
+
+        &_text::marker {
+          color: colors.$secondary1;
+        }
+      }
+    }
+    &_tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+
+      &_text {
+        display: flex;
+        padding: 10px 30px;
+        border: 2px, solid, colors.$neutrals4;
+        border-radius: 30px;
+        @include typography.caption;
+      }
+    }
+  }
+  &_imgContainer {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+
+    @include breakpoints.max-width("desktop") {
+      flex: none;
+    }
+
+    &_pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+  }
 }
 
-.meText {
-  padding-left: 200px;
-  // background-color: rgb(132, 132, 20);
+/*------------------------------------------------*/
+
+.tilesSection {
+  margin-bottom: 60px;
 }
 
-.mePic {
-  width: 450px;
+.useCase {
+  width: 100%;
+  padding: 0 80px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0px 32px;
+  }
+
+  &_text {
+    @include fonts.poppins;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 30px;
+    border: 2px solid colors.$primary4;
+    box-sizing: border-box;
+    font-size: 22px;
+
+    &_blue {
+      border: 2px solid colors.$secondary1;
+    }
+  }
+
+  &_textBlue {
+    @include fonts.poppins;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 30px;
+    border: 2px solid colors.$secondary1;
+    box-sizing: border-box;
+  }
 }
 
-.appContainer {
-  background-color: rgb(12, 210, 236);
+.tiles {
+  @include fonts.poppins;
+  width: 100%;
+  padding: 0 80px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0px 32px;
+  }
+
+  &_inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 1400px;
+    gap: clamp(20px, 4vw, 60px);
+
+    @include breakpoints.max-width("tablet") {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+      border-radius: 30px;
+      border: 2px solid colors.$primary4;
+      margin-bottom: 20px;
+
+      @include breakpoints.max-width("tablet") {
+        margin-bottom: 0px;
+      }
+
+      &_title {
+        color: colors.$primary4;
+        @include typography.body4;
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 30px;
+      }
+
+      &_text {
+        @include typography.caption;
+        text-align: justify;
+        color: colors.$neutrals5;
+      }
+    }
+
+    &_boxBlue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+      border-radius: 30px;
+      border: 2px solid colors.$secondary1;
+      margin-bottom: 20px;
+
+      &_title {
+        color: colors.$secondary1;
+        @include typography.body4;
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 30px;
+      }
+
+      &_text {
+        @include typography.caption;
+        text-align: justify;
+        color: colors.$neutrals5;
+      }
+    }
+  }
 }
 
-.useCaseContainer {
-  background-color: rgb(155, 27, 167);
+.button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: auto;
+  gap: 20px;
+
+  &_field {
+    display: flex;
+    margin: 20px, 20px;
+    width: 100%;
+    gap: 20px;
+
+    &_text {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: colors.$neutrals6;
+      background-color: colors.$neutrals3;
+      width: 100%;
+      padding: 10px;
+      border-radius: 25px;
+      transition: 0.3s;
+      @include typography.body2;
+    }
+
+    &_text:hover {
+      background-color: colors.$primary4;
+      color: white;
+    }
+
+    &_textBlue {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: colors.$neutrals6;
+      background-color: colors.$neutrals3;
+      width: 100%;
+      padding: 10px;
+      border-radius: 25px;
+      transition: 0.3s;
+      @include typography.body2;
+    }
+
+    &_textBlue:hover {
+      background-color: colors.$secondary1;
+      color: white;
+    }
+  }
 }
 
-.useCaseElements {
-  background-color: rgb(163, 53, 25);
+.list {
+  margin-top: 20px;
+
+  &_textGreen {
+    list-style: inside;
+    color: colors.$primary4;
+  }
+
+  &_textGreen::marker {
+    color: colors.$primary4;
+  }
+
+  &_textBlue {
+    list-style: inside;
+    color: colors.$secondary1;
+  }
+
+  &_textBlue::marker {
+    color: colors.$secondary1;
+  }
 }
 
-.techStackContainer {
-  background-color: rgb(192, 82, 117);
-}
-
-.techStackElements {
-  background-color: rgb(17, 180, 142);
-}
+/*------------------------------------------------*/

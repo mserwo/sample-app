@@ -62,7 +62,7 @@ export const CaseUserPanel = () => {
           <div className={styles.caption}>{userPanel.caption1}</div>
 
           {userPanel.caption1_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -80,7 +80,7 @@ export const CaseUserPanel = () => {
           <div className={styles.caption}>{userPanel.caption2}</div>
 
           {userPanel.caption2_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -91,7 +91,7 @@ export const CaseUserPanel = () => {
           <div className={styles.caption}>{userPanel.caption3}</div>
 
           {userPanel.caption3_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -108,12 +108,12 @@ export const CaseUserPanel = () => {
           <div className={styles.caption}>{userPanel.caption4}</div>
 
           {userPanel.caption4_text1.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
-          <ul style={{ marginBottom: "15px" }}>
+          <ul className={styles.caption_margin}>
             {userPanel.caption4_text2.map((text) => (
               <div>
                 <li style={{ listStyle: "inside" }}>
@@ -124,12 +124,12 @@ export const CaseUserPanel = () => {
           </ul>
 
           {userPanel.caption4_text3.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
-          <ul style={{ marginBottom: "15px" }}>
+          <ul className={styles.caption_margin}>
             {userPanel.caption4_text4.map((text) => (
               <div>
                 <li style={{ listStyle: "inside" }}>
@@ -140,12 +140,12 @@ export const CaseUserPanel = () => {
           </ul>
 
           {userPanel.caption4_text5.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
-          <ul style={{ marginBottom: "15px" }}>
+          <ul className={styles.caption_margin}>
             {userPanel.caption4_text6.map((text) => (
               <div>
                 <li style={{ listStyle: "inside" }}>
@@ -161,7 +161,7 @@ export const CaseUserPanel = () => {
           <div className={styles.caption}>{userPanel.caption5}</div>
 
           {userPanel.caption5_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -179,7 +179,7 @@ export const CaseUserPanel = () => {
           <div className={styles.caption}>{userPanel.caption6}</div>
 
           {userPanel.caption6_text.map((text) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}

@@ -38,6 +38,21 @@ export const UserPage = () => {
   const [showEdit, setShowEdit] = useState<boolean>(false);
   const navigate = useNavigate();
 
+  const getMockUser = () => {
+    const mockUser = JSON.parse(sessionStorage.getItem("mockUser") || "{}");
+    setUserData({
+      email: mockUser.mockEmail || "",
+      nick: mockUser.mockNick || "",
+      firstName: mockUser.mockFirstName || "",
+      lastName: mockUser.mockLastName || "",
+      avatarUrl: defaultAvatar,
+      city: mockUser.mockCity || "",
+      phone: mockUser.mockPhone || "",
+      description: mockUser.mockDescription || "",
+    });
+    console.log(mockUser);
+  };
+
   const fetchUserData = async () => {
     if (token) {
       try {
@@ -63,7 +78,13 @@ export const UserPage = () => {
   };
 
   useEffect(() => {
-    fetchUserData();
+    const isMock = window.location.origin !== "http://localhost:5173";
+
+    if (isMock) {
+      getMockUser();
+    } else if (token) {
+      fetchUserData();
+    }
   }, [token, showEdit]);
 
   const EditData = () => {
@@ -88,6 +109,7 @@ export const UserPage = () => {
   });
 
   const handleSubmit = async (values: UserFormValues) => {
+    const mockUser = JSON.parse(sessionStorage.getItem("mockUser") || "{}");
     if (token) {
       try {
         await updateUserData(token, values);
@@ -96,10 +118,37 @@ export const UserPage = () => {
       } catch (error) {
         console.error("Error saving data:", error);
       }
+    } else if (mockUser.mockToken) {
+      mockUser.mockEmail = values.email;
+      mockUser.mockNick = values.nick;
+      mockUser.mockFirstName = values.firstName;
+      mockUser.mockLastName = values.lastName;
+      mockUser.mockCity = values.city;
+      mockUser.mockPhone = values.phone;
+      mockUser.mockDescription = values.description;
+
+      sessionStorage.setItem(
+        "mockUser",
+        JSON.stringify({
+          mockEmail: values.email,
+          mockToken: "example token",
+          mockNick: values.nick,
+          mockFirstName: values.firstName,
+          mockLastName: values.lastName,
+          mockCity: values.city,
+          mockPhone: values.phone,
+          mockDescription: values.description,
+        }),
+      );
+
+      setDataUpdate(true);
+      setShowEdit(false);
     }
   };
 
-  if (!token) {
+  const mockUser = JSON.parse(sessionStorage.getItem("mockUser") || "{}");
+
+  if (!token && !mockUser.mockToken) {
     navigate("/");
     return null;
   }

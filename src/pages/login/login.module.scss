@@ -60,6 +60,11 @@
   @include typography.button2;
 }
 
+.error {
+  @include typography.caption2;
+  color: colors.$neutrals6;
+}
+
 .responseOk {
   display: flex;
   justify-content: center;

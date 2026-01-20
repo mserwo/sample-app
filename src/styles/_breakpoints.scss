@@ -1,6 +1,8 @@
 $mobileM: 375px;
 $mobileL: 425px;
 $tablet: 768px;
+$desktop: 992px;
+$huge: 1280px;
 
 @mixin max-width($breakpoint) {
   @if ($breakpoint == "mobileM") {
@@ -13,6 +15,14 @@ $tablet: 768px;
     }
   } @else if ($breakpoint == "tablet") {
     @media (max-width: $tablet) {
+      @content;
+    }
+  } @else if ($breakpoint == "desktop") {
+    @media (max-width: $desktop) {
+      @content;
+    }
+  } @else if ($breakpoint == "huge") {
+    @media (max-width: $huge) {
       @content;
     }
   } @else {
@@ -31,6 +41,14 @@ $tablet: 768px;
     }
   } @else if ($breakpoint == "tablet") {
     @media (min-width: $tablet) {
+      @content;
+    }
+  } @else if ($breakpoint == "desktop") {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  } @else if ($breakpoint == "huge") {
+    @media (min-width: $huge) {
       @content;
     }
   } @else {

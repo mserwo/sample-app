@@ -71,7 +71,7 @@
       "caption7_text3": "This ensures that after successful registration, the user is redirected to the login page.",
       "caption7_alt": "Success message + redirect",
 
-      "button1": "Go to registration"
+      "button_goToRegister": "Go to registration"
     },
     "login": {
       "title": "User Login – Process Description",
@@ -245,6 +245,227 @@
       "text_bottom": "Register or log in and test how the user panel works",
       "button_goToRegistration": "Go to registration",
       "button_goToLogin": "Go to login"
+    }
+  },
+  "techStack": {
+    "frontend": {
+      "title": "Frontend - technology description",
+
+      "caption1": "1. The role of React in the project",
+      "caption1_text": [
+        "The application's &frontend& was built as a &single-page application& based on &React& and &React Router&. The project's structure is based on a clear division into page views (&pages&), reusable components (&components&), and an &API& communication layer.",
+        "The application uses React contexts to manage the global state of the logged-in user. Session data (token, user data) is stored in the &UserContext&, allowing access to it anywhere in the application without the need to pass props. The session state is initialized based on data stored in &sessionStorage&, ensuring the user remains logged in after a page refresh.",
+        "The component logic is based on functional hooks (&useState, useEffect, useContext&), and repetitive mechanisms have been separated into their &own Hooks& (e.g., screen width support).",
+        "&Forms& (registration, login, and editing user data) were implemented using the &Formik& and &Yup& libraries, ensuring consistent management of form state, data validation, and client-side error handling.",
+        "UI components are separated from the backend communication logic — &HTTP requests& have been separated into a separate &API& layer. This ensures the frontend remains readable, easy to test, and &ready for further expansion&."
+      ],
+      "caption1_alt": "React project structure",
+
+      "caption2": "2. Component architecture",
+      "caption2_text": [
+        "The project structure is based on a clear division of responsibilities between individual components. Page views are located in the &pages& directory and are responsible for the logic of specific application screens. Common components, such as &layouts&, &headers&, and &footers&, have been separated into separate directories.",
+        "&Layout& components are responsible for the common structure of application pages, ensuring a consistent appearance and separating the presentation layer from the logic of individual views."
+      ],
+      "caption2_alt": "Layouts - Component Architecture",
+
+      "caption3": "3. Routing and Navigation",
+      "caption3_text": "&React Router v6& with a &createBrowserRouter& -based configuration was used to handle routing. Both &static& and &dynamic routes& were defined, e.g., a user page containing an identifier parameter.",
+      "caption3_alt": "routing and navigation",
+
+      "caption4": "4. User State Management",
+      "caption4_text": [
+        "The logged-in user's state is managed globally using the &React context& mechanism. The context stores key information, such as &user data& and the &authorization token&. This allows all application components to access the current user state without the need to pass props through multiple levels.",
+        "Additionally, the &token& is stored in &sessionStorage& , which allows the user session to be recreated after a page refresh. When the application is re-rendered, There's an initialization mechanism that retrieves current user data from the &backend& based on the saved token."
+      ],
+      "caption4_alt": "useContext",
+
+      "caption5": "5. Forms and Data Validation",
+
+      "caption5_text": [
+        "The project uses the &Formik library& to handle forms. It allows for convenient management of form field states, data submission, and error response. Each form (&login, registration, editing user data&) is based on the same, consistent mechanism.",
+        "Data validation is implemented using the &Yup library&, which allows for client-side data validation. This ensures that the user receives immediate error notification, and the backend is not burdened with invalid queries."
+      ],
+      "caption5_alt": "formik",
+
+      "caption6": "6. Custom Hooks",
+      "caption6_text": "The project uses &custom React hooks& that allow you to separate repetitive logic from components. An example is a hook that handles screen width, which responds to &browser window size changes& and ensures proper event listener removal.",
+      "caption6_alt": "custom Hooks",
+
+      "caption7": "7. Styling Components – CSS Modules and Sass",
+      "caption7_text": [
+        "The frontend was styled using &CSS Modules& combined with &Sass/SCSS&. This allows each component to be assigned a set of classes that are isolated from the rest of the application, preventing conflicts when binding the page.",
+        "To maintain color and typography consistency, I use global variable files such as &_colors.scss& and &_typography.scss&.",
+        "For &responsiveness&, I used &mixins& (max-width and min-width) defined in &_breakpoints.scss&. This allows the page and component layout to adapt to different resolutions depending on the screen width.",
+        "The &nesting& and &modifiers& used in .scss files allow you to easily assign different variants to components depending on the context."
+      ],
+      "caption7_alt1": "CSS Modules",
+      "caption7_alt2": "footer normal",
+      "caption7_alt3": "footer mobile"
+    },
+    "api": {
+      "title": "API - frontend-backend communication",
+
+      "caption1": "1. Role of the API layer",
+      "caption1_text": "The API layer acts as an intermediary between the frontend and the backend. The frontend does not have direct access to data, and all operations are performed through explicitly defined &REST API endpoints&.",
+      "caption1_alt": "API structure",
+
+      "caption2": "2. Organization of API requests",
+      "caption2_text": "Each function in the API layer corresponds to a single backend endpoint and handles a specific operation, such as logging in, registering, or retrieving user data.",
+
+      "caption3": "3. TypeScript - data typing",
+      "caption3_text": [
+        "The project uses &TypeScript&, which ensures data consistency between the frontend and the backend. Data types describe the structure of API responses and help avoid errors resulting from incompatible data.",
+        "This allows the frontend to know, even at the coding stage, what data it will receive from the &API& and how to properly process it."
+      ],
+      "caption3_alt": "typeScript - data typing",
+
+      "caption4": "4. Request Authorization",
+      "caption4_text": [
+        "Endpoints requiring authorization use the &Bearer Token& mechanism. The &JWT token& is sent in the &Authorization& header, which allows the backend to uniquely identify the user making the request.",
+        "The &token& is retrieved from the &global application state&, and its presence determines access to protected resources."
+      ],
+
+      "caption5": "5. Data Flow in the Application",
+      "caption5_text": "After the user logs in, the &backend& returns a &JWT token&, which is stored in the &application context& and in &sessionStorage&. The token is then used for subsequent &API& requests.",
+      "caption5_alt": "API: fetch"
+    },
+    "server": {
+      "title": "Server - technology description",
+
+      "caption1": "1. The server's role in the project",
+      "caption1_text": "The server acts as an &API& provider and is responsible for authorization and operations on user data. It does not render views or manage the UI layer—the entire interface is implemented in React.",
+      "caption1_alt": "Express - server",
+
+      "caption2": "2. Node.js and Express",
+      "caption2_text": [
+        "The backend was built based on the Node.js environment and the &Express& framework. Express is responsible for handling &routing&, &middleware&, and the structure of &REST API endpoints&.",
+        "The project uses &CORS& middleware, which enables secure communication between the frontend and backend running on &different addresses&. This allows the client application to execute API requests without issues related to browser security policies.",
+        "&The detailed operation of the verifyUser middleware is described in Use Case section in point 7 of the login process.&"
+      ],
+      "caption_2_button": "Go to the login process description",
+
+      "caption3": "3. Authorization and security",
+      "caption3_text": [
+        "The authentication process is based on &JWT&. User passwords are encrypted using the &bcrypt library&, which protects data from being stored in the clear.",
+        "The &middleware& responsible for token verification protects endpoints requiring authorization and ensures that only the logged-in user has access to their data."
+      ],
+      "caption3_alt1": "bcypt.hash",
+      "caption3_alt2": "bcrypt.comapre + JWT",
+
+      "caption4": "4. Data Storage",
+      "caption4_text": [
+        "User data is stored in a &JSON& file, which acts as a simplified database. This solution was deliberately implemented to focus on the application architecture and data flow, rather than on the configuration of an external database.",
+        "The data reading and writing mechanisms have been separated into separate functions, facilitating a potential migration to a full-fledged database in the future.",
+        "&Reading and writing user data is described in detail in point 6 of the registration process.&"
+      ],
+      "caption_4_button": "Go to the registration process description",
+      "caption4_alt": "JSON database"
+    }
+  },
+  "home": {
+    "userBarButton": "Go to user settings",
+    "hero": {
+      "header": "This page presents a web application project created to showcase my skills and approach to building applications based on the React library.",
+      "text1": "From the user's perspective, the application offers three main functionalities:",
+      "list": [
+        "account registration",
+        "system login",
+        "user panel with data editing capabilities"
+      ],
+      "text2": "Each section of the project presents a different aspect of working on the application—from the user interface and data validation, through API communication, to server logic, and shows the processes behind its development.",
+      "techList": [
+        "JavaScript",
+        "React",
+        "React Router",
+        "Vite",
+        "HTML",
+        "SCSS",
+        "REST API",
+        "JSON",
+        "JWT",
+        "Bcrypt",
+        "Formik",
+        "Yup",
+        "Node.js",
+        "Express"
+      ]
+    },
+
+    "useCase": {
+      "main": "Use Case - User Paths",
+      "box1": {
+        "title": "Registration",
+        "text": "The registration form provides real-time data validation and guides the user step-by-step, informing them about data accuracy and potential errors before submitting the form. It integrates directly with the backend API, ensuring data consistency and error tolerance.",
+        "list": ["Java Script (ES6+)", "React", "Formik", "Yup", "Rest Api"],
+        "button1": "Register",
+        "button2": "Go to the registration process description"
+      },
+      "box2": {
+        "title": "Login",
+        "text": "The login module handles the entire user authorization process, including data validation, error handling, and communication with the server. After sending the data to the server, the system decrypts the password and compares it with the existing database. After successful login, a token is generated that allows access to the secure resources of the application. After 1 hour, the token expires and the user is logged out.",
+        "list": [
+          "Java Script (ES6+)",
+          "React",
+          "Formik",
+          "Yup",
+          "Rest Api",
+          "Middleware",
+          "JWT"
+        ],
+        "button1": "Log in",
+        "button2": "Go to the login process description"
+      },
+      "box3": {
+        "title": "User Panel",
+        "text": "The user panel allows you to manage your account data, view information, and interact with the system after logging in. The view responds dynamically to the status of the application and data retrieved from the API. The whole thing has been designed as a central place for user management in the application.",
+        "list": [
+          "Java Script (ES6+)",
+          "React",
+          "Formik",
+          "Yup",
+          "Rest Api",
+          "Middleware",
+          "JWT"
+        ],
+        "button1": "Go to user panel process description"
+      }
+    },
+    "techStack": {
+      "main": "Tech stack - description",
+      "box1": {
+        "title": "Frontend",
+        "text": "The application frontend was built based on React's component-based architecture, which ensures code readability and easy expansion. The user interface is responsive and visually consistent (CSS Modules), and the application logic has been separated from the presentation layer.",
+        "list": [
+          "Java Script (ES6+)",
+          "React",
+          "React Hooks",
+          "React Router",
+          "Formik",
+          "Yup",
+          "SCSS / CSS Modules"
+        ],
+        "button1": "Go to frontend description"
+      },
+      "box2": {
+        "title": "Api",
+        "text": "The API layer is responsible for communication between the frontend and the server. It provides authorization support, data validation, and logical grouping of endpoints. The API has been designed in accordance with REST principles, which facilitates its development and integration with other systems.",
+        "list": ["Rest API", "JSON", "JWT", "HTTP"],
+        "button1": "Go to Api description"
+      },
+      "box3": {
+        "title": "Server",
+        "text": "The server handles logic, authorization, and communication with the database (JSON). During user registration, data is encrypted before it reaches the database, while during login, middleware is launched to decrypt the data, ensuring security and code structure readability.",
+        "list": [
+          "Express",
+          "Rest API",
+          "Middleware",
+          "Bcypt",
+          "JSON",
+          "JWT",
+          "Node.js"
+        ],
+        "button1": "Go to server description"
+      }
     }
   }
 }

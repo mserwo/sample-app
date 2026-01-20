@@ -52,7 +52,16 @@ export const Register = () => {
       setRegisterResponse({ isError: true, message: errorMessage });
     };
 
-    postRegister(values.email, values.password, onSucces, onError);
+    if (window.location.origin !== "http://localhost:5173") {
+      sessionStorage.setItem(
+        "mockUser",
+        JSON.stringify({ mockEmail: values.email }),
+      );
+      console.log("mock register");
+      onSucces();
+    } else {
+      postRegister(values.email, values.password, onSucces, onError);
+    }
   };
 
   return (
@@ -71,7 +80,7 @@ export const Register = () => {
               validationSchema={validationSchema}
               onSubmit={(
                 values: Values,
-                { setSubmitting, resetForm }: FormikHelpers<Values>
+                { setSubmitting, resetForm }: FormikHelpers<Values>,
               ) => {
                 onHandleSubmit(values);
                 resetForm();

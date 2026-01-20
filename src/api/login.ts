@@ -5,8 +5,13 @@ export const postLogin = async (
   password: string,
 
   onSuccess: (token: string) => void,
-  onError: (errorMessage: string) => void
+  onError: (errorMessage: string) => void,
 ) => {
+  // BACKEND MOCK//
+  // if (window.location.origin === "http://localhost:5173") {
+  //   console.log("Mock - login successful");
+  //   return onSuccess("example-token");
+  // }
   try {
     const response = await fetch("http://localhost:3000/login", {
       method: "POST",
