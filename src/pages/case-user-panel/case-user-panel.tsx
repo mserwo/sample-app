@@ -188,10 +188,18 @@ export const CaseUserPanel = () => {
       <div className={styles.downContainer}>
         <div className={styles.caption2}>{userPanel.text_bottom}</div>
         <div className={styles.buttonSection}>
-          <Link to="/register" className={styles.button}>
+          <Link
+            to="/register"
+            className={styles.button}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             {userPanel.button_goToRegistration}
           </Link>
-          <Link to="/login" className={styles.button}>
+          <Link
+            to="/login"
+            className={styles.button}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             {userPanel.button_goToLogin}
           </Link>
         </div>

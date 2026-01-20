@@ -72,7 +72,11 @@ export const StackServer = () => {
 
           <div className={styles.containerLink}>
             <ArrowRight2 className={styles.arrow} />
-            <Link to="/case/login" className={styles.link}>
+            <Link
+              to="/case/login"
+              className={styles.link}
+              onClick={() => window.scrollTo(0, 0)}
+            >
               {server.caption_2_button}
             </Link>
           </div>
@@ -108,7 +112,11 @@ export const StackServer = () => {
 
           <div className={styles.containerLink}>
             <ArrowRight2 className={styles.arrow} />
-            <Link to="/case/register" className={styles.link}>
+            <Link
+              to="/case/register"
+              className={styles.link}
+              onClick={() => window.scrollTo(0, 0)}
+            >
               {server.caption_4_button}
             </Link>
           </div>

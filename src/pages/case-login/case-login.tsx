@@ -232,7 +232,11 @@ export const CaseLogin = () => {
         </PicsLayout>
       </SectionLayout>
       <div className={styles.buttonSection}>
-        <Link to="/login" className={styles.button}>
+        <Link
+          to="/login"
+          className={styles.button}
+          onClick={() => window.scrollTo(0, 0)}
+        >
           {login.button_goToLogin}
         </Link>
       </div>

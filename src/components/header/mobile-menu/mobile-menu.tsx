@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./mobile-menu.module.scss";
 import MenuLine from "../../../assets/images/Line.svg?react";
 
@@ -17,10 +18,10 @@ export const MenuMobile = () => {
         <nav className={styles.menuItems}>
           <ul>
             <li>
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <a href="/register">Register</a>
+              <Link to="/register">Register</Link>
             </li>
           </ul>
         </nav>

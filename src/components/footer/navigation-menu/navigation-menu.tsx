@@ -3,6 +3,7 @@ import { useState } from "react";
 import ArrowDownSimpleIcon from "@/assets/images/arrowDownSimple.svg?react";
 import cn from "classnames";
 import { useScreenWidth } from "../../../hooks";
+import { Link } from "react-router-dom"; // dodane
 
 interface MenuElement {
   title: string;
@@ -51,15 +52,14 @@ export const NavigationMenu = ({
       >
         {menuElements.map((item) => (
           <li key={item.title + item.url}>
-            <a
-              href={item.url}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
+            <Link
+              to={item.url}
               className={styles.link}
+              onClick={() => window.scrollTo(0, 0)}
             >
               {item.icon && <span className={styles.icon}>{item.icon}</span>}
               <span>{item.title}</span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

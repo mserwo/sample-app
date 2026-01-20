@@ -175,7 +175,11 @@ export const CaseRegister = () => {
         </PicsLayout>
       </SectionLayout>
       <div className={styles.buttonSection}>
-        <Link to="/register" className={styles.button}>
+        <Link
+          to="/register"
+          className={styles.button}
+          onClick={() => window.scrollTo(0, 0)}
+        >
           {register.button_goToRegister}
         </Link>
       </div>

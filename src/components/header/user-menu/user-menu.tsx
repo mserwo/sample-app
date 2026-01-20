@@ -43,6 +43,7 @@ export const UserMenu = () => {
               <Link
                 className={styles.item}
                 to={id ? `/userpage/${id}` : `/userpage/mock`}
+                onClick={() => window.scrollTo(0, 0)}
               >
                 Go to user settings
               </Link>
