@@ -5,8 +5,14 @@ export const postRegister = async (
   password: string,
 
   onSuccess: (response?: string) => void,
-  onError: (errorMessage: string) => void
+  onError: (errorMessage: string) => void,
 ) => {
+  // BACKEND MOCK//
+  // if (window.location.origin === "http://localhost:5173") {
+  //   console.log("Mock - registration successful");
+  //   return onSuccess();
+  // }
+
   try {
     const response = await fetch(`${baseUrl}/register`, {
       method: "POST",

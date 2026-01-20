@@ -14,7 +14,8 @@
   &_content {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     @include typography.caption2;
     @include fonts.poppins;
 
@@ -22,7 +23,7 @@
       justify-content: center;
     }
 
-    &_leftText {
+    &_Text {
       color: colors.$neutrals4;
     }
 

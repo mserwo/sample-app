@@ -2,18 +2,38 @@ import styles from "./footer.module.scss";
 import { BottomBar } from "./bottom-bar/bottom-bar";
 import LogoSection from "./logo-section/logo-section";
 import { NavigationMenu } from "./navigation-menu/navigation-menu";
-import { JoinNewsletter } from "./join-newsletter/join-newsletter";
+// import { JoinNewsletter } from "./join-newsletter/join-newsletter";
+import MailIcon from "@/assets/images/mail.svg?react";
+import GithubIcon from "@/assets/images/github.svg?react";
+import LinkedinIcon from "@/assets/images/linkedin.svg?react";
+import { Link } from "react-router-dom";
 
 const menu1items = [
-  { title: "Discover", url: "/discover" },
-  { title: "Connect wallet", url: "/connect-wallet" },
-  { title: "Create item", url: "/create-item" },
+  { title: "Register", url: "/case/register" },
+  { title: "Login", url: "/case/login" },
+  { title: "User panel", url: "/case/user-panel" },
 ];
 
 const menu2items = [
-  { title: "Download", url: "/download" },
-  { title: "Demos", url: "/demos" },
-  { title: "Support", url: "/support" },
+  { title: "Frontend", url: "/stack/frontend" },
+  { title: "Api", url: "/stack/api" },
+  { title: "Server", url: "/stack/server" },
+];
+
+const menu3items = [
+  { title: "Email", url: "mailto:marcin.serwotka@op.pl", icon: <MailIcon /> },
+  {
+    title: "Github",
+    url: "https://github.com/mserwo",
+    external: true,
+    icon: <GithubIcon />,
+  },
+  {
+    title: "Linkedin",
+    url: "https://www.linkedin.com/in/marcin-serwotka-b25072194/?originalSubdomain=pl",
+    external: true,
+    icon: <LinkedinIcon />,
+  },
 ];
 
 export const Footer = () => {
@@ -21,10 +41,30 @@ export const Footer = () => {
     <footer className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <LogoSection />
-          <NavigationMenu title={"Stacks"} menuElements={menu1items} />
-          <NavigationMenu title={"Info"} menuElements={menu2items} />
-          <JoinNewsletter />
+          <Link
+            className={styles.logoLink}
+            to={`/`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <LogoSection />
+          </Link>
+          <div className={styles.navigation}>
+            <NavigationMenu
+              title="Use Case"
+              menuElements={menu1items}
+              variant="useCase"
+            />
+            <NavigationMenu
+              title="Tech Stack"
+              menuElements={menu2items}
+              variant="techStack"
+            />
+            <NavigationMenu
+              title="Contact"
+              menuElements={menu3items}
+              variant="contact"
+            />
+          </div>
         </div>
         <BottomBar />
       </div>

@@ -19,11 +19,11 @@ export const Layout = ({ children }: LayoutProps) => {
       <section
         style={{
           flex: 1,
-          margin: "0px auto",
-          width: "100%",
+          // margin: "0px auto",
+          // width: "100%",
           // overflow: "hidden",
-          maxWidth: 1120,
-          marginBottom: 100,
+          // maxWidth: 1120,
+          // marginBottom: 100,
           marginTop: 40,
         }}
       >

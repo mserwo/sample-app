@@ -1,0 +1,105 @@
+@use "~/colors";
+@use "~/breakpoints";
+@use "~/typography";
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+
+  @include breakpoints.max-width("tablet") {
+    margin-bottom: 0px;
+  }
+
+  &_title {
+    color: colors.$primary4;
+    @include typography.body4;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 30px;
+    font-size: 22px;
+
+    &_blue {
+      color: colors.$secondary1;
+    }
+
+    &_green {
+      color: colors.$primary4;
+    }
+  }
+
+  &_text {
+    @include typography.caption;
+    text-align: justify;
+    color: colors.$neutrals5;
+  }
+
+  &_blue {
+    border: 2px solid colors.$secondary1;
+  }
+
+  &_green {
+    border: 2px solid colors.$primary4;
+  }
+}
+
+.list {
+  margin-top: 20px;
+  list-style: inside;
+
+  &_blue {
+    color: colors.$secondary1;
+  }
+
+  &_green {
+    color: colors.$primary4;
+  }
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: auto;
+  gap: 20px;
+
+  &_field {
+    display: flex;
+    margin: 20px, 20px;
+    width: 100%;
+    gap: 20px;
+
+    &_text {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: colors.$neutrals6;
+      background-color: colors.$neutrals3;
+      width: 100%;
+      padding: 10px;
+      border-radius: 25px;
+      transition: 0.3s;
+      @include typography.body2;
+    }
+
+    &_text {
+      color: white;
+
+      &_blue:hover {
+        background-color: colors.$secondary1;
+      }
+
+      &_green:hover {
+        background-color: colors.$primary4;
+      }
+    }
+  }
+}
+
+/*------------------------------------------------*/

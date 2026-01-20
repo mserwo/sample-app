@@ -1,6 +1,17 @@
 import { baseUrl } from "../../baseUrl/baseUrl";
 
 export const readUserData = async (token: string) => {
+  // BACKEND MOCK//
+  // if (window.location.origin === "http://localhost:5173") {
+  //   return {
+  //     id: "example token",
+  //     email: "marcin@op.pl",
+  //     nick: "serwo",
+  //     name: "marcin",
+  //     lastName: "serwotka",
+  //   };
+  // }
+
   try {
     const response = await fetch(`${baseUrl}/readUserData`, {
       method: "GET",

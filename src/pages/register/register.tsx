@@ -52,97 +52,108 @@ export const Register = () => {
       setRegisterResponse({ isError: true, message: errorMessage });
     };
 
-    postRegister(values.email, values.password, onSucces, onError);
+    if (window.location.origin !== "http://localhost:5173") {
+      sessionStorage.setItem(
+        "mockUser",
+        JSON.stringify({ mockEmail: values.email }),
+      );
+      console.log("mock register");
+      onSucces();
+    } else {
+      postRegister(values.email, values.password, onSucces, onError);
+    }
   };
 
   return (
     <Layout>
-      <div className={styles.container}>
-        <div>
-          <div className={styles.header}>Register to create an account</div>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <div>
+            <div className={styles.header}>Register to create an account</div>
 
-          <Formik
-            initialValues={{
-              email: "marcin123@op.pl",
-              password: "marcin123",
-              repeatPassword: "marcin123",
-            }}
-            validationSchema={validationSchema}
-            onSubmit={(
-              values: Values,
-              { setSubmitting, resetForm }: FormikHelpers<Values>
-            ) => {
-              onHandleSubmit(values);
-              resetForm();
-              setSubmitting(false);
-            }}
-          >
-            {({ errors, touched }) => (
-              <Form className={styles.form}>
-                <div className={styles.items}>
-                  <label htmlFor="email">Your Email</label>
-                  <Field
-                    className={styles.field}
-                    id="email"
-                    name="email"
-                    placeholder="john@gmail.com"
-                    type="email"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className={styles.error}
-                  />
-                </div>
-
-                <div className={styles.items}>
-                  <label htmlFor="password">Password</label>
-                  <Field
-                    className={styles.field}
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    type="password"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className={styles.error}
-                  />
-                </div>
-
-                <div className={styles.items}>
-                  <label htmlFor="repeatPassword">Repeat Password</label>
-                  <Field
-                    className={styles.field}
-                    id="repeatPassword"
-                    name="repeatPassword"
-                    placeholder="Repeat Password"
-                    type="password"
-                  />
-                  <ErrorMessage
-                    name="repeatPassword"
-                    component="div"
-                    className={styles.error}
-                  />
-                </div>
-
-                <button className={styles.submit} type="submit">
-                  Submit
-                </button>
-
-                {registerResponse.message ? (
-                  <div
-                    className={classNames(styles.responseOk, {
-                      [styles.responseError]: registerResponse.isError,
-                    })}
-                  >
-                    {registerResponse.message}
+            <Formik
+              initialValues={{
+                email: "",
+                password: "",
+                repeatPassword: "",
+              }}
+              validationSchema={validationSchema}
+              onSubmit={(
+                values: Values,
+                { setSubmitting, resetForm }: FormikHelpers<Values>,
+              ) => {
+                onHandleSubmit(values);
+                resetForm();
+                setSubmitting(false);
+              }}
+            >
+              {({ errors, touched }) => (
+                <Form className={styles.form}>
+                  <div className={styles.items}>
+                    <label htmlFor="email">Your Email</label>
+                    <Field
+                      className={styles.field}
+                      id="email"
+                      name="email"
+                      placeholder="john@gmail.com"
+                      type="email"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className={styles.error}
+                    />
                   </div>
-                ) : null}
-              </Form>
-            )}
-          </Formik>
+
+                  <div className={styles.items}>
+                    <label htmlFor="password">Password</label>
+                    <Field
+                      className={styles.field}
+                      id="password"
+                      name="password"
+                      placeholder="Enter your password"
+                      type="password"
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className={styles.error}
+                    />
+                  </div>
+
+                  <div className={styles.items}>
+                    <label htmlFor="repeatPassword">Repeat Password</label>
+                    <Field
+                      className={styles.field}
+                      id="repeatPassword"
+                      name="repeatPassword"
+                      placeholder="Repeat Password"
+                      type="password"
+                    />
+                    <ErrorMessage
+                      name="repeatPassword"
+                      component="div"
+                      className={styles.error}
+                    />
+                  </div>
+
+                  <button className={styles.submit} type="submit">
+                    Submit
+                  </button>
+
+                  {registerResponse.message ? (
+                    <div
+                      className={classNames(styles.responseOk, {
+                        [styles.responseError]: registerResponse.isError,
+                      })}
+                    >
+                      {registerResponse.message}
+                    </div>
+                  ) : null}
+                </Form>
+              )}
+            </Formik>
+          </div>
         </div>
       </div>
     </Layout>

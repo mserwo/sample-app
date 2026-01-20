@@ -11,24 +11,39 @@ export const UserMenu = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const [login, setLogin] = useState<boolean>(true);
 
+  const navigate = useNavigate();
+
   const logout = () => {
     sessionStorage.clear();
     console.log("user logout");
     setLogin(false);
     setToken("");
+
+    if (window.location.origin === "http://localhost:5173") {
+      navigate("/");
+    }
   };
+
+  const mockUser = JSON.parse(sessionStorage.getItem("mockUser") || "{}");
+
+  const mockNick = mockUser.mockNick;
 
   return (
     <div className={styles.mobileContainer}>
       <div className={styles.userMenu}>
-        <button onClick={toggleMenu}>Hello {nick}!</button>
+        <button onClick={toggleMenu}>
+          Hello {mockNick ? mockNick : nick}!
+        </button>
       </div>
 
       {isOpen ? (
         <nav className={styles.navigationContainer}>
           <ul className={styles.buttons}>
             <li>
-              <Link className={styles.item} to={`/userpage/${id}`}>
+              <Link
+                className={styles.item}
+                to={id ? `/userpage/${id}` : `/userpage/mock`}
+              >
                 Go to user settings
               </Link>
             </li>

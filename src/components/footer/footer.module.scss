@@ -16,10 +16,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
   max-width: 865px;
-  padding-top: 80px;
+  padding-top: 50px;
 
   @include breakpoints.min-width("tablet") {
     max-width: 1120px;
@@ -28,18 +27,35 @@
   @include breakpoints.max-width("tablet") {
     padding-top: 64px;
   }
-
-  @include typography.h1;
 }
 
 .content {
   display: flex;
-  justify-content: space-between;
-  gap: 32px;
+  gap: 100px;
   padding-bottom: 48px;
 
   @include breakpoints.max-width("tablet") {
-    max-width: 1120px;
+    gap: 32px;
     flex-direction: column;
   }
+}
+
+.navigation {
+  display: flex;
+  flex: 3;
+  gap: 32px;
+  justify-content: center;
+
+  @include breakpoints.min-width("tablet") {
+    gap: 62px;
+  }
+
+  @include breakpoints.max-width("tablet") {
+    flex-direction: column;
+  }
+}
+
+.logoLink {
+  text-decoration: none;
+  color: colors.$neutrals8;
 }

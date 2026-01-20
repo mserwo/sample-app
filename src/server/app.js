@@ -24,13 +24,11 @@ async function readUsers() {
     throw err;
   }
 }
-
 async function writeUsers(users) {
   await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), {
     encoding: "utf8",
   });
 }
-
 const verifyUser = (request, response, next) => {
   const authHeader = request.header("Authorization");
   if (!authHeader) return response.status(400).json({ error: "Token needed" });
@@ -48,12 +46,10 @@ const verifyUser = (request, response, next) => {
     response.status(401).send(error.message);
   }
 };
-
 app.post("/newsletter", (request, response) => {
   const { email } = request.body;
   response.status(200).send(email);
 });
-
 app.post("/register", async (request, response) => {
   const { email, password } = request.body;
   try {
@@ -89,7 +85,6 @@ app.post("/register", async (request, response) => {
     response.status(500).send("Error saving data");
   }
 });
-
 app.post("/login", async (request, response) => {
   const { email, password } = request.body;
 
@@ -115,7 +110,6 @@ app.post("/login", async (request, response) => {
     response.status(500).send("Error reading data");
   }
 });
-
 app.get("/me", verifyUser, async (request, response) => {
   try {
     const users = await readUsers();
@@ -129,7 +123,6 @@ app.get("/me", verifyUser, async (request, response) => {
     return response.status(500).send("Error reading data");
   }
 });
-
 app.get("/getData", verifyUser, async (request, response) => {
   try {
     const users = await readUsers();
@@ -164,7 +157,6 @@ app.get("/getData", verifyUser, async (request, response) => {
     return response.status(500).send("Error reading data");
   }
 });
-
 app.put("/updateUser", verifyUser, async (request, response) => {
   const userId = request.userId;
   const {
@@ -207,7 +199,6 @@ app.put("/updateUser", verifyUser, async (request, response) => {
     return response.status(500).json({ error: "Error updating user" });
   }
 });
-
 app.get("/readUserData", verifyUser, async (request, response) => {
   try {
     const users = await readUsers();
@@ -242,7 +233,6 @@ app.get("/readUserData", verifyUser, async (request, response) => {
     return response.status(500).send("Error reading data");
   }
 });
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

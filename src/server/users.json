@@ -1,26 +1,14 @@
 [
   {
-    "id": "a0d137b7-beef-4840-9cc1-792251636a5b",
-    "email": "marcin123@op.pl",
-    "passwordHash": "$2b$10$5OTKkY5GJ44qr1eBCtjw/OAbiSmgFnRydeoH3yJY/X4BCQ5.ueD3K",
+    "id": "38ad8913-002f-4229-8add-16a751b37031",
+    "email": "marcin.serwotka@op.pl",
+    "passwordHash": "$2b$10$Dw2DwuFr15zxQ49QuU2IIecckbUwiP7KVi5mz9UZIrAgd1GnDoW5S",
     "nick": "Serwo",
     "firstName": "Marcin",
     "lastName": "Serwotka",
     "avatarUrl": "https://picsum.photos/300",
     "city": "Warszawa",
-    "phone": "694112965",
+    "phone": "111111111",
     "description": "React Developer"
-  },
-  {
-    "id": "17e48723-45fc-40fd-9bb5-6ecbfe267b24",
-    "email": "maraaaaaacin123@op.pl",
-    "passwordHash": "$2b$10$S.3xFsDvTr4Jnru2du8hVO3/xSr.z9zWBIJdKWi9YFNuYVLSo4lJ6",
-    "nick": "",
-    "firstName": "",
-    "lastName": "",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "",
-    "phone": "",
-    "description": ""
   }
 ]
