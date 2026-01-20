@@ -4,6 +4,8 @@ import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import path from "path";
 
+const isGhPages = process.env.NODE_ENV === "production";
+
 export default defineConfig({
   base: isGhPages ? "/sample-app/" : "/",
   resolve: {
