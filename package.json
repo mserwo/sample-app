@@ -1,6 +1,7 @@
 {
   "name": "sample-app",
-  "private": true,
+  "homepage": "https://mserwo.github.io/sample-app",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -12,7 +13,9 @@
     "prepare": "husky install",
     "test": "vitest",
     "test:staged": "vitest related --run",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -50,6 +53,7 @@
     "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
+    "gh-pages": "^6.3.0",
     "husky": "^8.0.3",
     "jsdom": "^24.0.0",
     "lint-staged": "^13.2.1",
