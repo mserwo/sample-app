@@ -15,15 +15,68 @@
 }
 
 .menuItems {
-  position: absolute;
-  width: 70px;
+  position: fixed;
+  height: 100vh;
+  top: 0px;
+  right: 0px;
+  width: 240px;
+  z-index: 100;
 
-  background-color: rgba(colors.$neutrals3, 0.7);
+  background-color: rgba(colors.$neutrals3, 0.95);
 }
 
 .menuItems li {
-  width: 100%;
-  height: auto;
+  @include typography.caption;
+  margin: 0;
+}
+
+.userMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 0px;
+  margin: 0 30px;
+  border-bottom: 1px solid colors.$neutrals4;
+
+  &_item {
+    cursor: pointer;
+    padding: 10px;
+    @include typography.caption;
+
+    &:hover {
+      background-color: colors.$neutrals2;
+    }
+  }
+
+  &_itemHello {
+    padding: 10px;
+    color: colors.$primary4;
+    @include typography.caption;
+  }
+}
+
+.menuStyleMain {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0px;
+  margin: 0 30px;
+  border-bottom: 1px solid colors.$neutrals4;
+
+  @include breakpoints.min-width("tablet") {
+    display: none;
+  }
+}
+
+.menuStyle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0px;
+  margin: 0 30px;
+  border-bottom: 1px solid colors.$neutrals4;
 }
 
 .menuItems li:hover {
@@ -35,4 +88,21 @@
   color: colors.$neutrals7;
   text-decoration: none;
   padding: 10px;
+}
+
+.symbol {
+  cursor: pointer;
+  margin: 40px 40px 20px 40px;
+}
+
+.symbol:hover {
+  .xSymbol {
+    color: colors.$neutrals5;
+  }
+}
+
+.xSymbol {
+  width: 20px;
+  height: auto;
+  color: colors.$neutrals4;
 }

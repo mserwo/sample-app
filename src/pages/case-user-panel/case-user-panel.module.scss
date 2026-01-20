@@ -22,15 +22,26 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 0px 32px;
+  }
 }
 
 .button {
+  display: flex;
+  text-align: center;
   cursor: pointer;
   color: colors.$neutrals6;
   background-color: colors.$neutrals3;
   padding: 15px 40px;
   border-radius: 25px;
   transition: 0.3s;
+  line-height: 24px;
+
+  @include breakpoints.max-width("mobileL") {
+    padding: 15px 15px;
+  }
 }
 
 .button:hover {

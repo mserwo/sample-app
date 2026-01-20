@@ -126,17 +126,21 @@ function App() {
         onClick={toggleLang}
         style={{
           position: "fixed",
+          left: "10px",
           bottom: "10px",
-          right: "10px",
-          padding: "0px",
-          margin: "0px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "60px",
+          height: "auto",
           cursor: "pointer",
+          zIndex: 1000,
         }}
       >
         {lang === "en" ? (
-          <FlagPl width="60px" height="auto" />
+          <FlagPl style={{ width: "100%", height: "100%" }} />
         ) : (
-          <FlagEngl width="60px" height="auto" />
+          <FlagEngl style={{ width: "100%", height: "100%" }} />
         )}
       </div>
 

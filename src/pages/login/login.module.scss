@@ -62,7 +62,7 @@
 
 .error {
   @include typography.caption2;
-  color: colors.$neutrals6;
+  color: colors.$primary3;
 }
 
 .responseOk {
@@ -71,7 +71,7 @@
   padding: 20px;
   padding-bottom: 0px;
   @include typography.caption2;
-  color: colors.$neutrals6;
+  color: colors.$primary5;
 }
 
 .responseError {
@@ -80,5 +80,5 @@
   padding: 20px;
   padding-bottom: 0px;
   @include typography.caption2;
-  color: colors.$neutrals6;
+  color: colors.$primary3;
 }

@@ -37,6 +37,11 @@
   color: colors.$neutrals8;
 }
 
+.buttonsSection {
+  display: flex;
+  gap: 20px;
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -92,9 +97,9 @@
   justify-content: center;
   align-items: center;
 
-  @include breakpoints.min-width("tablet") {
-    display: none;
-  }
+  // @include breakpoints.min-width("tablet") {
+  //   display: none;
+  // }
 }
 
 .userMenu {

@@ -28,7 +28,7 @@ export const Header = () => {
           <Logo />
         </Link>
         {!(token || mockUser.mockToken) ? (
-          <>
+          <div className={styles.buttonsSection}>
             <div className={styles.buttons}>
               <Link to="/login" className={styles.loginButton}>
                 Login
@@ -37,14 +37,13 @@ export const Header = () => {
                 Register
               </Link>
             </div>
-
             <div className={styles.menuMobile}>
               <MenuMobile />
             </div>
-          </>
+          </div>
         ) : (
-          <div className={styles.userMenu}>
-            <UserMenu />
+          <div className={styles.menuMobile}>
+            <MenuMobile />
           </div>
         )}
       </div>
