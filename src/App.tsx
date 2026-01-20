@@ -14,6 +14,7 @@ import FlagPl from "@/assets/images/flag_pl.svg?react";
 import FlagEngl from "@/assets/images/flag_engl.svg?react";
 
 const isGhPages = import.meta.env.MODE === "production";
+export const basename = isGhPages ? "/sample-app" : "/";
 
 const router = createBrowserRouter(
   [
