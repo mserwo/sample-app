@@ -114,7 +114,7 @@
       &_text {
         display: flex;
         padding: 10px 30px;
-        border: 2px, solid, colors.$neutrals4;
+        border: 2px solid colors.$neutrals4;
         border-radius: 30px;
         @include typography.caption;
       }
@@ -162,6 +162,7 @@
 
   &_text {
     @include fonts.poppins;
+    display: flex;
     width: 100%;
     max-width: 1400px;
     display: flex;
@@ -171,6 +172,7 @@
     border: 2px solid colors.$primary4;
     box-sizing: border-box;
     font-size: 22px;
+    text-align: center;
 
     &_blue {
       border: 2px solid colors.$secondary1;
