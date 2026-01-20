@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 import path from "path";
 
 export default defineConfig({
-  base: "/sample-app/",
+  base: "/",
   resolve: {
     alias: {
       "~": "/src/styles",
