@@ -62,8 +62,8 @@ export const StackFrontend = () => {
         <TextLayout>
           <div className={styles.caption}>{frontend.caption1}</div>
 
-          {frontend.caption1_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {frontend.caption1_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -79,8 +79,8 @@ export const StackFrontend = () => {
         <TextLayout>
           <div className={styles.caption}>{frontend.caption2}</div>
 
-          {frontend.caption2_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {frontend.caption2_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -105,8 +105,8 @@ export const StackFrontend = () => {
         <TextLayout>
           <div className={styles.caption}>{frontend.caption4}</div>
 
-          {frontend.caption4_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {frontend.caption4_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -116,8 +116,8 @@ export const StackFrontend = () => {
         <TextLayout>
           <div className={styles.caption}>{frontend.caption5}</div>
 
-          {frontend.caption5_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {frontend.caption5_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -142,8 +142,8 @@ export const StackFrontend = () => {
         <TextLayout>
           <div className={styles.caption}>{frontend.caption7}</div>
 
-          {frontend.caption7_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {frontend.caption7_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}

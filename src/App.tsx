@@ -13,18 +13,23 @@ import english from "./translations/english.json";
 import FlagPl from "@/assets/images/flag_pl.svg?react";
 import FlagEngl from "@/assets/images/flag_engl.svg?react";
 
-const router = createBrowserRouter([
-  { path: "/", element: <Home />, errorElement: <Error /> },
-  { path: "/register", element: <Register /> },
-  { path: "/login", element: <Login /> },
-  { path: "/userpage/:userId", element: <UserPage /> },
-  { path: "/case/register", element: <CaseRegister /> },
-  { path: "/case/login", element: <CaseLogin /> },
-  { path: "/case/user-panel", element: <CaseUserPanel /> },
-  { path: "/stack/frontend", element: <StackFrontend /> },
-  { path: "/stack/api", element: <StackApi /> },
-  { path: "/stack/server", element: <StackServer /> },
-]);
+const isGhPages = import.meta.env.MODE === "production";
+
+const router = createBrowserRouter(
+  [
+    { path: "/", element: <Home />, errorElement: <Error /> },
+    { path: "/register", element: <Register /> },
+    { path: "/login", element: <Login /> },
+    { path: "/userpage/:userId", element: <UserPage /> },
+    { path: "/case/register", element: <CaseRegister /> },
+    { path: "/case/login", element: <CaseLogin /> },
+    { path: "/case/user-panel", element: <CaseUserPanel /> },
+    { path: "/stack/frontend", element: <StackFrontend /> },
+    { path: "/stack/api", element: <StackApi /> },
+    { path: "/stack/server", element: <StackServer /> },
+  ],
+  { basename: isGhPages ? "/sample-app" : "/" },
+);
 
 interface userDataType {
   token: string;

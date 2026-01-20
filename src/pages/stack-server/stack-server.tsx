@@ -64,8 +64,8 @@ export const StackServer = () => {
           </div>
           <div className={styles.caption}>{server.caption2}</div>
 
-          {server.caption2_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {server.caption2_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -89,8 +89,8 @@ export const StackServer = () => {
         <TextLayout>
           <div className={styles.caption}>{server.caption3}</div>
 
-          {server.caption3_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {server.caption3_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -100,8 +100,8 @@ export const StackServer = () => {
         <TextLayout>
           <div className={styles.caption}>{server.caption4}</div>
 
-          {server.caption4_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {server.caption4_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}

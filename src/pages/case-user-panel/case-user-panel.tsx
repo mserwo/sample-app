@@ -61,8 +61,8 @@ export const CaseUserPanel = () => {
         <TextLayout>
           <div className={styles.caption}>{userPanel.caption1}</div>
 
-          {userPanel.caption1_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption1_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -79,8 +79,8 @@ export const CaseUserPanel = () => {
         <TextLayout>
           <div className={styles.caption}>{userPanel.caption2}</div>
 
-          {userPanel.caption2_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption2_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -90,8 +90,8 @@ export const CaseUserPanel = () => {
         <TextLayout>
           <div className={styles.caption}>{userPanel.caption3}</div>
 
-          {userPanel.caption3_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption3_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -107,15 +107,15 @@ export const CaseUserPanel = () => {
         <TextLayout>
           <div className={styles.caption}>{userPanel.caption4}</div>
 
-          {userPanel.caption4_text1.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption4_text1.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
           <ul className={styles.caption_margin}>
-            {userPanel.caption4_text2.map((text) => (
-              <div>
+            {userPanel.caption4_text2.map((text, idx) => (
+              <div key={idx}>
                 <li style={{ listStyle: "inside" }}>
                   {withColour(text, colour)}
                 </li>
@@ -123,15 +123,15 @@ export const CaseUserPanel = () => {
             ))}
           </ul>
 
-          {userPanel.caption4_text3.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption4_text3.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
           <ul className={styles.caption_margin}>
-            {userPanel.caption4_text4.map((text) => (
-              <div>
+            {userPanel.caption4_text4.map((text, idx) => (
+              <div key={idx}>
                 <li style={{ listStyle: "inside" }}>
                   {withColour(text, colour)}
                 </li>
@@ -139,15 +139,15 @@ export const CaseUserPanel = () => {
             ))}
           </ul>
 
-          {userPanel.caption4_text5.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption4_text5.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
 
           <ul className={styles.caption_margin}>
-            {userPanel.caption4_text6.map((text) => (
-              <div>
+            {userPanel.caption4_text6.map((text, idx) => (
+              <div key={idx}>
                 <li style={{ listStyle: "inside" }}>
                   {withColour(text, colour)}
                 </li>
@@ -160,8 +160,8 @@ export const CaseUserPanel = () => {
         <TextLayout>
           <div className={styles.caption}>{userPanel.caption5}</div>
 
-          {userPanel.caption5_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption5_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -178,8 +178,8 @@ export const CaseUserPanel = () => {
         <TextLayout>
           <div className={styles.caption}>{userPanel.caption6}</div>
 
-          {userPanel.caption6_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {userPanel.caption6_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}

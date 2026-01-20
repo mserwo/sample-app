@@ -77,8 +77,8 @@ export const StackApi = () => {
         <TextLayout>
           <div className={styles.caption}>{api.caption3}</div>
 
-          {api.caption3_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {api.caption3_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}
@@ -88,8 +88,8 @@ export const StackApi = () => {
         <TextLayout>
           <div className={styles.caption}>{api.caption4}</div>
 
-          {api.caption4_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {api.caption4_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, colour)}
             </div>
           ))}

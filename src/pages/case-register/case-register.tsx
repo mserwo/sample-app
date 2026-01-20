@@ -58,8 +58,8 @@ export const CaseRegister = () => {
       <SectionLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption1}</div>
-          {register.caption1_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {register.caption1_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, green)}
             </div>
           ))}
@@ -84,8 +84,8 @@ export const CaseRegister = () => {
             {withColour(register.caption3_text1, green)}
           </div>
           <ul>
-            {register.caption3_text2.map((text) => (
-              <li style={{ listStyle: "inside" }}>
+            {register.caption3_text2.map((text, idx) => (
+              <li key={idx} style={{ listStyle: "inside" }}>
                 {withColour(text, "#45b26b")}
               </li>
             ))}
@@ -101,15 +101,17 @@ export const CaseRegister = () => {
         </PicsLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption4}</div>
-          {register.caption4_text1.map((text) => (
-            <div className={styles.caption_margin}>
+          {register.caption4_text1.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, green)}
             </div>
           ))}
 
           <ul>
-            {register.caption4_text2.map((text) => (
-              <li style={{ listStyle: "inside" }}>{withColour(text, green)}</li>
+            {register.caption4_text2.map((text, idx) => (
+              <li key={idx} style={{ listStyle: "inside" }}>
+                {withColour(text, green)}
+              </li>
             ))}
           </ul>
         </TextLayout>
@@ -117,8 +119,8 @@ export const CaseRegister = () => {
       <SectionLayout>
         <TextLayout>
           <div className={styles.caption}>{register.caption5}</div>
-          {register.caption5_text.map((text) => (
-            <div className={styles.caption_margin}>
+          {register.caption5_text.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, green)}
             </div>
           ))}
@@ -134,22 +136,22 @@ export const CaseRegister = () => {
         <TextLayout>
           <div className={styles.caption}>{register.caption6}</div>
 
-          {register.caption6_text1.map((text) => (
-            <div className={styles.caption_margin}>
+          {register.caption6_text1.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, green)}
             </div>
           ))}
           <ul className={styles.caption_margin}>
-            {register.caption6_text2.map((text) => (
-              <div>
+            {register.caption6_text2.map((text, idx) => (
+              <div key={idx}>
                 <li style={{ listStyle: "inside" }}>
                   {withColour(text, green)}
                 </li>
               </div>
             ))}
           </ul>
-          {register.caption6_text3.map((text) => (
-            <div className={styles.caption_margin}>
+          {register.caption6_text3.map((text, idx) => (
+            <div key={idx} className={styles.caption_margin}>
               {withColour(text, green)}
             </div>
           ))}
@@ -160,8 +162,10 @@ export const CaseRegister = () => {
           <div className={styles.caption}>{register.caption7}</div>
           <div className={styles.caption_margin}>{register.caption7_text1}</div>
           <ul className={styles.caption_margin}>
-            {register.caption7_text2.map((text) => (
-              <li style={{ listStyle: "inside" }}>{text}</li>
+            {register.caption7_text2.map((text, idx) => (
+              <li key={idx} style={{ listStyle: "inside" }}>
+                {text}
+              </li>
             ))}
           </ul>
           <div className={styles.caption_margin}>{register.caption7_text3}</div>
