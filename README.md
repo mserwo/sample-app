@@ -172,7 +172,3 @@ npm run test       # run tests (Vitest)
 ✔️ Development finished
 ✔️ Ready for release
 ✔️ Ready for GitHub Pages deployment
-
----
-
-Happy coding 🚀
