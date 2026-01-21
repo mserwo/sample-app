@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./mobile-menu.module.scss";
 import MenuLine from "../../../assets/images/Line.svg?react";
@@ -9,6 +9,7 @@ export const MenuMobile = () => {
   const { nick, id, token, setToken } = useContext(UserContext);
   const [login, setLogin] = useState<boolean>(true);
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
 
@@ -17,16 +18,27 @@ export const MenuMobile = () => {
     console.log("user logout");
     setLogin(false);
     setToken("");
-
-    if (window.location.origin === "http://localhost:5173") {
-      navigate("/");
-    }
+    navigate("/");
   };
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const mockUser = JSON.parse(sessionStorage.getItem("mockUser") || "{}");
   const mockNick = mockUser.mockNick;
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={styles.mobileMenu}>
@@ -35,7 +47,7 @@ export const MenuMobile = () => {
       </div>
 
       {isOpen ? (
-        <nav className={styles.menuItems}>
+        <nav ref={menuRef} className={styles.menuItems}>
           <div className={styles.symbol} onClick={toggleMenu}>
             <Xsymbol className={styles.xSymbol} />
           </div>
@@ -62,32 +74,48 @@ export const MenuMobile = () => {
 
           <ul className={styles.menuStyleMain}>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" onClick={() => window.scrollTo(0, 0)}>
+                Login
+              </Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
-            </li>
-          </ul>
-          <ul className={styles.menuStyle}>
-            <li>
-              <Link to="/case/register">Use Case Register</Link>
-            </li>
-            <li>
-              <Link to="/case/login">Use Case Login</Link>
-            </li>
-            <li>
-              <Link to="/case/login">Use Case User Panel</Link>
+              <Link to="/register" onClick={() => window.scrollTo(0, 0)}>
+                Register
+              </Link>
             </li>
           </ul>
           <ul className={styles.menuStyle}>
             <li>
-              <Link to="/stack/frontend">Tech Stack Frontend</Link>
+              <Link to="/case/register" onClick={() => window.scrollTo(0, 0)}>
+                Use Case Register
+              </Link>
             </li>
             <li>
-              <Link to="/stack/api">Tech Stack Api</Link>
+              <Link to="/case/login" onClick={() => window.scrollTo(0, 0)}>
+                Use Case Login
+              </Link>
             </li>
             <li>
-              <Link to="/stack/server">Tech Stack Server</Link>
+              <Link to="/case/login" onClick={() => window.scrollTo(0, 0)}>
+                Use Case User Panel
+              </Link>
+            </li>
+          </ul>
+          <ul className={styles.menuStyle}>
+            <li>
+              <Link to="/stack/frontend" onClick={() => window.scrollTo(0, 0)}>
+                Tech Stack Frontend
+              </Link>
+            </li>
+            <li>
+              <Link to="/stack/api" onClick={() => window.scrollTo(0, 0)}>
+                Tech Stack Api
+              </Link>
+            </li>
+            <li>
+              <Link to="/stack/server" onClick={() => window.scrollTo(0, 0)}>
+                Tech Stack Server
+              </Link>
             </li>
           </ul>
         </nav>

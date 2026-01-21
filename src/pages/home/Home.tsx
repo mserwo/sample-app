@@ -4,6 +4,7 @@ import { getUserId } from "../../api/fetch-user-id";
 import { LanguageContext, UserContext } from "../../App";
 import { Layout } from "../../components/layout";
 import { SectionLayout } from "../../components/layout/section-layout";
+import type { ComponentType, SVGProps } from "react";
 
 import classNames from "classnames";
 import styles from "./home.module.scss";
@@ -11,10 +12,26 @@ import styles from "./home.module.scss";
 import MsPhoto from "@/assets/images/MS.png";
 import { Box } from "../../components/box";
 
+import JsIcon from "@/assets/icons/jsIcon.svg?react";
+import ReactIcon from "@/assets/icons/reactIcon.svg?react";
+import ReactRouterIcon from "@/assets/icons/reactRouterIcon.svg?react";
+import ViteIcon from "@/assets/icons/viteIcon.svg?react";
+import HtmlIcon from "@/assets/icons/htmlIcon.svg?react";
+import ScssIcon from "@/assets/icons/scssIcon.svg?react";
+import JsonIcon from "@/assets/icons/jsonIcon.svg?react";
+import JwtIcon from "@/assets/icons/jwtIcon.svg?react";
+import FormikIcon from "@/assets/icons/formikIcon.svg?react";
+import NodeJsIcon from "@/assets/icons/nodeJsIcon.svg?react";
+
 interface UserData {
   id: string;
   email: string;
 }
+
+type TechItem = {
+  text: string;
+  Icon?: ComponentType<SVGProps<SVGSVGElement>>;
+};
 
 export const Home = () => {
   const { home } = useContext(LanguageContext);
@@ -43,6 +60,23 @@ export const Home = () => {
 
     receiveUserData();
   }, [token, navigate]);
+
+  const techListWithIcons: TechItem[] = [
+    { text: home.hero.techList[0], Icon: JsIcon },
+    { text: home.hero.techList[1], Icon: ReactIcon },
+    { text: home.hero.techList[2], Icon: ReactRouterIcon },
+    { text: home.hero.techList[3], Icon: ViteIcon },
+    { text: home.hero.techList[4], Icon: HtmlIcon },
+    { text: home.hero.techList[5], Icon: ScssIcon },
+    { text: home.hero.techList[6] },
+    { text: home.hero.techList[7], Icon: JsonIcon },
+    { text: home.hero.techList[8], Icon: JwtIcon },
+    { text: home.hero.techList[9] },
+    { text: home.hero.techList[10], Icon: FormikIcon },
+    { text: home.hero.techList[11] },
+    { text: home.hero.techList[12], Icon: NodeJsIcon },
+    { text: home.hero.techList[13] },
+  ];
 
   return (
     <Layout>
@@ -93,12 +127,20 @@ export const Home = () => {
               </ul>
               <div>{home.hero.text2}</div>
             </div>
+
             <div className={styles.hero_description_tech}>
-              {home.hero.techList.map((text, idx) => (
-                <div key={idx} className={styles.hero_description_tech_text}>
-                  {text}
-                </div>
-              ))}
+              {techListWithIcons.map((item, idx) => {
+                const IconComponent = item.Icon;
+
+                return (
+                  <div key={idx} className={styles.hero_description_tech_text}>
+                    {IconComponent && (
+                      <IconComponent className={styles.techIcon} />
+                    )}
+                    <span>{item.text}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className={styles.hero_imgContainer}>

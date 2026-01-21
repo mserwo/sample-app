@@ -45,7 +45,7 @@ export const UserPage = () => {
       nick: mockUser.mockNick || "",
       firstName: mockUser.mockFirstName || "",
       lastName: mockUser.mockLastName || "",
-      avatarUrl: defaultAvatar,
+      avatarUrl: "https://picsum.photos/300",
       city: mockUser.mockCity || "",
       phone: mockUser.mockPhone || "",
       description: mockUser.mockDescription || "",
@@ -123,6 +123,7 @@ export const UserPage = () => {
       mockUser.mockNick = values.nick;
       mockUser.mockFirstName = values.firstName;
       mockUser.mockLastName = values.lastName;
+      mockUser.mockAvatarUrl = "https://picsum.photos/300";
       mockUser.mockCity = values.city;
       mockUser.mockPhone = values.phone;
       mockUser.mockDescription = values.description;
@@ -135,6 +136,7 @@ export const UserPage = () => {
           mockNick: values.nick,
           mockFirstName: values.firstName,
           mockLastName: values.lastName,
+          mockAvatarUrl: "https://picsum.photos/300",
           mockCity: values.city,
           mockPhone: values.phone,
           mockDescription: values.description,

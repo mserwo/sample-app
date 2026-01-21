@@ -70,7 +70,6 @@
     display: flex;
     flex: 1;
     gap: 30px;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     @include typography.caption;
@@ -105,6 +104,7 @@
         }
       }
     }
+
     &_tech {
       display: flex;
       flex-wrap: wrap;
@@ -112,14 +112,27 @@
       justify-content: center;
 
       &_text {
-        display: flex;
+        display: flex; // ikona + tekst w jednej linii
+        align-items: center; // pionowe wyśrodkowanie
         padding: 10px 30px;
         border: 2px solid colors.$neutrals4;
         border-radius: 30px;
         @include typography.caption;
+
+        span {
+          line-height: 1.2; // dopasowanie tekstu do wysokości ikony
+        }
+
+        svg {
+          display: block; // usuwa baseline offset
+          height: 16px; // wysokość ikonki
+          width: auto;
+          margin-right: 7px; // odstęp od tekstu
+        }
       }
     }
   }
+
   &_imgContainer {
     flex: 1;
     display: flex;
@@ -139,6 +152,13 @@
       border-radius: 20px;
     }
   }
+}
+
+.techIcon {
+  height: 15px;
+  width: auto;
+  margin-right: 10px;
+  display: block;
 }
 
 /*------------------------------------------------*/
@@ -165,7 +185,6 @@
     display: flex;
     width: 100%;
     max-width: 1400px;
-    display: flex;
     justify-content: center;
     padding: 15px;
     border-radius: 30px;
