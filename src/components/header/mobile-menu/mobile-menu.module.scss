@@ -97,9 +97,27 @@
   padding: 10px;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .menuItems li:hover {
+    background-color: colors.$neutrals2;
+  }
+
+  .userMenu_item:hover {
+    background-color: colors.$neutrals2;
+  }
+}
+
 .symbol {
   cursor: pointer;
   margin: 40px 40px 20px 40px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .symbol:hover {
+    .xSymbol {
+      color: colors.$neutrals5;
+    }
+  }
 }
 
 .symbol:hover {
