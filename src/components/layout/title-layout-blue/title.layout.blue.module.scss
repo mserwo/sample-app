@@ -17,10 +17,12 @@
 }
 
 .container {
+  @include fonts.poppins;
+  line-height: 24px;
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 15px 0px;
+  padding: 15px 15px;
   width: 100%;
   max-width: 865px;
 
