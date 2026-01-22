@@ -43,34 +43,32 @@ export const MenuMobile = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.menuLine} onPointerDown={toggleMenu}>
+      <div className={styles.menuLine} onClick={toggleMenu}>
         {isOpen ? null : <MenuLine />}
       </div>
 
       {isOpen ? (
         <nav ref={menuRef} className={styles.menu}>
-          <div className={styles.symbol} onPointerDown={toggleMenu}>
+          <div className={styles.symbol} onClick={toggleMenu}>
             <Xsymbol className={styles.icon} />
           </div>
 
           {token || mockUser.mockToken ? (
             <div className={styles.userMenu}>
-              <div
-                className={styles.userMenu_itemHello}
-                onPointerDown={toggleMenu}
-              >
+              <div className={styles.userMenu_itemHello}>
                 {menu.hello} {mockNick ? mockNick : nick}!
               </div>
               <div
                 className={styles.userMenu_item}
-                onPointerDown={() => {
+                onClick={() => {
                   id ? navigate(`/userpage/${id}`) : navigate(`/userpage/mock`),
                     window.scrollTo(0, 0);
+                  toggleMenu();
                 }}
               >
                 {menu.userSettings}
               </div>
-              <div className={styles.userMenu_item} onPointerDown={logout}>
+              <div className={styles.userMenu_item} onClick={logout}>
                 {menu.logOut}
               </div>
             </div>
@@ -78,7 +76,8 @@ export const MenuMobile = () => {
 
           <ul className={styles.pageMenuApp}>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/login");
                 window.scrollTo(0, 0);
               }}
@@ -86,7 +85,8 @@ export const MenuMobile = () => {
               {menu.login}
             </li>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/register");
                 window.scrollTo(0, 0);
               }}
@@ -96,7 +96,8 @@ export const MenuMobile = () => {
           </ul>
           <ul className={styles.pageMenu}>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/case/register");
                 window.scrollTo(0, 0);
               }}
@@ -104,7 +105,8 @@ export const MenuMobile = () => {
               {menu.useCaseRegister}
             </li>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/case/login");
                 window.scrollTo(0, 0);
               }}
@@ -112,7 +114,8 @@ export const MenuMobile = () => {
               {menu.useCaseLogin}
             </li>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/case/user-panel");
                 window.scrollTo(0, 0);
               }}
@@ -122,7 +125,8 @@ export const MenuMobile = () => {
           </ul>
           <ul className={styles.pageMenu}>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/stack/frontend");
                 window.scrollTo(0, 0);
               }}
@@ -130,7 +134,8 @@ export const MenuMobile = () => {
               {menu.techStackFrontend}
             </li>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/stack/api");
                 window.scrollTo(0, 0);
               }}
@@ -138,7 +143,8 @@ export const MenuMobile = () => {
               {menu.techStackApi}
             </li>
             <li
-              onPointerDown={() => {
+              onClick={() => {
+                toggleMenu();
                 navigate("/stack/server");
                 window.scrollTo(0, 0);
               }}
