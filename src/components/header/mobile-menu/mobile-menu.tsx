@@ -74,49 +74,73 @@ export const MenuMobile = () => {
           ) : null}
 
           <ul className={styles.pageMenuApp}>
-            <li>
-              <Link to="/login" onClick={() => window.scrollTo(0, 0)}>
-                {menu.login}
-              </Link>
+            <li
+              onClick={() => {
+                navigate("/login");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.login}
             </li>
-            <li>
-              <Link to="/register" onClick={() => window.scrollTo(0, 0)}>
-                {menu.register}
-              </Link>
-            </li>
-          </ul>
-          <ul className={styles.pageMenu}>
-            <li>
-              <Link to="/case/register" onClick={() => window.scrollTo(0, 0)}>
-                {menu.useCaseRegister}
-              </Link>
-            </li>
-            <li>
-              <Link to="/case/login" onClick={() => window.scrollTo(0, 0)}>
-                {menu.useCaseLogin}
-              </Link>
-            </li>
-            <li>
-              <Link to="/case/login" onClick={() => window.scrollTo(0, 0)}>
-                {menu.useCaseUserPanel}
-              </Link>
+            <li
+              onClick={() => {
+                navigate("/register");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.register}
             </li>
           </ul>
           <ul className={styles.pageMenu}>
-            <li>
-              <Link to="/stack/frontend" onClick={() => window.scrollTo(0, 0)}>
-                {menu.techStackFrontend}
-              </Link>
+            <li
+              onClick={() => {
+                navigate("/case/register");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.useCaseRegister}
             </li>
-            <li>
-              <Link to="/stack/api" onClick={() => window.scrollTo(0, 0)}>
-                {menu.techStackApi}
-              </Link>
+            <li
+              onClick={() => {
+                navigate("/case/login");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.useCaseLogin}
             </li>
-            <li>
-              <Link to="/stack/server" onClick={() => window.scrollTo(0, 0)}>
-                {menu.techStackServer}
-              </Link>
+            <li
+              onClick={() => {
+                navigate("/case/user-panel");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.useCaseUserPanel}
+            </li>
+          </ul>
+          <ul className={styles.pageMenu}>
+            <li
+              onClick={() => {
+                navigate("/stack/frontend");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.techStackFrontend}
+            </li>
+            <li
+              onClick={() => {
+                navigate("/stack/api");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.techStackApi}
+            </li>
+            <li
+              onClick={() => {
+                navigate("/stack/server");
+                window.scrollTo(0, 0);
+              }}
+            >
+              {menu.techStackServer}
             </li>
           </ul>
         </nav>
