@@ -40,10 +40,6 @@
   margin: 0;
 }
 
-.menu li:hover {
-  background-color: colors.$neutrals2;
-}
-
 .menu a {
   display: block;
   color: colors.$neutrals7;
@@ -51,35 +47,11 @@
   padding: 10px;
 }
 
-// @media (hover: hover) and (pointer: fine) {
-//   .menu li:hover {
-//     background-color: colors.$neutrals2;
-//   }
-
-//   .userMenu_item:hover {
-//     background-color: colors.$neutrals2;
-//   }
-// }
-
 /*---------------------------------*/
 
 .symbol {
   cursor: pointer;
   margin: 40px 40px 20px 40px;
-}
-
-// @media (hover: hover) and (pointer: fine) {
-//   .symbol:hover {
-//     .icon {
-//       color: colors.$neutrals5;
-//     }
-//   }
-// }
-
-.symbol:hover {
-  .icon {
-    color: colors.$neutrals5;
-  }
 }
 
 .icon {
@@ -104,10 +76,6 @@
     cursor: pointer;
     padding: 10px;
     @include typography.caption;
-
-    &:hover {
-      background-color: colors.$neutrals2;
-    }
   }
 
   &_itemHello {
@@ -149,4 +117,20 @@
 .pageMenu li {
   cursor: pointer;
   padding: 10px 10px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menu li:hover {
+    background-color: colors.$neutrals2;
+  }
+
+  .symbol:hover {
+    .icon {
+      color: colors.$neutrals5;
+    }
+  }
+
+  .userMenu_item:hover {
+    background-color: colors.$neutrals2;
+  }
 }
