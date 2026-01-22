@@ -58,14 +58,14 @@ export const MenuMobile = () => {
               <div className={styles.userMenu_itemHello} onClick={toggleMenu}>
                 {menu.hello} {mockNick ? mockNick : nick}!
               </div>
-              <div>
-                <Link
-                  to={id ? `/userpage/${id}` : `/userpage/mock`}
-                  onClick={() => window.scrollTo(0, 0)}
-                  className={styles.userMenu_item}
-                >
-                  {menu.userSettings}
-                </Link>
+              <div
+                className={styles.userMenu_item}
+                onClick={() => {
+                  id ? navigate("/userpage/${id}") : navigate("/userpage/mock"),
+                    window.scrollTo(0, 0);
+                }}
+              >
+                {menu.userSettings}
               </div>
               <div className={styles.userMenu_item} onClick={logout}>
                 {menu.logOut}

@@ -10,17 +10,5 @@
     "city": "Warszawa",
     "phone": "111111111",
     "description": "React Developer"
-  },
-  {
-    "id": "4d49ed4d-7563-47bd-921a-450fdf4cfea3",
-    "email": "ttt@op.pl",
-    "passwordHash": "$2b$10$KdOQechPFMrVqkecngHX9.5vJCvbIuw2LEVszrs/HLcAzY//hSWOe",
-    "nick": "",
-    "firstName": "",
-    "lastName": "",
-    "avatarUrl": "https://picsum.photos/300",
-    "city": "",
-    "phone": "",
-    "description": ""
   }
 ]
