@@ -28,16 +28,16 @@ export const MenuMobile = () => {
   const mockNick = mockUser.mockNick;
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handlePointerDown = (event: PointerEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("pointerdown", handlePointerDown, true);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("pointerdown", handlePointerDown, true);
     };
   }, []);
 
@@ -61,7 +61,7 @@ export const MenuMobile = () => {
               <div
                 className={styles.userMenu_item}
                 onClick={() => {
-                  id ? navigate("/userpage/${id}") : navigate("/userpage/mock"),
+                  id ? navigate(`/userpage/${id}`) : navigate(`/userpage/mock`),
                     window.scrollTo(0, 0);
                 }}
               >
