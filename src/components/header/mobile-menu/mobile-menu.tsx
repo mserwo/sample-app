@@ -42,15 +42,15 @@ export const MenuMobile = () => {
   }, []);
 
   return (
-    <div className={styles.mobileMenu}>
-      <div className={styles.menuButton} onClick={toggleMenu}>
-        <MenuLine />
+    <div className={styles.wrapper}>
+      <div className={styles.menuLine} onClick={toggleMenu}>
+        {isOpen ? null : <MenuLine />}
       </div>
 
       {isOpen ? (
-        <nav ref={menuRef} className={styles.menuItems}>
+        <nav ref={menuRef} className={styles.menu}>
           <div className={styles.symbol} onClick={toggleMenu}>
-            <Xsymbol className={styles.xSymbol} />
+            <Xsymbol className={styles.icon} />
           </div>
 
           {token || mockUser.mockToken ? (
@@ -73,7 +73,7 @@ export const MenuMobile = () => {
             </div>
           ) : null}
 
-          <ul className={styles.menuStyleMain}>
+          <ul className={styles.pageMenuApp}>
             <li>
               <Link to="/login" onClick={() => window.scrollTo(0, 0)}>
                 {menu.login}
@@ -85,7 +85,7 @@ export const MenuMobile = () => {
               </Link>
             </li>
           </ul>
-          <ul className={styles.menuStyle}>
+          <ul className={styles.pageMenu}>
             <li>
               <Link to="/case/register" onClick={() => window.scrollTo(0, 0)}>
                 {menu.useCaseRegister}
@@ -102,7 +102,7 @@ export const MenuMobile = () => {
               </Link>
             </li>
           </ul>
-          <ul className={styles.menuStyle}>
+          <ul className={styles.pageMenu}>
             <li>
               <Link to="/stack/frontend" onClick={() => window.scrollTo(0, 0)}>
                 {menu.techStackFrontend}

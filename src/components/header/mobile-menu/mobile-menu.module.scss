@@ -3,18 +3,21 @@
 @use "~/typography";
 @use "~/fonts";
 
-.mobileMenu {
+.wrapper {
   position: relative;
 }
 
-.menuButton {
+.menuLine {
+  display: block;
   background: none;
   border: none;
   cursor: pointer;
-  @include typography.button2;
+  line-height: 0;
 }
 
-.menuItems {
+/*---------------------------------*/
+
+.menu {
   position: fixed;
   height: 100vh;
   top: 0px;
@@ -32,10 +35,60 @@
   }
 }
 
-.menuItems li {
+.menu li {
   @include typography.caption;
   margin: 0;
 }
+
+.menu li:hover {
+  background-color: colors.$neutrals2;
+}
+
+.menu a {
+  display: block;
+  color: colors.$neutrals7;
+  text-decoration: none;
+  padding: 10px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menu li:hover {
+    background-color: colors.$neutrals2;
+  }
+
+  .userMenu_item:hover {
+    background-color: colors.$neutrals2;
+  }
+}
+
+/*---------------------------------*/
+
+.symbol {
+  cursor: pointer;
+  margin: 40px 40px 20px 40px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .symbol:hover {
+    .icon {
+      color: colors.$neutrals5;
+    }
+  }
+}
+
+.symbol:hover {
+  .icon {
+    color: colors.$neutrals5;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: auto;
+  color: colors.$neutrals4;
+}
+
+/*---------------------------------*/
 
 .userMenu {
   display: flex;
@@ -64,7 +117,9 @@
   }
 }
 
-.menuStyleMain {
+/*---------------------------------*/
+
+.pageMenuApp {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -77,57 +132,11 @@
   }
 }
 
-.menuStyle {
+.pageMenu {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px 0px;
   margin: 0 30px;
   border-bottom: 1px solid colors.$neutrals4;
-}
-
-.menuItems li:hover {
-  background-color: colors.$neutrals2;
-}
-
-.menuItems a {
-  display: block;
-  color: colors.$neutrals7;
-  text-decoration: none;
-  padding: 10px;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .menuItems li:hover {
-    background-color: colors.$neutrals2;
-  }
-
-  .userMenu_item:hover {
-    background-color: colors.$neutrals2;
-  }
-}
-
-.symbol {
-  cursor: pointer;
-  margin: 40px 40px 20px 40px;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .symbol:hover {
-    .xSymbol {
-      color: colors.$neutrals5;
-    }
-  }
-}
-
-.symbol:hover {
-  .xSymbol {
-    color: colors.$neutrals5;
-  }
-}
-
-.xSymbol {
-  width: 20px;
-  height: auto;
-  color: colors.$neutrals4;
 }
