@@ -43,31 +43,34 @@ export const MenuMobile = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.menuLine} onClick={toggleMenu}>
+      <div className={styles.menuLine} onPointerDown={toggleMenu}>
         {isOpen ? null : <MenuLine />}
       </div>
 
       {isOpen ? (
         <nav ref={menuRef} className={styles.menu}>
-          <div className={styles.symbol} onClick={toggleMenu}>
+          <div className={styles.symbol} onPointerDown={toggleMenu}>
             <Xsymbol className={styles.icon} />
           </div>
 
           {token || mockUser.mockToken ? (
             <div className={styles.userMenu}>
-              <div className={styles.userMenu_itemHello} onClick={toggleMenu}>
+              <div
+                className={styles.userMenu_itemHello}
+                onPointerDown={toggleMenu}
+              >
                 {menu.hello} {mockNick ? mockNick : nick}!
               </div>
               <div
                 className={styles.userMenu_item}
-                onClick={() => {
+                onPointerDown={() => {
                   id ? navigate(`/userpage/${id}`) : navigate(`/userpage/mock`),
                     window.scrollTo(0, 0);
                 }}
               >
                 {menu.userSettings}
               </div>
-              <div className={styles.userMenu_item} onClick={logout}>
+              <div className={styles.userMenu_item} onPointerDown={logout}>
                 {menu.logOut}
               </div>
             </div>
@@ -75,7 +78,7 @@ export const MenuMobile = () => {
 
           <ul className={styles.pageMenuApp}>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/login");
                 window.scrollTo(0, 0);
               }}
@@ -83,7 +86,7 @@ export const MenuMobile = () => {
               {menu.login}
             </li>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/register");
                 window.scrollTo(0, 0);
               }}
@@ -93,7 +96,7 @@ export const MenuMobile = () => {
           </ul>
           <ul className={styles.pageMenu}>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/case/register");
                 window.scrollTo(0, 0);
               }}
@@ -101,7 +104,7 @@ export const MenuMobile = () => {
               {menu.useCaseRegister}
             </li>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/case/login");
                 window.scrollTo(0, 0);
               }}
@@ -109,7 +112,7 @@ export const MenuMobile = () => {
               {menu.useCaseLogin}
             </li>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/case/user-panel");
                 window.scrollTo(0, 0);
               }}
@@ -119,7 +122,7 @@ export const MenuMobile = () => {
           </ul>
           <ul className={styles.pageMenu}>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/stack/frontend");
                 window.scrollTo(0, 0);
               }}
@@ -127,7 +130,7 @@ export const MenuMobile = () => {
               {menu.techStackFrontend}
             </li>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/stack/api");
                 window.scrollTo(0, 0);
               }}
@@ -135,7 +138,7 @@ export const MenuMobile = () => {
               {menu.techStackApi}
             </li>
             <li
-              onClick={() => {
+              onPointerDown={() => {
                 navigate("/stack/server");
                 window.scrollTo(0, 0);
               }}

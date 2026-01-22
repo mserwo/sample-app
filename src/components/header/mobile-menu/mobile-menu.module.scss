@@ -76,6 +76,11 @@
     cursor: pointer;
     padding: 10px;
     @include typography.caption;
+
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   &_itemHello {
@@ -103,6 +108,11 @@
 .pageMenuApp li {
   cursor: pointer;
   padding: 10px 10px;
+
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .pageMenu {
@@ -117,6 +127,11 @@
 .pageMenu li {
   cursor: pointer;
   padding: 10px 10px;
+
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (hover: hover) and (pointer: fine) {
