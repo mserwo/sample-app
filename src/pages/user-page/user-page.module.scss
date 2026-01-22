@@ -166,15 +166,23 @@
 }
 
 .errorMessage {
+  @include typography.caption;
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  color: colors.$primary3;
+}
+
+.errorField {
+  color: colors.$primary3;
 }
 
 .dataUpdate {
+  @include typography.caption;
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  color: colors.$primary5;
 }
 
 .dataContainer {

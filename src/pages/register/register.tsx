@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Layout } from "../../components/layout";
 import styles from "./register.module.scss";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { postRegister } from "../../api";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
+import { LanguageContext } from "../../App";
 
 interface RegisterResponse {
   isError: boolean;
@@ -18,15 +19,8 @@ interface Values {
   repeatPassword: string;
 }
 
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().required("Required"),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
-    .required("Required"),
-});
-
 export const Register = () => {
+  const { registration } = useContext(LanguageContext);
   const [registerResponse, setRegisterResponse] = useState<RegisterResponse>({
     isError: false,
     message: "",
@@ -40,11 +34,24 @@ export const Register = () => {
     }, 2000);
   };
 
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email(registration.validation.email1)
+      .required(registration.validation.email2),
+    password: Yup.string().required(registration.validation.password),
+    repeatPassword: Yup.string()
+      .oneOf(
+        [Yup.ref("password"), undefined],
+        registration.validation.repeatPassword1,
+      )
+      .required(registration.validation.repeatPassword2),
+  });
+
   const onHandleSubmit = (values: Values) => {
     const onSucces = () => {
       setRegisterResponse({
         isError: false,
-        message: "Thank you for your registration!",
+        message: registration.successMessage,
       });
       goToLogin();
     };
@@ -69,7 +76,7 @@ export const Register = () => {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div>
-            <div className={styles.header}>Register to create an account</div>
+            <div className={styles.header}>{registration.title}</div>
 
             <Formik
               initialValues={{
@@ -90,12 +97,12 @@ export const Register = () => {
               {({ errors, touched }) => (
                 <Form className={styles.form}>
                   <div className={styles.items}>
-                    <label htmlFor="email">Your Email</label>
+                    <label htmlFor="email">{registration.emailField}</label>
                     <Field
                       className={styles.field}
                       id="email"
                       name="email"
-                      placeholder="john@gmail.com"
+                      placeholder={registration.emailPlaceholder}
                       type="email"
                     />
                     <ErrorMessage
@@ -106,12 +113,14 @@ export const Register = () => {
                   </div>
 
                   <div className={styles.items}>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">
+                      {registration.passwordField}
+                    </label>
                     <Field
                       className={styles.field}
                       id="password"
                       name="password"
-                      placeholder="Enter your password"
+                      placeholder={registration.passwordPlaceholder}
                       type="password"
                     />
                     <ErrorMessage
@@ -122,12 +131,14 @@ export const Register = () => {
                   </div>
 
                   <div className={styles.items}>
-                    <label htmlFor="repeatPassword">Repeat Password</label>
+                    <label htmlFor="repeatPassword">
+                      {registration.repeatPasswordField}
+                    </label>
                     <Field
                       className={styles.field}
                       id="repeatPassword"
                       name="repeatPassword"
-                      placeholder="Repeat Password"
+                      placeholder={registration.repeatPasswordPlaceholder}
                       type="password"
                     />
                     <ErrorMessage
@@ -138,7 +149,7 @@ export const Register = () => {
                   </div>
 
                   <button className={styles.submit} type="submit">
-                    Submit
+                    {registration.submitButton}
                   </button>
 
                   {registerResponse.message ? (

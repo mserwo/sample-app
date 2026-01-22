@@ -5,7 +5,7 @@ import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { postLogin } from "../../api";
 import classNames from "classnames";
-import { UserContext } from "../../App";
+import { LanguageContext, UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { readUserData } from "../../api/read-user-data";
 
@@ -19,12 +19,8 @@ interface Values {
   password: string;
 }
 
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().required("Required"),
-});
-
 export const Login = () => {
+  const { logIn } = useContext(LanguageContext);
   const { setToken, setId, setEmail, setNick, setFirstName, setLastName } =
     useContext(UserContext);
 
@@ -41,11 +37,18 @@ export const Login = () => {
     }, 2000);
   };
 
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email(logIn.validation.email1)
+      .required(logIn.validation.email2),
+    password: Yup.string().required(logIn.validation.password),
+  });
+
   const onHandleSubmit = async (values: Values) => {
     const onSuccess = async (token: string) => {
       setLoginResponse({
         isError: false,
-        message: "You are logged in!",
+        message: logIn.successMessage,
       });
       setToken(token);
 
@@ -73,7 +76,7 @@ export const Login = () => {
       );
       setLoginResponse({
         isError: false,
-        message: "You are logged in!",
+        message: logIn.successMessage,
       });
       console.log("mock login");
       goToHome();
@@ -87,7 +90,7 @@ export const Login = () => {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div>
-            <div className={styles.header}>Log in to your account</div>
+            <div className={styles.header}>{logIn.title}</div>
 
             <Formik
               initialValues={{
@@ -107,12 +110,12 @@ export const Login = () => {
               {() => (
                 <Form className={styles.form}>
                   <div className={styles.items}>
-                    <label htmlFor="email">Your Email</label>
+                    <label htmlFor="email">{logIn.emailField}</label>
                     <Field
                       className={styles.field}
                       id="email"
                       name="email"
-                      placeholder="john@gmail.com"
+                      placeholder={logIn.emailPlaceholder}
                       type="email"
                     />
                     <ErrorMessage
@@ -123,12 +126,12 @@ export const Login = () => {
                   </div>
 
                   <div className={styles.items}>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">{logIn.passwordField}</label>
                     <Field
                       className={styles.field}
                       id="password"
                       name="password"
-                      placeholder="Enter your password"
+                      placeholder={logIn.passwordPlaceholder}
                       type="password"
                     />
                     <ErrorMessage
@@ -139,7 +142,7 @@ export const Login = () => {
                   </div>
 
                   <button className={styles.submit} type="submit">
-                    Submit
+                    {logIn.submitButton}
                   </button>
 
                   {loginResponse.message ? (

@@ -4,7 +4,7 @@ import { Layout } from "../../components/layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { updateUserData } from "../../api";
-import { UserContext } from "../../App";
+import { LanguageContext, UserContext } from "../../App";
 import styles from "./user-page.module.scss";
 import { readUserData } from "../../api/read-user-data";
 import defaultAvatar from "../../assets/images/defaultAvatar.svg";
@@ -21,6 +21,7 @@ interface UserFormValues {
 }
 
 export const UserPage = () => {
+  const { userPanel } = useContext(LanguageContext);
   const { token, setEmail, setNick, setFirstName, setLastName } =
     useContext(UserContext);
   const { userId } = useParams<{ userId: string }>();
@@ -96,15 +97,15 @@ export const UserPage = () => {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    nick: Yup.string().required("Nick is required"),
-    firstName: Yup.string().required("Name is required"),
-    lastName: Yup.string().required("Last name is required"),
+      .email(userPanel.validation.email1)
+      .required(userPanel.validation.email2),
+    nick: Yup.string().required(userPanel.validation.nick),
+    firstName: Yup.string().required(userPanel.validation.firstName),
+    lastName: Yup.string().required(userPanel.validation.lastName),
     city: Yup.string(),
     phone: Yup.string()
-      .required("Phone number is required")
-      .matches(/^[0-9]{9}$/, "Phone number must have 9 numbers"),
+      .required(userPanel.validation.phone1)
+      .matches(/^[0-9]{9}$/, userPanel.validation.phone2),
     description: Yup.string(),
   });
 
@@ -162,7 +163,7 @@ export const UserPage = () => {
     <Layout>
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <div className={styles.header}>User data</div>
+          <div className={styles.header}>{userPanel.title}</div>
           {userId ? (
             <>
               {showEdit ? (
@@ -189,14 +190,14 @@ export const UserPage = () => {
                             as="textarea"
                             className={styles.userDescriptionEdit}
                             name="description"
-                            placeholder="Write something about yourself..."
+                            placeholder={userPanel.descriptionPlaceHolder}
                             rows={6}
                           />
                         </div>
 
                         <div className={styles.rightSection}>
                           <div className={styles.items}>
-                            <label>Nick:</label>
+                            <label>{userPanel.nickField}</label>
                             <Field
                               className={styles.field}
                               type="text"
@@ -205,11 +206,11 @@ export const UserPage = () => {
                             <ErrorMessage
                               name="nick"
                               component="div"
-                              className="error-message"
+                              className={styles.errorField}
                             />
                           </div>
                           <div className={styles.items}>
-                            <label>First Name:</label>
+                            <label>{userPanel.firstNameField}</label>
                             <Field
                               className={styles.field}
                               type="text"
@@ -218,11 +219,11 @@ export const UserPage = () => {
                             <ErrorMessage
                               name="firstName"
                               component="div"
-                              className="error-message"
+                              className={styles.errorField}
                             />
                           </div>
                           <div className={styles.items}>
-                            <label>Last Name:</label>
+                            <label>{userPanel.lastNameField}</label>
                             <Field
                               className={styles.field}
                               type="text"
@@ -231,11 +232,11 @@ export const UserPage = () => {
                             <ErrorMessage
                               name="lastName"
                               component="div"
-                              className="error-message"
+                              className={styles.errorField}
                             />
                           </div>
                           <div className={styles.items}>
-                            <label>Email:</label>
+                            <label>{userPanel.emailField}</label>
                             <Field
                               className={styles.field}
                               type="email"
@@ -244,11 +245,11 @@ export const UserPage = () => {
                             <ErrorMessage
                               name="email"
                               component="div"
-                              className="error-message"
+                              className={styles.errorField}
                             />
                           </div>
                           <div className={styles.items}>
-                            <label>City:</label>
+                            <label>{userPanel.cityField}</label>
                             <Field
                               className={styles.field}
                               type="text"
@@ -257,11 +258,11 @@ export const UserPage = () => {
                             <ErrorMessage
                               name="city"
                               component="div"
-                              className="error-message"
+                              className={styles.errorField}
                             />
                           </div>
                           <div className={styles.items}>
-                            <label>Phone:</label>
+                            <label>{userPanel.phoneField}</label>
                             <Field
                               className={styles.field}
                               type="text"
@@ -270,7 +271,7 @@ export const UserPage = () => {
                             <ErrorMessage
                               name="phone"
                               component="div"
-                              className="error-message"
+                              className={styles.errorField}
                             />
                           </div>
                         </div>
@@ -278,18 +279,18 @@ export const UserPage = () => {
 
                       <div className={styles.submitContainer}>
                         <button className={styles.submit} type="submit">
-                          Submit
+                          {userPanel.submitButton}
                         </button>
                       </div>
 
                       {Object.keys(errors).length > 0 && (
                         <div className={styles.errorMessage}>
-                          Complete the missing data
+                          {userPanel.errorMessage}
                         </div>
                       )}
                       {dataUpdate && (
                         <div className={styles.dataUpdate}>
-                          Data has been updated
+                          {userPanel.updateMessage}
                         </div>
                       )}
                     </Form>
@@ -309,50 +310,49 @@ export const UserPage = () => {
                       </div>
 
                       <div className={styles.userDescription}>
-                        {userData.description ||
-                          "This is a short user description."}
+                        {userData.description || userPanel.description}
                       </div>
                     </div>
 
                     <div className={styles.rightSection}>
                       <div className={styles.dataItem}>
-                        Nick:{" "}
+                        {userPanel.nickField}{" "}
                         <div className={styles.dataField}>{userData.nick}</div>
                       </div>
                       <div className={styles.dataItem}>
-                        First Name:{" "}
+                        {userPanel.firstNameField}{" "}
                         <div className={styles.dataField}>
                           {userData.firstName}
                         </div>
                       </div>
                       <div className={styles.dataItem}>
-                        Last Name:{" "}
+                        {userPanel.lastNameField}{" "}
                         <div className={styles.dataField}>
                           {userData.lastName}
                         </div>
                       </div>
                       <div className={styles.dataItem}>
-                        Email:{" "}
+                        {userPanel.emailField}{" "}
                         <div className={styles.dataField}>{userData.email}</div>
                       </div>
                       <div className={styles.dataItem}>
-                        City:{" "}
+                        {userPanel.cityField}{" "}
                         <div className={styles.dataField}>{userData.city}</div>
                       </div>
                       <div className={styles.dataItem}>
-                        Phone:{" "}
+                        {userPanel.phoneField}{" "}
                         <div className={styles.dataField}>{userData.phone}</div>
                       </div>
                     </div>
                   </div>
                   <button className={styles.editData} onClick={EditData}>
-                    Edit Data
+                    {userPanel.editButton}
                   </button>
                 </div>
               )}
             </>
           ) : (
-            <div>User ID not found!</div>
+            <div>{userPanel.idError}</div>
           )}
         </div>
       </div>

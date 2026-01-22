@@ -7,36 +7,40 @@ import MailIcon from "@/assets/images/mail.svg?react";
 import GithubIcon from "@/assets/images/github.svg?react";
 import LinkedinIcon from "@/assets/images/linkedin.svg?react";
 import { Link } from "react-router-dom";
-
-const menu1items = [
-  { title: "Register", url: "/case/register" },
-  { title: "Login", url: "/case/login" },
-  { title: "User panel", url: "/case/user-panel" },
-];
-
-const menu2items = [
-  { title: "Frontend", url: "/stack/frontend" },
-  { title: "Api", url: "/stack/api" },
-  { title: "Server", url: "/stack/server" },
-];
-
-const menu3items = [
-  { title: "Email", url: "mailto:marcin.serwotka@op.pl", icon: <MailIcon /> },
-  {
-    title: "Github",
-    url: "https://github.com/mserwo",
-    external: true,
-    icon: <GithubIcon />,
-  },
-  {
-    title: "Linkedin",
-    url: "https://www.linkedin.com/in/marcin-serwotka-b25072194/?originalSubdomain=pl",
-    external: true,
-    icon: <LinkedinIcon />,
-  },
-];
+import { useContext } from "react";
+import { LanguageContext } from "../../App";
 
 export const Footer = () => {
+  const { navi } = useContext(LanguageContext);
+
+  const menu1items = [
+    { title: navi.register, url: "/case/register" },
+    { title: navi.login, url: "/case/login" },
+    { title: navi.userPanel, url: "/case/user-panel" },
+  ];
+
+  const menu2items = [
+    { title: navi.frontend, url: "/stack/frontend" },
+    { title: navi.api, url: "/stack/api" },
+    { title: navi.server, url: "/stack/server" },
+  ];
+
+  const menu3items = [
+    { title: "Email", url: "mailto:marcin.serwotka@op.pl", icon: <MailIcon /> },
+    {
+      title: "Github",
+      url: "https://github.com/mserwo",
+      external: true,
+      icon: <GithubIcon />,
+    },
+    {
+      title: "Linkedin",
+      url: "https://www.linkedin.com/in/marcin-serwotka-b25072194/?originalSubdomain=pl",
+      external: true,
+      icon: <LinkedinIcon />,
+    },
+  ];
+
   return (
     <footer className={styles.wrapper}>
       <div className={styles.container}>
@@ -60,7 +64,7 @@ export const Footer = () => {
               variant="techStack"
             />
             <NavigationMenu
-              title="Contact"
+              title={navi.contactTitle}
               menuElements={menu3items}
               variant="contact"
             />

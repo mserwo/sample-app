@@ -467,5 +467,88 @@
         "button1": "Go to server description"
       }
     }
+  },
+  "header": {
+    "login": "Login",
+    "register": "Register"
+  },
+  "menu": {
+    "hello": "Hello",
+    "userSettings": "Go to user settings",
+    "logOut": "log out",
+    "login": "Login",
+    "register": "Register",
+    "useCaseRegister": "Use Case - Register",
+    "useCaseLogin": "Use Case - Login",
+    "useCaseUserPanel": "Use Case - User Panel",
+    "techStackFrontend": "Tech Stack - Frontend",
+    "techStackApi": "Tech Stack - Api",
+    "techStackServer": "Tech Stack - Server"
+  },
+  "userPanel": {
+    "validation": {
+      "email1": "Invalid email address",
+      "email2": "Email is required",
+      "nick": "Nick is required",
+      "firstName": "Name is required",
+      "lastName": "Last name is required",
+      "phone1": "Phone number is required",
+      "phone2": "Phone number must have 9 numbers"
+    },
+    "title": "User Panel",
+    "descriptionPlaceHolder": "Write something about yourself...",
+    "description": "This is a short user description.",
+    "nickField": "Nick:",
+    "firstNameField": "First Name:",
+    "lastNameField": "Last Name:",
+    "emailField": "Email:",
+    "cityField": "City:",
+    "phoneField": "Phone:",
+    "submitButton": "Submit",
+    "errorMessage": "Complete the missing data",
+    "updateMessage": "Data has been updated",
+    "editButton": " Edit Data",
+    "idError": "User ID not found!"
+  },
+  "logIn": {
+    "title": "Log in to your account",
+    "successMessage": "You are logged in!",
+    "validation": {
+      "email1": "Invalid email address",
+      "email2": "Required",
+      "password": "Required"
+    },
+    "emailField": "Your Email",
+    "emailPlaceholder": "john@gmail.com",
+    "passwordField": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submitButton": "Submit"
+  },
+  "registration": {
+    "title": "Register to create an account",
+    "successMessage": "Thank you for your registration!",
+    "validation": {
+      "email1": "Invalid email address",
+      "email2": "Required",
+      "password": "Required",
+      "repeatPassword1": "Passwords must match",
+      "repeatPassword2": "Required"
+    },
+    "emailField": "Your Email",
+    "emailPlaceholder": "john@gmail.com",
+    "passwordField": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "repeatPasswordField": "Repeat Password",
+    "repeatPasswordPlaceholder": "Repeat Password",
+    "submitButton": "Submit"
+  },
+  "navi": {
+    "register": "Register",
+    "login": "Login",
+    "userPanel": "User Panel",
+    "frontend": "Frontend",
+    "api": "Api",
+    "server": "Server",
+    "contactTitle": "Contact"
   }
 }

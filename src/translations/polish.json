@@ -465,5 +465,88 @@
         "button1": "Przejdź do opisu serwera"
       }
     }
+  },
+  "header": {
+    "login": "Logowanie",
+    "register": "Rejestracja"
+  },
+  "menu": {
+    "hello": "Witaj",
+    "userSettings": "Przejdź do panlu użytkownika",
+    "logOut": "Wyloguj się",
+    "login": "Logowanie",
+    "register": "Rejestracja",
+    "useCaseRegister": "Use Case - Rejestracja",
+    "useCaseLogin": "Use Case - Logowanie",
+    "useCaseUserPanel": "Use Case - Panel użytkownika",
+    "techStackFrontend": "Tech Stack - Frontend",
+    "techStackApi": "Tech Stack - Api",
+    "techStackServer": "Tech Stack - Serwer"
+  },
+  "userPanel": {
+    "validation": {
+      "email1": "Nieprawidłowy adres e-mail",
+      "email2": "Adres e-mail jest wymagany",
+      "nick": "Pseudonim jest wymagany",
+      "firstName": "Imię jest wymagane",
+      "lastName": "Nazwisko jest wymagane",
+      "phone1": "Numer telefonu jest wymagany",
+      "phone2": "Numer telefonu musi składać się z 9 cyfr"
+    },
+    "title": "Panel użytkownika",
+    "descriptionPlaceHolder": "Napisz coś o sobie...",
+    "description": "Krótki opis użytkownika.",
+    "nickField": "Nick:",
+    "firstNameField": "Imie:",
+    "lastNameField": "Nazwisko:",
+    "emailField": "Email:",
+    "cityField": "Miasto:",
+    "phoneField": "Telefon:",
+    "submitButton": "Zapisz dane",
+    "errorMessage": "Uzupełnij brakujące dane",
+    "updateMessage": "Dane zostały zaktualizowane",
+    "editButton": " Edytuj dane",
+    "idError": "Nie znaleziono identyfikatora użytkownika!"
+  },
+  "logIn": {
+    "title": "Zaloguj się na swoje konto",
+    "successMessage": "Jesteś zalogowany!",
+    "validation": {
+      "email1": "Nieprawidłowy adres email",
+      "email2": "Pole wymagane",
+      "password": "Pole wymagane"
+    },
+    "emailField": "Twój adres Email",
+    "emailPlaceholder": "jan@gmail.com",
+    "passwordField": "Hasło",
+    "passwordPlaceholder": "Wprowadź hasło",
+    "submitButton": "Zaloguj się"
+  },
+  "registration": {
+    "title": "Zarejestruj się, aby utworzyć konto",
+    "successMessage": "Dziękujemy za rejestrację!",
+    "validation": {
+      "email1": "Nieprawidłowy adres email",
+      "email2": "Pole wymagane",
+      "password": "Pole wymagane",
+      "repeatPassword1": "Hasła muszą być takie same",
+      "repeatPassword2": "Pole wymagane"
+    },
+    "emailField": "Twój adres Email",
+    "emailPlaceholder": "jan@gmail.com",
+    "passwordField": "Hasło",
+    "passwordPlaceholder": "Wprowadź hasło",
+    "repeatPasswordField": "Powtórz hasło",
+    "repeatPasswordPlaceholder": "Powtórz hasło",
+    "submitButton": "Zarejestruj się"
+  },
+  "navi": {
+    "register": "Rejestracja",
+    "login": "Logowanie",
+    "userPanel": "Panel użytkownika",
+    "frontend": "Frontend",
+    "api": "Api",
+    "server": "Serwer",
+    "contactTitle": "Kontakt"
   }
 }

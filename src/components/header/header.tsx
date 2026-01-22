@@ -3,10 +3,11 @@ import { Logo } from "../logo";
 import styles from "./header.module.scss";
 import { MenuMobile } from "./mobile-menu/mobile-menu";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../App";
+import { LanguageContext, UserContext } from "../../App";
 import { UserMenu } from "./user-menu/user-menu";
 
 export const Header = () => {
+  const { header } = useContext(LanguageContext);
   const { token } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [userMenuOpen, setUserMenuOpen] = useState<boolean>(false);
@@ -31,10 +32,10 @@ export const Header = () => {
           <div className={styles.buttonsSection}>
             <div className={styles.buttons}>
               <Link to="/login" className={styles.loginButton}>
-                Login
+                {header.login}
               </Link>
               <Link to="/register" className={styles.registerButton}>
-                Register
+                {header.register}
               </Link>
             </div>
             <div className={styles.menuMobile}>
