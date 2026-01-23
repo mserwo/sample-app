@@ -15,6 +15,9 @@ export default defineConfig({
     },
   },
   plugins: [react(), svgr()], // TypeScript może podkreślać, ale działa
+  server: {
+    historyApiFallback: true,
+  },
   test: {
     globals: true,
     environment: "jsdom",
