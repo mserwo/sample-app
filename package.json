@@ -15,7 +15,7 @@
     "test:staged": "vitest related --run",
     "pre-commit": "lint-staged",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist && cp dist/index.html dist/404.html"
+    "deploy": "cp dist/index.html dist/404.html && gh-pages -d dist"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
