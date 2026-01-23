@@ -70,6 +70,8 @@ export const LanguageContext = createContext<LanguageContextType>({
 // Komponent, który przekierowuje nieznane URL-e na stronę główną
 // działa TYLKO przy pierwszym starcie aplikacji
 const AppStartupRedirect = ({ basename }: { basename: string }) => {
+  if (!isGhPages) return null; // TYLKO dla GH Pages
+
   const navigate = useNavigate();
   const location = useLocation();
   const [checked, setChecked] = useState(false);
