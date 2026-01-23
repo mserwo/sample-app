@@ -34,7 +34,8 @@ type TechItem = {
 };
 
 export const Home = () => {
-  const { home } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
+  const { home } = language;
   const { token } = useContext(UserContext);
 
   const mockUser = JSON.parse(sessionStorage.getItem("mockUser") || "{}");

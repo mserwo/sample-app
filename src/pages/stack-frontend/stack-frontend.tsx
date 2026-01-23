@@ -22,9 +22,10 @@ import { useContext } from "react";
 import { LanguageContext } from "../../App";
 
 export const StackFrontend = () => {
+  const { language } = useContext(LanguageContext);
   const {
     techStack: { frontend },
-  } = useContext(LanguageContext);
+  } = language;
 
   const withColour = (text: string, colour: string) => {
     const textArr = text.match(/&.*?&|[^&]+/g);

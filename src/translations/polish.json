@@ -481,7 +481,8 @@
     "useCaseUserPanel": "Use Case - Panel użytkownika",
     "techStackFrontend": "Tech Stack - Frontend",
     "techStackApi": "Tech Stack - Api",
-    "techStackServer": "Tech Stack - Serwer"
+    "techStackServer": "Tech Stack - Serwer",
+    "language": "Zmień język aplikacji"
   },
   "userPanel": {
     "validation": {

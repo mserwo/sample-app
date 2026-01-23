@@ -21,7 +21,8 @@ interface UserFormValues {
 }
 
 export const UserPage = () => {
-  const { userPanel } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
+  const { userPanel } = language;
   const { token, setEmail, setNick, setFirstName, setLastName } =
     useContext(UserContext);
   const { userId } = useParams<{ userId: string }>();

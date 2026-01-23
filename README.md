@@ -153,7 +153,6 @@ npm run dev        # start development server
 npm run build      # build production version
 npm run preview    # preview production build
 npm run lint       # run ESLint
-npm run test       # run tests (Vitest)
 ```
 
 ---

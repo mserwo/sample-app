@@ -280,7 +280,6 @@
       "caption4_alt": "useContext",
 
       "caption5": "5. Forms and Data Validation",
-
       "caption5_text": [
         "The project uses the &Formik library& to handle forms. It allows for convenient management of form field states, data submission, and error response. Each form (&login, registration, editing user data&) is based on the same, consistent mechanism.",
         "Data validation is implemented using the &Yup library&, which allows for client-side data validation. This ensures that the user receives immediate error notification, and the backend is not burdened with invalid queries."
@@ -390,7 +389,6 @@
         "Express"
       ]
     },
-
     "useCase": {
       "main": "Use Case - User Paths",
       "box1": {
@@ -483,7 +481,8 @@
     "useCaseUserPanel": "Use Case - User Panel",
     "techStackFrontend": "Tech Stack - Frontend",
     "techStackApi": "Tech Stack - Api",
-    "techStackServer": "Tech Stack - Server"
+    "techStackServer": "Tech Stack - Server",
+    "language": "Change the application language"
   },
   "userPanel": {
     "validation": {

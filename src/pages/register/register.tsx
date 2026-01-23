@@ -20,7 +20,8 @@ interface Values {
 }
 
 export const Register = () => {
-  const { registration } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
+  const { registration } = language;
   const [registerResponse, setRegisterResponse] = useState<RegisterResponse>({
     isError: false,
     message: "",

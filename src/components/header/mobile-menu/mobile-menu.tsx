@@ -4,9 +4,13 @@ import styles from "./mobile-menu.module.scss";
 import MenuLine from "../../../assets/images/Line.svg?react";
 import Xsymbol from "@/assets/images/x_symbol.svg?react";
 import { LanguageContext, UserContext } from "../../../App";
+import FlagPl from "@/assets/images/flag_pl.svg?react";
+import FlagEngl from "@/assets/images/flag_engl.svg?react";
 
 export const MenuMobile = () => {
-  const { menu } = useContext(LanguageContext);
+  const { language, toggleLang } = useContext(LanguageContext);
+  const [currentLang, setCurrentLang] = useState<"pl" | "en">("pl");
+  const { menu } = language;
   const { nick, id, token, setToken } = useContext(UserContext);
   const [login, setLogin] = useState<boolean>(true);
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +44,16 @@ export const MenuMobile = () => {
       document.removeEventListener("pointerdown", handlePointerDown, true);
     };
   }, []);
+
+  useEffect(() => {
+    const langFromSession = sessionStorage.getItem("lang") as "pl" | "en";
+    if (langFromSession) setCurrentLang(langFromSession);
+  }, []);
+
+  const handleToggleLang = () => {
+    toggleLang();
+    setCurrentLang((prev) => (prev === "pl" ? "en" : "pl"));
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -152,6 +166,20 @@ export const MenuMobile = () => {
               {menu.techStackServer}
             </li>
           </ul>
+          <div className={styles.languageSwitcher}>
+            <div className={styles.languageSwitcher_text}>{menu.language}</div>
+            {currentLang === "pl" ? (
+              <FlagEngl
+                className={styles.languageSwitcher_icon}
+                onClick={handleToggleLang}
+              />
+            ) : (
+              <FlagPl
+                className={styles.languageSwitcher_icon}
+                onClick={handleToggleLang}
+              />
+            )}
+          </div>
         </nav>
       ) : null}
     </div>

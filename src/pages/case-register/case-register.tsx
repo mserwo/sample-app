@@ -19,9 +19,10 @@ import { LanguageContext } from "../../App";
 import { useContext } from "react";
 
 export const CaseRegister = () => {
+  const { language } = useContext(LanguageContext);
   const {
     useCase: { register },
-  } = useContext(LanguageContext);
+  } = language;
 
   const withColour = (text: string, colour: string) => {
     const textArr = text.match(/&.*?&|[^&]+/g);

@@ -25,9 +25,10 @@ import { LanguageContext } from "../../App";
 import { useContext } from "react";
 
 export const CaseLogin = () => {
+  const { language } = useContext(LanguageContext);
   const {
     useCase: { login },
-  } = useContext(LanguageContext);
+  } = language;
 
   const withColour = (text: string, colour: string) => {
     const textArr = text.match(/&.*?&|[^&]+/g);

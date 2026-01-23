@@ -21,9 +21,10 @@ import { useContext } from "react";
 import { LanguageContext } from "../../App";
 
 export const CaseUserPanel = () => {
+  const { language } = useContext(LanguageContext);
   const {
     useCase: { userPanel },
-  } = useContext(LanguageContext);
+  } = language;
 
   const withColour = (text: string, colour: string) => {
     const textArr = text.match(/&.*?&|[^&]+/g);
@@ -56,7 +57,7 @@ export const CaseUserPanel = () => {
 
   return (
     <Layout>
-      <TitleLayoutGreen>Panel użytkownika - opis procesu</TitleLayoutGreen>
+      <TitleLayoutGreen>{userPanel.title}</TitleLayoutGreen>
       <SectionLayout>
         <TextLayout>
           <div className={styles.caption}>{userPanel.caption1}</div>

@@ -11,7 +11,8 @@ import { useContext } from "react";
 import { LanguageContext } from "../../App";
 
 export const Footer = () => {
-  const { navi } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
+  const { navi } = language;
 
   const menu1items = [
     { title: navi.register, url: "/case/register" },

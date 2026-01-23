@@ -16,9 +16,10 @@ import { useContext } from "react";
 import { LanguageContext } from "../../App";
 
 export const StackApi = () => {
+  const { language } = useContext(LanguageContext);
   const {
     techStack: { api },
-  } = useContext(LanguageContext);
+  } = language;
 
   const withColour = (text: string, colour: string) => {
     const textArr = text.match(/&.*?&|[^&]+/g);

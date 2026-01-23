@@ -20,7 +20,8 @@ interface Values {
 }
 
 export const Login = () => {
-  const { logIn } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
+  const { logIn } = language;
   const { setToken, setId, setEmail, setNick, setFirstName, setLastName } =
     useContext(UserContext);
 
