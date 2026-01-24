@@ -14,7 +14,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [react(), svgr()], // TypeScript może podkreślać, ale działa
+  plugins: [react(), svgr()],
   server: {
     historyApiFallback: true,
   },

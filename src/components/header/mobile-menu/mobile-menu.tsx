@@ -88,26 +88,28 @@ export const MenuMobile = () => {
             </div>
           ) : null}
 
-          <ul className={styles.pageMenuApp}>
-            <li
-              onClick={() => {
-                toggleMenu();
-                navigate("/login");
-                window.scrollTo(0, 0);
-              }}
-            >
-              {menu.login}
-            </li>
-            <li
-              onClick={() => {
-                toggleMenu();
-                navigate("/register");
-                window.scrollTo(0, 0);
-              }}
-            >
-              {menu.register}
-            </li>
-          </ul>
+          {token || mockUser.mockToken ? null : (
+            <ul className={styles.pageMenuApp}>
+              <li
+                onClick={() => {
+                  toggleMenu();
+                  navigate("/login");
+                  window.scrollTo(0, 0);
+                }}
+              >
+                {menu.login}
+              </li>
+              <li
+                onClick={() => {
+                  toggleMenu();
+                  navigate("/register");
+                  window.scrollTo(0, 0);
+                }}
+              >
+                {menu.register}
+              </li>
+            </ul>
+          )}
           <ul className={styles.pageMenu}>
             <li
               onClick={() => {

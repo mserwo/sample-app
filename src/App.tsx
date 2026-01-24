@@ -21,7 +21,6 @@ import english from "./translations/english.json";
 const isGhPages = import.meta.env.MODE === "production";
 export const basename = isGhPages ? "/sample-app" : "/";
 
-// Typy dla UserContext
 interface userDataType {
   token: string;
   setToken: (token: string) => void;
@@ -37,7 +36,6 @@ interface userDataType {
   setLastName: (lastName: string) => void;
 }
 
-// Domyślne wartości UserContext
 const userData = {
   token: "",
   setToken: () => {},
@@ -53,14 +51,12 @@ const userData = {
   setLastName: () => {},
 };
 
-// Typy dla LanguageContext
 interface LanguageContextType {
   language: LanguageType;
   toggleLang: () => void;
 }
 type LanguageType = typeof polish;
 
-// Contexty
 export const UserContext = createContext<userDataType>(userData);
 export const LanguageContext = createContext<LanguageContextType>({
   language: polish,
@@ -108,12 +104,11 @@ const AppLayout = ({ basename }: { basename: string }) => {
   return (
     <>
       <AppStartupRedirect basename={basename} />
-      <Outlet /> {/* Tu router wstrzykuje Twoje podstrony */}
+      <Outlet /> {/* Tu router wstrzykuje podstrony */}
     </>
   );
 };
 
-// Router z layoutem i podstronami
 const router = createBrowserRouter(
   [
     {
@@ -137,7 +132,6 @@ const router = createBrowserRouter(
   { basename },
 );
 
-// Główny komponent App
 function App() {
   const [token, setToken] = useState("");
   const [id, setId] = useState("");
@@ -148,7 +142,6 @@ function App() {
 
   const [lang, setLang] = useState<"pl" | "en">("pl");
 
-  // Wczytywanie danych użytkownika z sessionStorage
   useEffect(() => {
     const sessionToken = sessionStorage.getItem("token");
     if (!sessionToken) return;
@@ -176,7 +169,6 @@ function App() {
     sessionStorage.setItem("token", token);
   };
 
-  // Przełączanie języka
   const toggleLang = () => {
     if (lang === "pl") setLang("en"), sessionStorage.setItem("lang", "en");
     else setLang("pl"), sessionStorage.setItem("lang", "pl");
@@ -184,7 +176,6 @@ function App() {
 
   const language = lang === "pl" ? polish : english;
 
-  // Wczytywanie języka z sessionStorage
   useEffect(() => {
     const currentLang = sessionStorage.getItem("lang") as "pl" | "en";
     if (!currentLang) setLang("pl");
