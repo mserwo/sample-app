@@ -22,6 +22,8 @@ import JsonIcon from "@/assets/icons/jsonIcon.svg?react";
 import JwtIcon from "@/assets/icons/jwtIcon.svg?react";
 import FormikIcon from "@/assets/icons/formikIcon.svg?react";
 import NodeJsIcon from "@/assets/icons/nodeJsIcon.svg?react";
+import TsIcon from "@/assets/icons/tsIcon.svg?react";
+import GitIcon from "@/assets/icons/gitIcon.svg?react";
 
 interface UserData {
   id: string;
@@ -65,18 +67,20 @@ export const Home = () => {
   const techListWithIcons: TechItem[] = [
     { text: home.hero.techList[0], Icon: JsIcon },
     { text: home.hero.techList[1], Icon: ReactIcon },
-    { text: home.hero.techList[2], Icon: ReactRouterIcon },
-    { text: home.hero.techList[3], Icon: ViteIcon },
-    { text: home.hero.techList[4], Icon: HtmlIcon },
-    { text: home.hero.techList[5], Icon: ScssIcon },
-    { text: home.hero.techList[6] },
-    { text: home.hero.techList[7], Icon: JsonIcon },
-    { text: home.hero.techList[8], Icon: JwtIcon },
+    { text: home.hero.techList[2], Icon: TsIcon },
+    { text: home.hero.techList[3], Icon: NodeJsIcon },
+    { text: home.hero.techList[4] },
+    { text: home.hero.techList[5], Icon: GitIcon },
+    { text: home.hero.techList[6], Icon: HtmlIcon },
+    { text: home.hero.techList[7], Icon: ScssIcon },
+    { text: home.hero.techList[8], Icon: ReactRouterIcon },
     { text: home.hero.techList[9] },
-    { text: home.hero.techList[10], Icon: FormikIcon },
-    { text: home.hero.techList[11] },
-    { text: home.hero.techList[12], Icon: NodeJsIcon },
-    { text: home.hero.techList[13] },
+    { text: home.hero.techList[10], Icon: JsonIcon },
+    { text: home.hero.techList[11], Icon: FormikIcon },
+    { text: home.hero.techList[12] },
+    { text: home.hero.techList[13], Icon: JwtIcon },
+    { text: home.hero.techList[14] },
+    { text: home.hero.techList[15], Icon: ViteIcon },
   ];
 
   return (

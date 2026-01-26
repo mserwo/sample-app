@@ -112,22 +112,23 @@
       justify-content: center;
 
       &_text {
-        display: flex; // ikona + tekst w jednej linii
-        align-items: center; // pionowe wyśrodkowanie
+        display: flex;
+        align-items: center;
         padding: 10px 30px;
         border: 2px solid colors.$neutrals4;
+
         border-radius: 30px;
         @include typography.caption;
 
         span {
-          line-height: 1.2; // dopasowanie tekstu do wysokości ikony
+          line-height: 1.2;
         }
 
         svg {
-          display: block; // usuwa baseline offset
-          height: 16px; // wysokość ikonki
+          display: block;
+          height: 16px;
           width: auto;
-          margin-right: 7px; // odstęp od tekstu
+          margin-right: 7px;
         }
       }
     }

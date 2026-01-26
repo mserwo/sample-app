@@ -375,18 +375,20 @@
       "techList": [
         "JavaScript",
         "React",
-        "React Router",
-        "Vite",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "Git",
         "HTML",
         "SCSS",
+        "React Router",
         "REST API",
         "JSON",
-        "JWT",
-        "Bcrypt",
         "Formik",
         "Yup",
-        "Node.js",
-        "Express"
+        "JWT",
+        "Bcrypt",
+        "Vite"
       ]
     },
     "useCase": {
