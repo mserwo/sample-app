@@ -5,7 +5,7 @@ const LogoSection = () => {
   return (
     <section className={styles.logoSection}>
       <Logo />
-      <p className={styles.logoSection_text}>{`React Developer`}</p>
+      {/* <p className={styles.logoSection_text}>{`React Developer`}</p> */}
     </section>
   );
 };
